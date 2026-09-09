@@ -36,8 +36,19 @@ def zip_lambda() -> bytes:
             if f.is_file() and "__pycache__" not in f.parts:
                 z.write(f, f.relative_to(tmp).as_posix())
         z.write(ICI / "lambda_proxy.py", "lambda_proxy.py")
-        z.write(ICI / "index.html", "index.html")
+        z.writestr("index.html", page_construite())
     return buf.getvalue()
+
+
+def page_construite() -> str:
+    """index.html avec les figures injectées (schéma d'architecture, profil du parcours)."""
+    page = (ICI / "index.html").read_text(encoding="utf-8")
+    svg = (ICI.parent / "docs" / "architecture.svg").read_text(encoding="utf-8")
+    svg = svg.replace("svg { font-family", "#archi svg { font-family", 1)
+    page = page.replace("{{ARCHITECTURE_SVG}}", svg)
+    profil = ICI / "profil.svg"
+    page = page.replace("{{PROFIL_SVG}}", profil.read_text(encoding="utf-8") if profil.exists() else "")
+    return page
 
 
 def role_lambda(iam, runtime_arn: str, bucket: str) -> str:

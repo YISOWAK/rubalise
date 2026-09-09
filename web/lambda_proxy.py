@@ -87,6 +87,18 @@ def handler(event, context):
                 return reponse(200, {"statut": "en_cours"})
             return reponse(500, {"erreur": str(e)[:200]})
 
+    if methode == "GET" and chemin.rstrip("/").endswith("etat"):
+        session_id = params.get("session", "")
+        if not session_id:
+            return reponse(400, {"erreur": "session manquante"})
+        try:
+            r = agentcore.invoke_agent_runtime(agentRuntimeArn=RUNTIME_ARN, runtimeSessionId=session_id, contentType="application/json",
+                                               accept="application/json", payload=json.dumps({"action": "etat", "session_id": session_id}).encode("utf-8"))
+            brut = r["response"].read().decode("utf-8")
+            return reponse(200, json.loads(brut))
+        except Exception as e:  # noqa: BLE001
+            return reponse(502, {"erreur": f"{type(e).__name__}: {str(e)[:200]}"})
+
     if methode == "GET":
         return reponse(200, PAGE, "text/html")
 

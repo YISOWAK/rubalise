@@ -22,8 +22,9 @@ button,input,textarea{font:inherit;color:inherit}
 :is(button,input,textarea,a,[tabindex]):focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-radius:4px}
 a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 .mono{font-family:"Roboto Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
 
-.wrap{max-width:1280px;margin:0 auto;padding:18px 22px 24px;height:100%;display:flex;flex-direction:column;gap:14px}
+.wrap{max-width:1400px;margin:0 auto;padding:14px 20px 18px;height:100%;display:flex;flex-direction:column;gap:10px}
 header.top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 header.top h1{font-size:20px;font-weight:500;letter-spacing:-.005em;margin:0}
 header.top .sub{color:var(--muted);font-size:13px}
@@ -33,116 +34,271 @@ header.top .spacer{flex:1}
 .btn{background:var(--surface);border:1px solid var(--line2);border-radius:4px;padding:6px 12px;cursor:pointer;font-size:12.5px;font-weight:500}
 .btn:hover{background:var(--surface2)} .btn:disabled{opacity:.5;cursor:default}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff} .btn.primary:hover{background:#1979C4}
+.btn.small{padding:3px 8px;font-size:12px}
+.btn.lien{border:0;background:none;color:var(--muted);padding:0 4px}
 
-.cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;flex:1;min-height:0}
-@media (max-width:860px){.cols{grid-template-columns:1fr}.aside{display:none}}
+nav.onglets{display:flex;gap:2px;border-bottom:1px solid var(--line2)}
+nav.onglets button{background:none;border:0;border-bottom:2px solid transparent;padding:7px 14px;cursor:pointer;color:var(--muted);font-weight:500;font-size:13px;margin-bottom:-1px}
+nav.onglets button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.onglets button:hover{color:var(--ink)}
+
+.vue{flex:1;min-height:0;display:flex;flex-direction:column}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0}
-.panel h2{font-size:13.5px;font-weight:500;margin:0;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--ink2)}
+.panel h2{font-size:13.5px;font-weight:500;margin:0;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--ink2);display:flex;align-items:center;gap:10px}
+.panel h2 .spacer{flex:1}
+.panel h2 .info{font-family:"Roboto Mono",monospace;font-size:11.5px;color:var(--muted);font-weight:400}
+.note{font-size:12px;color:var(--muted)}
 
-#fil{flex:1;overflow:auto;padding:6px 16px 10px;min-height:280px}
-.msg{padding:10px 0 12px;border-bottom:1px solid var(--line)}
+/* poste de commandement */
+.cockpit{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:12px;flex:1;min-height:0}
+@media (max-width:960px){.cockpit{grid-template-columns:1fr}}
+.gauche{display:flex;flex-direction:column;min-height:0}
+#course{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 14px 14px}
+.droite{display:flex;flex-direction:column;gap:12px;min-height:0}
+.droite .panel.chat{flex:1 1 auto}
+.droite .panel.detail{flex:0 0 auto;max-height:46%}
+.droite .panel.detail .contenu{overflow:auto}
+
+/* frise */
+.frise{position:relative;height:118px;margin:2px 70px 10px}
+.frise .axe{position:absolute;left:0;right:0;top:60px;height:2px;background:var(--line2)}
+.frise .pt{position:absolute;top:0;transform:translateX(-50%);text-align:center;width:150px;height:118px}
+.frise .pt .nom{position:absolute;left:0;right:0;top:22px;font-size:12.5px;font-weight:500;color:var(--ink);white-space:nowrap}
+.frise .pt.haut .nom{top:2px}
+.frise .pt .ico{position:absolute;left:50%;top:50px;transform:translateX(-50%);width:22px;height:22px;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.frise .pt .km{position:absolute;left:0;right:0;top:78px;font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace}
+.frise .pt .alt{position:absolute;left:0;right:0;top:94px;font-size:10.5px;color:var(--muted);font-family:"Roboto Mono",monospace;white-space:nowrap}
+.frise .pt.bas .alt{top:106px}
+.frise .pt.ok .ico{border:2px solid var(--ok)} .frise .pt.partiel .ico{border:2px solid var(--warn)} .frise .pt.critique .ico,.frise .pt.vide .ico{border:2px solid var(--bad)} .frise .pt.neutre .ico{border:2px solid var(--line2)}
+.frise .pt svg{width:12px;height:12px}
+.legende{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:0 2px 10px}
+.legende i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+
+/* planning */
+.planning{border:1px solid var(--line);border-radius:4px;margin-bottom:12px;overflow:hidden}
+.planning .titre{font-size:12.5px;font-weight:500;color:var(--ink2);padding:6px 10px;background:var(--surface2);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:baseline}
+.planning .titre .h{font-family:"Roboto Mono",monospace;font-size:11px;color:var(--muted);font-weight:400}
+.grille{display:grid;grid-template-columns:230px minmax(0,1fr)}
+.grille .lib{padding:0 8px;font-size:12px;color:var(--ink2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;min-height:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grille .lib .t{font-family:"Roboto Mono",monospace;font-size:11px;color:var(--muted);flex:none}
+.grille .piste{position:relative;border-bottom:1px solid var(--line);border-left:1px solid var(--line);min-height:24px;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100% / var(--tics)) 100%}
+.grille .site{grid-column:1 / -1;font-size:11.5px;font-weight:500;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;padding:6px 8px 2px;background:var(--surface)}
+.grille .echelle{grid-column:2;position:relative;height:18px;border-left:1px solid var(--line)}
+.grille .echelle span{position:absolute;top:2px;transform:translateX(-50%);font-family:"Roboto Mono",monospace;font-size:10.5px;color:var(--muted)}
+.barre{position:absolute;top:4px;height:16px;border-radius:3px;border:1px solid transparent;font-family:"Roboto Mono",monospace;font-size:10.5px;line-height:14px;padding:0 5px;color:#fff;cursor:pointer;overflow:hidden;white-space:nowrap;text-align:left}
+.barre.ok{background:var(--ok)} .barre.partiel{background:#C08A1E} .barre.critique{background:var(--bad)} .barre.vide{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)} .barre.neutre{background:var(--line2);color:var(--ink2)}
+.barre.sel{outline:2px solid var(--ink);outline-offset:1px}
+.barre:hover{filter:brightness(.95)}
+
+/* détail */
+.contenu{padding:10px 14px 12px;color:var(--ink2);font-size:12.5px}
+.contenu p{margin:0 0 8px}
+.contenu ol,.contenu ul{margin:0;padding-left:18px} .contenu li{margin:3px 0}
+.pill{display:inline-block;font-size:11px;font-weight:500;padding:0 6px;border-radius:3px;margin-left:8px;vertical-align:1px}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.partiel{background:var(--warn-soft);color:var(--warn)} .pill.critique,.pill.vide{background:var(--bad-soft);color:var(--bad)} .pill.neutre{background:var(--surface2);color:var(--muted)}
+#detail dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0 0 8px;font-size:12.5px}
+#detail dt{color:var(--muted)} #detail dd{margin:0}
+#detail .equipe{list-style:none;padding:0;margin:0 0 6px}
+#detail .equipe li{padding:2px 0;border-bottom:1px solid var(--line)}
+#detail .equipe li:last-child{border-bottom:0}
+#detail .role{font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace;margin-left:6px}
+#detail .viol{font-size:12.5px;padding:4px 8px;border-left:3px solid var(--bad);background:var(--bad-soft);margin:4px 0;border-radius:2px}
+#detail .viol.alerte{border-left-color:var(--warn);background:var(--warn-soft)}
+#detail h4{font-size:11.5px;font-weight:500;color:var(--muted);margin:10px 0 4px;letter-spacing:.03em;text-transform:uppercase}
+#signal{display:flex;flex-direction:column;gap:6px}
+#signal textarea{min-height:48px}
+
+/* conversation */
+#fil{flex:1;overflow:auto;padding:4px 14px 8px;min-height:200px}
+.msg{padding:8px 0 10px;border-bottom:1px solid var(--line)}
 .msg:last-child{border-bottom:0}
-.msg .qui{font-size:11.5px;color:var(--muted);font-family:"Roboto Mono",monospace;margin-bottom:4px;display:flex;gap:10px}
+.msg .qui{font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace;margin-bottom:3px}
 .msg.orga .corps{white-space:pre-wrap}
-.msg.agent .corps{max-width:78ch}
-.msg.agent .corps p{margin:0 0 8px} .msg.agent .corps p:last-child{margin:0}
-.msg.agent .corps h1,.msg.agent .corps h2,.msg.agent .corps h3{font-size:13.5px;font-weight:500;margin:12px 0 6px;color:var(--ink2)}
-.msg.agent .corps ul,.msg.agent .corps ol{margin:4px 0 8px;padding-left:20px}
+.msg.agent .corps p{margin:0 0 7px} .msg.agent .corps p:last-child{margin:0}
+.msg.agent .corps h1,.msg.agent .corps h2,.msg.agent .corps h3{font-size:13px;font-weight:500;margin:10px 0 5px;color:var(--ink2)}
+.msg.agent .corps ul,.msg.agent .corps ol{margin:3px 0 7px;padding-left:18px}
 .msg.agent .corps li{margin:2px 0}
-.msg.agent .corps table{border-collapse:collapse;width:100%;margin:6px 0 10px;font-size:13px}
-.msg.agent .corps th,.msg.agent .corps td{text-align:left;padding:5px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-.msg.agent .corps th{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.02em}
+.msg.agent .corps table{border-collapse:collapse;width:100%;margin:5px 0 8px;font-size:12.5px}
+.msg.agent .corps th,.msg.agent .corps td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.msg.agent .corps th{font-weight:500;color:var(--muted);font-size:11.5px}
 .msg.agent .corps tr:nth-child(even) td{background:var(--surface2)}
 .msg.agent .corps code{font-family:"Roboto Mono",monospace;font-size:12px;background:var(--surface2);padding:1px 4px;border-radius:3px}
 .msg.agent .corps hr{border:0;border-top:1px solid var(--line);margin:8px 0}
-.msg.agent.attente .corps{border-left:3px solid var(--warn);padding-left:12px}
+.msg.agent.attente .corps{border-left:3px solid var(--warn);padding-left:10px}
 .msg.pending .corps{color:var(--muted)}
-.msg .corps .tick{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warn);margin-right:6px;vertical-align:middle;animation:p 1.2s infinite}
+.tick{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warn);margin-right:6px;vertical-align:middle;animation:p 1.2s infinite}
 @keyframes p{0%,100%{opacity:.3}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.msg .corps .tick{animation:none}}
-
-.saisie{border-top:1px solid var(--line);padding:10px 16px 12px;display:flex;flex-direction:column;gap:8px}
-.chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{border:1px solid var(--line2);background:var(--surface);border-radius:4px;padding:4px 10px;cursor:pointer;font-size:12px;color:var(--ink2)}
+@media (prefers-reduced-motion:reduce){.tick{animation:none}}
+.saisie{border-top:1px solid var(--line);padding:8px 14px 10px;display:flex;flex-direction:column;gap:7px}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{border:1px solid var(--line2);background:var(--surface);border-radius:4px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--ink2)}
 .chip:hover{background:var(--surface2)}
 .ligne{display:flex;gap:8px;align-items:flex-end}
 textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid var(--line2);border-radius:4px;padding:8px 10px;background:var(--surface);line-height:1.4}
 
-.aside{gap:14px;display:flex;flex-direction:column;min-height:0;overflow:auto}
-.aside .panel{flex:0 0 auto}
-.aside .contenu{padding:10px 16px 12px;color:var(--ink2);font-size:12.5px}
-.aside .contenu p{margin:0 0 8px}
-.aside ol{margin:0;padding-left:18px} .aside li{margin:3px 0}
-.aside .phase{font-weight:500;color:var(--ink)}
-.aside .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:12.5px}
-.aside .kv span:first-child{color:var(--muted)}
-.note{font-size:12px;color:var(--muted);padding:0 2px}
+/* notre course, comment ça marche */
+.doc{padding:14px 18px 18px;overflow:auto;flex:1;min-height:0}
+.doc .texte{max-width:78ch;color:var(--ink2)}
+.doc h3{font-size:14px;font-weight:500;margin:16px 0 6px;color:var(--ink)}
+.doc h3:first-child{margin-top:0}
+.doc table{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0 10px}
+.doc th,.doc td{text-align:left;padding:5px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.doc th{font-weight:500;color:var(--muted);font-size:12px}
+.doc svg{max-width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px}
+.doc img{max-width:100%;border:1px solid var(--line);border-radius:4px}
+.doc .deux{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.doc .deux{grid-template-columns:1fr}}
+.doc .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;max-width:70ch}
+.doc .kv span:first-child{color:var(--muted)}
+.doc .journal{font-size:12.5px} .doc .journal td:first-child{font-family:"Roboto Mono",monospace;white-space:nowrap;color:var(--muted)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <h1>Rubalise</h1>
-    <span class="sub">assistant du responsable des bénévoles, SwissPeaks Marathon 2025</span>
+    <span class="sub">poste de commandement des bénévoles, SwissPeaks Marathon 2025</span>
     <span class="spacer"></span>
     <span id="etat" class="mono">session nouvelle</span>
     <button class="btn" id="nouvelle" type="button">Nouvelle session</button>
   </header>
 
-  <div class="cols">
-    <section class="panel">
-      <h2>Conversation</h2>
-      <div id="fil" aria-live="polite"></div>
-      <div class="saisie">
-        <div class="chips" id="chips">
-          <button class="chip" type="button" data-m="Où en est-on ?">Où en est-on ?</button>
-          <button class="chip" type="button" data-m="Charge les données de la course et calcule un plan.">Calcule un plan</button>
-          <button class="chip" type="button" data-m="Qui est à Taney le samedi matin ?">Qui est à Taney ?</button>
-          <button class="chip" type="button" data-m="Pour le Grand Pré du soir on tiendra à 2, Sandra me l'a confirmé : accorde la dérogation.">Dérogation Grand Pré</button>
-          <button class="chip" type="button" data-m="Publie le plan, on l'a validé en réunion.">Publie le plan</button>
-          <button class="chip" type="button" data-m="Il est 11h, Marc Saudan et Fabien Carraux ne viennent pas. On fait quoi ?">Jour J : deux absents</button>
-        </div>
-        <div class="ligne">
-          <textarea id="entree" rows="1" placeholder="Écris comme tu parlerais au responsable bénévoles. Entrée pour envoyer, Maj+Entrée pour une nouvelle ligne."></textarea>
-          <button class="btn primary" id="envoyer" type="button">Envoyer</button>
-        </div>
-        <div class="note">Les actions réservées à l'organisateur (publier, déroger, changer une règle) ne s'exécutent que si tu réponds « oui, confirme » au message qui les demande.</div>
-      </div>
-    </section>
+  <nav class="onglets" role="tablist">
+    <button role="tab" aria-selected="true" data-vue="course">Course</button>
+    <button role="tab" aria-selected="false" data-vue="doc">Notre course</button>
+    <button role="tab" aria-selected="false" data-vue="archi">Comment ça marche</button>
+  </nav>
 
-    <aside class="aside">
-      <section class="panel">
-        <h2>Le parcours de démonstration</h2>
-        <div class="contenu">
-          <ol>
-            <li><span class="phase">Les entrées.</span> Les données de la course sont chargées : 6 points de passage lus dans le roadbook, 50 créneaux, 75 bénévoles traduits depuis un formulaire en texte libre.</li>
-            <li><span class="phase">Le plan.</span> Le solveur affecte, le vérificateur relit les règles, le contradicteur cherche ce que le code ne voit pas.</li>
-            <li><span class="phase">La publication.</span> Rien ne part sans confirmation explicite. Chaque décision va au journal.</li>
-            <li><span class="phase">Le jour J.</span> Un imprévu, une réparation avec le moins de mouvements possible, les créneaux terminés ne bougent pas.</li>
-          </ol>
-        </div>
+  <!-- Poste de commandement -->
+  <div class="vue" id="vue-course">
+    <div class="cockpit">
+      <section class="panel gauche">
+        <h2>La course, poste par poste <span class="spacer"></span><span id="course-info" class="info"></span><button class="btn small" id="rafraichir" type="button">Rafraîchir</button></h2>
+        <div id="course"><p class="note">Lecture de l'état de la session.</p></div>
       </section>
-      <section class="panel">
-        <h2>Ce qui est réel, ce qui ne l'est pas</h2>
-        <div class="contenu">
-          <div class="kv">
-            <span>Course</span><span>réelle : roadbook public, trace GPS d'un coureur</span>
-            <span>Bénévoles</span><span>75 profils synthétiques, avec 14 pièges volontaires</span>
-            <span>Messages</span><span>écrits dans un fichier, jamais envoyés</span>
-            <span>Modèles</span><span>Claude Sonnet 4.6 et Opus 4.6 sur Amazon Bedrock</span>
-            <span>Hébergement</span><span>Amazon Bedrock AgentCore Runtime</span>
-            <span>Temps</span><span>un plan complet prend 30 à 60 secondes</span>
+      <div class="droite">
+        <section class="panel detail" id="detail" hidden>
+          <h2 id="detail-titre">Un créneau<span class="spacer"></span><button class="btn lien" id="detail-fermer" type="button" aria-label="Fermer">fermer</button></h2>
+          <div class="contenu" id="detail-corps"></div>
+        </section>
+        <section class="panel chat">
+          <h2>L'assistant</h2>
+          <div id="fil" aria-live="polite"></div>
+          <div class="saisie">
+            <div class="chips" id="chips">
+              <button class="chip" type="button" data-m="Où en est-on ?">Où en est-on ?</button>
+              <button class="chip" type="button" data-m="Charge les données de la course et calcule un plan.">Calcule un plan</button>
+              <button class="chip" type="button" data-m="Pour le Grand Pré du soir on tiendra à 2, Sandra me l'a confirmé : accorde la dérogation.">Dérogation Grand Pré</button>
+              <button class="chip" type="button" data-m="Publie le plan, on l'a validé en réunion.">Publie le plan</button>
+              <button class="chip" type="button" data-m="Il est 11h, Marc Saudan et Fabien Carraux ne viennent pas. On fait quoi ?">Jour J : deux absents</button>
+            </div>
+            <div class="ligne">
+              <textarea id="entree" rows="1" placeholder="Écris comme tu parlerais au responsable bénévoles. Entrée pour envoyer."></textarea>
+              <button class="btn primary" id="envoyer" type="button">Envoyer</button>
+            </div>
+            <div class="note">Publier, déroger ou changer une règle n'est exécuté que si tu réponds « oui, confirme » au message qui le demande.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notre course -->
+  <div class="vue" id="vue-doc" hidden>
+    <section class="panel" style="flex:1;min-height:0">
+      <h2>SwissPeaks Marathon 2025, ce qu'on sait de la course</h2>
+      <div class="doc" id="doc">
+        <div class="texte">
+          <h3>La fiche</h3>
+          <div class="kv" id="doc-fiche"></div>
+          <h3>Les points de passage</h3>
+          <div id="doc-points"><p class="note">Ouvre l'onglet Course une première fois pour charger l'état.</p></div>
+        </div>
+        <h3>Le profil, d'après la trace GPS d'un coureur</h3>
+        {{PROFIL_SVG}}
+        <p class="note">46,5 km mesurés, 2 475 m de dénivelé positif lissé. Les six points de passage retrouvés sur la trace sont à moins de 10 m d'altitude du roadbook.</p>
+        <div class="deux">
+          <div>
+            <h3>Le roadbook, la page du Marathon</h3>
+            <img src="https://raw.githubusercontent.com/YISOWAK/rubalise/master/data/source/roadbook-2025-marathon-tableau.png" alt="Tableau des points de passage du Marathon dans le roadbook 2025" loading="lazy">
+            <p class="note">C'est cette image que le modèle lit pour remplir la fiche. Les icônes disent les services : ravitaillement, bus d'abandon, barrière horaire, repas chaud, sacs, secours, douche, massage.</p>
+          </div>
+          <div class="texte">
+            <h3>Le formulaire des bénévoles, tel qu'il arrive</h3>
+            <table>
+              <tr><th>Quand je suis libre</th><th>Ce que je sais faire</th><th>Ce que je voudrais faire</th><th>Remarques</th></tr>
+              <tr><td>samedi du matin jusqu'à minuit</td><td>je marche bien en montagne, langues : anglais</td><td>idéalement signaleur sur la route ou serre-file</td><td>j'ai 17 ans</td></tr>
+              <tr><td>Je cours le Marathon samedi (dossard 312) mais je peux aider le vendredi soir et le dimanche après-midi</td><td>samaritain, permis, véhiculé</td><td>plutôt le parking ou le pointage, pas la nuit</td><td>67 ans, encore en forme</td></tr>
+              <tr><td>samedi 10h-20h</td><td>samaritain, randonneur, 5 éditions comme bénévole</td><td>le PC course, je peux tenir un poste</td><td>Je viens avec 3 personnes, on prend un ravito ensemble.</td></tr>
+              <tr><td>Je suis libre samedi toute la journée et le soir</td><td>je fais du trail, déjà bénévole 2 fois</td><td>plutôt ravito, pas après 20h, je peux tenir un poste</td><td>Je viens en train, pas de voiture.</td></tr>
+            </table>
+            <p class="note">75 lignes comme celles-ci, en texte libre. Le modèle les traduit en champs que le solveur comprend ; ce qui ne rentre dans aucun champ devient une remarque pour le contradicteur.</p>
           </div>
         </div>
-      </section>
-      <section class="panel">
-        <h2>Sous le capot</h2>
-        <div class="contenu">
-          <p>Un agent Strands qui parle, un serveur d'outils MCP, un solveur OR-Tools, un second agent qui contredit. Le modèle ne calcule jamais le planning.</p>
-          <p><a href="https://github.com/YISOWAK/rubalise" target="_blank" rel="noopener">Code et architecture</a></p>
+        <div class="deux">
+          <div class="texte">
+            <h3>Les règles que le vérificateur applique</h3>
+            <div id="doc-regles"><p class="note">Chargées avec l'état.</p></div>
+          </div>
+          <div class="texte">
+            <h3>Le journal de la session</h3>
+            <div id="doc-journal"><p class="note">Vide tant que rien n'a été décidé.</p></div>
+          </div>
         </div>
-      </section>
-    </aside>
+        <h3>Les documents</h3>
+        <ul class="texte">
+          <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/course_marathon.json" target="_blank" rel="noopener">La fiche de course</a>, telle que lue dans le roadbook et corrigée.</li>
+          <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/parcours.gpx" target="_blank" rel="noopener">La trace GPX du parcours</a>, nettoyée, et <a href="https://github.com/YISOWAK/rubalise/blob/master/data/passages_reference.csv" target="_blank" rel="noopener">les temps de passage réels d'un coureur</a>.</li>
+          <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/postes.csv" target="_blank" rel="noopener">Les 50 créneaux</a> et <a href="https://github.com/YISOWAK/rubalise/blob/master/data/formulaire_benevoles.csv" target="_blank" rel="noopener">le formulaire des 75 bénévoles</a> (synthétiques).</li>
+          <li><a href="https://github.com/YISOWAK/rubalise/blob/master/gabarits/trail.json" target="_blank" rel="noopener">Le gabarit « trail »</a>, ce que le système sait d'une course de trail.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- Comment ça marche -->
+  <div class="vue" id="vue-archi" hidden>
+    <section class="panel" style="flex:1;min-height:0">
+      <h2>Comment ça marche</h2>
+      <div class="doc" id="archi">
+        <div class="texte">
+          <p>Un responsable bénévoles dépose le roadbook et le formulaire d'inscription. L'assistant en fait des postes et des bénévoles structurés, un solveur calcule le plan, deux relectures le contrôlent, et rien ne part sans que l'organisateur le dise. Le jour de la course, il répare avec le moins de mouvements possible.</p>
+        </div>
+        {{ARCHITECTURE_SVG}}
+        <div class="texte">
+          <h3>Ce que fait chaque brique</h3>
+          <table>
+            <tr><th>Brique</th><th>Rôle</th><th>Nature</th></tr>
+            <tr><td>Orchestrateur</td><td>Tient la conversation, appelle les outils dans l'ordre pour préparer la course, raisonne librement le jour J</td><td>agent Strands, Claude Sonnet 4.6</td></tr>
+            <tr><td>Contradicteur</td><td>Relit chaque plan avec un contexte vierge et rend des remarques classées par gravité ; ne modifie rien</td><td>agent Strands, Claude Opus 4.6</td></tr>
+            <tr><td>Lire le roadbook</td><td>Des pages de PDF en image vers une fiche de course fermée, avec les doutes à relire</td><td>un appel au modèle, schéma JSON strict</td></tr>
+            <tr><td>Traduire les dispos</td><td>Chaque ligne du formulaire (texte libre) vers les champs que le solveur comprend, plus des remarques étiquetées</td><td>un appel au modèle par ligne</td></tr>
+            <tr><td>Construire les postes</td><td>La fiche de course et un gabarit « trail » vers 50 à 60 créneaux datés</td><td>code</td></tr>
+            <tr><td>Solveur</td><td>Affecte 75 personnes sur 50 créneaux : contraintes dures, objectif pondéré, coût des changements le jour J</td><td>code, OR-Tools CP-SAT, moins de 10 s</td></tr>
+            <tr><td>Vérificateur</td><td>9 règles bloquantes, 11 alertes, doublons par téléphone</td><td>code</td></tr>
+            <tr><td>Journal</td><td>Qui a décidé quoi, quand, pourquoi ; jamais effacé</td><td>code</td></tr>
+          </table>
+          <h3>Les principes</h3>
+          <ul>
+            <li>Le modèle ne calcule jamais le planning. Il lit, traduit, explique, et remplit des formulaires fermés que du code vérifie. Chaque étape avec un modèle est mesurée contre une vérité connue.</li>
+            <li>Deux relectures : le code pour les règles écrites, un agent à contexte vierge pour ce qu'aucune règle ne dit.</li>
+            <li>L'humain garde la main par construction : publier, déroger, changer une règle passent par une confirmation vérifiée par le code, pas par le prompt.</li>
+            <li>Un plan publié est un engagement : le jour J, chaque changement coûte, et le solveur répare avec le moins de mouvements possible.</li>
+            <li>Les règles vivent dans un fichier que l'organisateur modifie depuis la conversation. Un autre type d'événement, c'est un autre gabarit.</li>
+          </ul>
+          <h3>Ce qui a été mesuré</h3>
+          <table>
+            <tr><th>Quoi</th><th>Résultat</th></tr>
+            <tr><td>Traduction du formulaire, 75 lignes</td><td>dispos 74/75, compétences 74/75, nuit 74/75, accompagnants, responsables et binômes 75/75</td></tr>
+            <tr><td>Lecture du roadbook, 5 pages</td><td>6 points de passage exacts (km, altitude, horaires, barrières) ; 2 icônes de service confondues et signalées comme doutes</td></tr>
+            <tr><td>Solveur, 50 créneaux et 75 bénévoles</td><td>optimal en 5 s, 16 personnes manquantes sur 9 créneaux, chacune avec la raison</td></tr>
+            <tr><td>Jour J, 5 absents à 6h30</td><td>2 retraits, 4 ajouts, 0,4 s</td></tr>
+            <tr><td>Contradicteur, sans consigne</td><td>la chaîne des serre-files cassée, la livraison 4x4 vide qui bloque quatre postes, une mineure déclarée responsable</td></tr>
+          </table>
+          <p>Le code, les données et les notes de conception sont publics : <a href="https://github.com/YISOWAK/rubalise" target="_blank" rel="noopener">github.com/YISOWAK/rubalise</a>. Ce qui est réel : la course (roadbook public, trace GPS). Ce qui ne l'est pas : les 75 bénévoles, synthétiques, et les messages, écrits dans un fichier.</p>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
 
@@ -153,15 +309,30 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   const envoyer = document.getElementById('envoyer');
   const etat = document.getElementById('etat');
   const cle = new URLSearchParams(location.search).get('k') || '';
-  let session = null, occupe = false;
+  let session = null, occupe = false, donnees = null, selection = null;
   try { session = localStorage.getItem('rubalise.session'); } catch (e) {}
-
   marked.setOptions({ breaks: true, gfm: true });
 
+  function nouvelleSession(){
+    const u = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+    return 'rubalise-' + u + '-' + Math.random().toString(16).slice(2, 10);
+  }
+  function assurerSession(){ if (!session) { session = nouvelleSession(); try { localStorage.setItem('rubalise.session', session); } catch (e) {} } return session; }
   function setEtat(txt, cls){ etat.textContent = txt; etat.className = 'mono' + (cls ? ' ' + cls : ''); }
-  function sessionCourte(){ return session ? 'session ' + session.slice(0, 8) : 'session nouvelle'; }
+  function sessionCourte(){ return session ? 'session ' + session.slice(9, 17) : 'session nouvelle'; }
   setEtat(sessionCourte());
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
+  // ---- onglets
+  const onglets = document.querySelectorAll('nav.onglets button');
+  function montrer(vue){
+    onglets.forEach(b => b.setAttribute('aria-selected', String(b.dataset.vue === vue)));
+    ['course', 'doc', 'archi'].forEach(v => { document.getElementById('vue-' + v).hidden = (v !== vue); });
+    if ((vue === 'course' || vue === 'doc') && !donnees) chargerCourse();
+  }
+  onglets.forEach(b => b.addEventListener('click', () => montrer(b.dataset.vue)));
+
+  // ---- conversation
   function ajouter(qui, texte, opts){
     const div = document.createElement('div');
     div.className = 'msg ' + qui + (opts && opts.classe ? ' ' + opts.classe : '');
@@ -176,15 +347,16 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   async function poser(message){
     if (!message.trim() || occupe) return;
     occupe = true; envoyer.disabled = true;
+    montrer('course');
     ajouter('orga', message);
     entree.value = ''; entree.style.height = '';
     const attente = ajouter('agent', '', {classe: 'pending', brut: true});
-    attente.querySelector('.corps').innerHTML = '<span class="tick"></span>L\'agent travaille. Un plan complet (solveur, vérification, relecture) prend 30 à 60 secondes.';
+    attente.querySelector('.corps').innerHTML = '<span class="tick"></span>L\'agent travaille. Un plan complet (solveur, vérification, relecture) prend 60 à 90 secondes.';
     setEtat('appel en cours', 'busy');
     try {
       const r = await fetch('invoke?k=' + encodeURIComponent(cle), {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({prompt: message, session_id: session})
+        body: JSON.stringify({prompt: message, session_id: assurerSession()})
       });
       const lance = await r.json();
       if (!r.ok || lance.erreur) throw new Error(lance.erreur || ('HTTP ' + r.status));
@@ -205,6 +377,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
       const texte = data.result || '';
       ajouter('agent', texte, {classe: /réponds « oui, confirme »/i.test(texte) ? 'attente' : ''});
       setEtat(sessionCourte());
+      chargerCourse();  // le plan a pu changer
     } catch (err) {
       attente.remove();
       ajouter('agent', 'Erreur : ' + err.message + '. Réessaie dans un instant ; si ça persiste, la session a peut-être expiré, ouvre-en une nouvelle.', {brut: true});
@@ -217,12 +390,158 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   entree.addEventListener('input', () => { entree.style.height = 'auto'; entree.style.height = Math.min(entree.scrollHeight, 140) + 'px'; });
   document.getElementById('chips').addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (b) poser(b.dataset.m); });
   document.getElementById('nouvelle').addEventListener('click', () => {
-    session = null; try { localStorage.removeItem('rubalise.session'); } catch (e) {}
-    fil.innerHTML = ''; setEtat(sessionCourte());
-    ajouter('agent', 'Nouvelle session. L\'état repart de zéro : les données de la course sont chargées, aucun plan n\'est calculé.', {brut: true});
+    session = null; donnees = null; selection = null; try { localStorage.removeItem('rubalise.session'); } catch (e) {}
+    fil.innerHTML = ''; setEtat(sessionCourte()); fermerDetail();
+    ajouter('agent', 'Nouvelle session. Les données de la course sont chargées, aucun plan n\'est calculé. Demande « Calcule un plan » pour remplir le tableau.', {brut: true});
+    chargerCourse();
   });
+  ajouter('agent', 'Bonjour. Le tableau de gauche montre la course poste par poste ; clique un créneau pour voir l\'équipe ou signaler quelque chose. Demande-moi un plan, une dérogation, ou signale un imprévu.', {brut: true});
 
-  ajouter('agent', 'Bonjour. Je suis l\'assistant du responsable bénévoles. Dis-moi où tu veux commencer, ou clique une des demandes ci-dessous.', {brut: true});
+  // ---- état et vue course
+  const JOURS = ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam'];
+  const LIBELLE = {ok: 'couvert', partiel: 'sous l\'idéal', critique: 'sous le minimum ou sans responsable', vide: 'personne', neutre: 'pas de plan'};
+  const RANG = {neutre: 0, ok: 1, partiel: 2, critique: 3, vide: 4};
+  function h(iso){ const d = new Date(iso); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+  function jh(iso){ const d = new Date(iso); return JOURS[d.getDay()] + ' ' + h(iso); }
+  function couverture(p){ return p.equipe.reduce((n, e) => n + 1 + (e.accompagnants || 0), 0); }
+  function classeDe(p, plan){
+    if (!plan) return 'neutre';
+    const c = couverture(p);
+    const sansResp = plan.postes_sans_responsable && plan.postes_sans_responsable.includes(p.id);
+    if (c === 0) return 'vide';
+    if (c < p.min || sansResp) return 'critique';
+    if (c < p.ideal) return 'partiel';
+    return 'ok';
+  }
+  const ICONES = {
+    ok: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.6 2.5L10 3.5" fill="none" stroke="#1E9E63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    partiel: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="3" fill="#96690A"/></svg>',
+    critique: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="#C24A44" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    vide: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="#C24A44" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    neutre: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="2.5" fill="#D3D8DD"/></svg>'
+  };
+
+  async function chargerCourse(){
+    const zone = document.getElementById('course');
+    if (!donnees) zone.innerHTML = '<p class="note"><span class="tick"></span>Lecture de l\'état de la session (quelques secondes, une dizaine si la session est nouvelle).</p>';
+    try {
+      const r = await fetch('etat?k=' + encodeURIComponent(cle) + '&session=' + encodeURIComponent(assurerSession()), {cache: 'no-store'});
+      const d = await r.json();
+      if (!r.ok || d.erreur) throw new Error(d.erreur || ('HTTP ' + r.status));
+      donnees = d.etat; rendreCourse(); rendreDoc();
+    } catch (err) {
+      zone.innerHTML = '<p class="note">Impossible de lire l\'état : ' + esc(err.message) + '</p>';
+    }
+  }
+
+  function jourCourse(d){ const x = new Date(d.course.depart.date_heure); x.setHours(0, 0, 0, 0); return x; }
+  function finJourCourse(d){ const x = jourCourse(d); x.setDate(x.getDate() + 1); x.setHours(3, 0, 0, 0); return x; }
+  function estJourCourse(p, d){ const t = new Date(p.debut); return t >= jourCourse(d) && t < finJourCourse(d); }
+  function nomCourt(p){ return p.nom.replace(/\s*\(.*?\)/g, '').replace(/, créneau (\d)\/(\d)$/, ' $1/$2').replace(/^Ravitaillement /, 'Ravito ').replace(/^Assistance point de secours/, 'Secours').replace(/^Signaleurs traversée (de route |quai )?/, 'Signaleurs ').replace(/^PC course : standard téléphonique et suivi live/, 'PC course').replace(/^Réserve volante au PC/, 'Réserve volante').replace(/^Arrivée : ligne, médailles et bracelets/, 'Arrivée : ligne').replace(/^Parking Bellossy et navettes/, 'Parking').replace(/^Retrait des dossards/, 'Dossards'); }
+
+  function rendreCourse(){
+    const d = donnees, zone = document.getElementById('course');
+    const pts = (d.course.points_de_passage || []).slice().sort((a, b) => a.km - b.km);
+    const total = Math.max(...pts.map(p => p.km), 1);
+    const plan = d.plan;
+    document.getElementById('course-info').textContent = plan ? 'plan v' + plan.version + ' (' + plan.statut + ')' : 'pas de plan calculé';
+    const parSite = {}; d.postes.forEach(p => { (parSite[p.site] = parSite[p.site] || []).push(p); });
+    // frise
+    let html = '<div class="frise"><div class="axe"></div>';
+    let xPrec = -100;
+    pts.forEach((p, i) => {
+      const cr = (parSite[p.nom] || []).filter(x => estJourCourse(x, d));
+      const k = cr.reduce((worst, x) => { const c = classeDe(x, plan); return RANG[c] > RANG[worst] ? c : worst; }, plan ? (cr.length ? 'ok' : 'neutre') : 'neutre');
+      const xp = p.km / total * 100, proche = (xp - xPrec) < 16; xPrec = xp;
+      html += '<div class="pt ' + k + (proche ? ' haut bas' : '') + '" style="left:' + xp + '%" title="' + esc(LIBELLE[k]) + '"><div class="nom">' + esc(p.nom) + '</div><div class="ico">' + ICONES[k] + '</div><div class="km">km ' + p.km + (p.altitude_m ? ' · ' + p.altitude_m + ' m' : '') + '</div><div class="alt">' + h(p.premier) + ' à ' + h(p.dernier) + (p.barriere ? ' · barrière ' + h(p.barriere) : '') + '</div></div>';
+    });
+    html += '</div>';
+    html += '<div class="legende"><span><i style="background:var(--ok)"></i>couvert</span><span><i style="background:#C08A1E"></i>sous l\'idéal</span><span><i style="background:var(--bad)"></i>sous le minimum ou sans responsable</span><span><i style="background:var(--bad-soft);border:1px solid var(--bad)"></i>personne</span>' + (plan ? '' : '<span><i style="background:var(--line2)"></i>pas encore de plan : demande « Calcule un plan »</span>') + '</div>';
+    // planning du jour de course
+    const jc = jourCourse(d);
+    const debutAxe = new Date(jc); debutAxe.setHours(6, 0);
+    const finAxe = new Date(jc); finAxe.setDate(finAxe.getDate() + 1); finAxe.setHours(0, 30);
+    const sites = pts.map(p => p.nom);
+    const jourJ = d.postes.filter(p => estJourCourse(p, d));
+    html += planning('Samedi, jour de course', jourJ, sites, debutAxe, finAxe, plan);
+    const veille = d.postes.filter(p => new Date(p.debut) < jc);
+    if (veille.length) { const a = new Date(jc); a.setDate(a.getDate() - 1); a.setHours(12, 0); const b = new Date(a); b.setHours(20, 0); html += planning('Vendredi, la veille', veille, sites, a, b, plan); }
+    const lendemain = d.postes.filter(p => new Date(p.debut) >= finJourCourse(d));
+    if (lendemain.length) { const a = new Date(jc); a.setDate(a.getDate() + 1); a.setHours(13, 0); const b = new Date(a); b.setHours(19, 0); html += planning('Dimanche, le lendemain', lendemain, sites, a, b, plan); }
+    zone.innerHTML = html;
+    zone.querySelectorAll('.barre').forEach(b => b.addEventListener('click', () => selectionner(b.dataset.id)));
+    if (selection) selectionner(selection);
+  }
+
+  function planning(titre, postes, ordreSites, debutAxe, finAxe, plan){
+    const duree = finAxe - debutAxe;
+    const tics = Math.round(duree / 3600000 / 2);
+    const groupes = {}; postes.forEach(p => { (groupes[p.site] = groupes[p.site] || []).push(p); });
+    const sites = ordreSites.filter(s => groupes[s]).concat(Object.keys(groupes).filter(s => !ordreSites.includes(s)));
+    let s = '<div class="planning"><div class="titre">' + esc(titre) + ' <span class="h">' + postes.length + ' créneau' + (postes.length > 1 ? 'x' : '') + ', ' + h(debutAxe.toISOString()) + ' à ' + h(finAxe.toISOString()) + '</span></div><div class="grille" style="--tics:' + tics + '">';
+    s += '<div></div><div class="echelle">';
+    for (let i = 0; i <= tics; i++) { const t = new Date(debutAxe.getTime() + i * 2 * 3600000); s += '<span style="left:' + (i / tics * 100) + '%">' + h(t.toISOString()) + '</span>'; }
+    s += '</div>';
+    sites.forEach(site => {
+      s += '<div class="site">' + esc(site) + '</div>';
+      groupes[site].slice().sort((a, b) => a.debut.localeCompare(b.debut)).forEach(p => {
+        const k = classeDe(p, plan), c = couverture(p);
+        const l = Math.max(0, (new Date(p.debut) - debutAxe) / duree * 100), r = Math.min(100, (new Date(p.fin) - debutAxe) / duree * 100);
+        s += '<div class="lib" title="' + esc(p.nom) + '"><span class="t">' + h(p.debut) + '</span>' + esc(nomCourt(p)) + '</div>';
+        s += '<div class="piste"><button type="button" class="barre ' + k + (selection === p.id ? ' sel' : '') + '" data-id="' + esc(p.id) + '" style="left:' + l + '%;width:' + Math.max(r - l, 1.2) + '%" title="' + esc(p.nom) + ' : ' + esc(LIBELLE[k]) + '">' + (plan ? c + '/' + p.min + '–' + p.ideal : p.min + '–' + p.ideal) + '</button></div>';
+      });
+    });
+    return s + '</div></div>';
+  }
+
+  function fermerDetail(){ selection = null; document.getElementById('detail').hidden = true; document.querySelectorAll('.barre.sel').forEach(b => b.classList.remove('sel')); }
+  document.getElementById('detail-fermer').addEventListener('click', fermerDetail);
+
+  function selectionner(id){
+    selection = id;
+    document.querySelectorAll('.barre').forEach(b => b.classList.toggle('sel', b.dataset.id === id));
+    const p = donnees.postes.find(x => x.id === id); if (!p) return;
+    const plan = donnees.plan, k = classeDe(p, plan), c = couverture(p);
+    document.getElementById('detail').hidden = false;
+    document.getElementById('detail-titre').innerHTML = esc(p.nom) + '<span class="pill ' + k + '">' + LIBELLE[k] + '</span><span class="spacer"></span><button class="btn lien" id="detail-fermer" type="button" aria-label="Fermer">fermer</button>';
+    document.getElementById('detail-fermer').addEventListener('click', fermerDetail);
+    let s = '<dl><dt>Où</dt><dd>' + esc(p.site) + '</dd><dt>Quand</dt><dd>' + jh(p.debut) + ' à ' + jh(p.fin) + '</dd><dt>Effectif</dt><dd>' + (plan ? c + ' présent' + (c > 1 ? 's' : '') + ', ' : '') + 'minimum ' + p.min + ', idéal ' + p.ideal + '</dd>';
+    if (p.responsable_requis) s += '<dt>Responsable</dt><dd>requis</dd>';
+    if (p.competences) s += '<dt>Compétences</dt><dd>' + esc(p.competences.replace(/,/g, ', ')) + '</dd>';
+    if (p.notes) s += '<dt>Notes</dt><dd>' + esc(p.notes) + '</dd>';
+    s += '</dl><h4>Équipe</h4>';
+    if (!p.equipe.length) s += '<p class="note">' + (plan ? 'Personne sur ce créneau.' : 'Pas encore de plan.') + '</p>';
+    else s += '<ul class="equipe">' + p.equipe.map(e => '<li>' + esc(e.nom) + (e.role === 'responsable' ? '<span class="role">responsable</span>' : '') + (e.accompagnants ? '<span class="role">+' + e.accompagnants + ' non listé' + (e.accompagnants > 1 ? 's' : '') + '</span>' : '') + '</li>').join('') + '</ul>';
+    const trou = plan && plan.trous.find(t => t.poste_id === p.id);
+    if (trou) s += '<div class="viol">Il manque ' + trou.manque + ' personne' + (trou.manque > 1 ? 's' : '') + '. ' + trou.eligibles + ' éligible' + (trou.eligibles > 1 ? 's' : '') + ' ; exclus : ' + esc(Object.entries(trou.refus || {}).map(([a, b]) => a + ' ' + b).join(', ')) + '</div>';
+    const viols = (donnees.violations || []).filter(v => v.poste === p.id);
+    if (viols.length) { s += '<h4>Vérificateur</h4>'; viols.slice(0, 6).forEach(v => { s += '<div class="viol ' + v.gravite + '">[' + esc(v.regle) + '] ' + esc(v.message) + (v.derogee ? ' (dérogé)' : '') + '</div>'; }); }
+    s += '<h4>Signaler depuis le poste</h4><div id="signal"><div class="chips">' +
+      ['Il manque de l\'eau', 'Nous sommes un de moins que prévu', 'Un bénévole n\'est pas venu', 'Le dernier coureur a du retard', 'Tout va bien'].map(t => '<button type="button" class="chip" data-t="' + esc(t) + '">' + esc(t) + '</button>').join('') +
+      '</div><textarea id="signal-texte" placeholder="Ce qui se passe au poste, en une phrase."></textarea><div class="ligne"><span class="note" style="flex:1">Part à l\'assistant comme un événement du jour J, avec le poste et l\'heure.</span><button type="button" class="btn primary small" id="signal-envoyer">Envoyer</button></div></div>';
+    const corps = document.getElementById('detail-corps'); corps.innerHTML = s;
+    corps.querySelectorAll('#signal .chip').forEach(b => b.addEventListener('click', () => { document.getElementById('signal-texte').value = b.dataset.t; }));
+    document.getElementById('signal-envoyer').addEventListener('click', () => {
+      const t = document.getElementById('signal-texte').value.trim(); if (!t) return;
+      const heure = new Date(p.debut); heure.setMinutes(heure.getMinutes() + 60);
+      if (heure > new Date(p.fin)) heure.setTime(new Date(p.fin).getTime() - 30 * 60000);
+      poser('Signalement du poste ' + p.id + ' (' + p.nom + ', ' + p.site + ') : ' + t + '. Il est ' + h(heure.toISOString()) + ' ' + JOURS[heure.getDay()] + '. Que fait-on ?');
+    });
+  }
+  document.getElementById('rafraichir').addEventListener('click', () => chargerCourse());
+
+  // ---- notre course
+  function rendreDoc(){
+    const d = donnees, c = d.course;
+    document.getElementById('doc-fiche').innerHTML = [['Course', c.course || c.nom], ['Distance', c.distance_km + ' km, ' + (c.denivele_positif_m || '') + ' m D+'], ['Départ', (c.depart && c.depart.lieu) + ', ' + (c.depart && jh(c.depart.date_heure))], ['Arrivée', c.arrivee && c.arrivee.lieu], ['Coureurs', c.coureurs_max]].map(([a, b]) => '<span>' + esc(a) + '</span><span>' + esc(b) + '</span>').join('');
+    document.getElementById('doc-points').innerHTML = '<table><tr><th>Point</th><th>km</th><th>Altitude</th><th>Premier</th><th>Dernier</th><th>Barrière</th><th>Services</th><th>Accès</th></tr>' +
+      (c.points_de_passage || []).map(p => '<tr><td>' + esc(p.nom) + '</td><td class="mono">' + p.km + '</td><td class="mono">' + (p.altitude_m || '') + '</td><td class="mono">' + h(p.premier) + '</td><td class="mono">' + h(p.dernier) + '</td><td class="mono">' + (p.barriere ? h(p.barriere) : '') + '</td><td>' + esc((p.services || []).join(', ').replace(/_/g, ' ')) + '</td><td>' + esc(p.acces || '') + '</td></tr>').join('') + '</table>';
+    if (d.regles) document.getElementById('doc-regles').innerHTML = '<table>' + d.regles.map(r => '<tr><td class="mono">' + esc(r.id) + '</td><td>' + esc(r.enonce) + '</td><td class="mono">' + esc(r.type) + (r.active ? '' : ', inactive') + '</td></tr>').join('') + '</table>';
+    const j = d.journal || [];
+    document.getElementById('doc-journal').innerHTML = j.length ? '<table class="journal">' + j.slice().reverse().map(e => '<tr><td>' + esc(String(e.horodatage).replace('T', ' ')) + '</td><td>' + esc(e.auteur) + '</td><td>' + esc(e.action) + (e.justification ? ' : ' + esc(e.justification) : '') + '</td></tr>').join('') + '</table>' : '<p class="note">Vide tant que rien n\'a été décidé.</p>';
+  }
+
+  chargerCourse();
 })();
 </script>
 </body>

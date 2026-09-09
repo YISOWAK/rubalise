@@ -48,7 +48,11 @@
 - Piège résolu : le client boto3 coupait à 60 s et relançait sur une session occupée ; délai 840 s et zéro réessai.
 - Testé : plan complet en 83 s, question de suivi en 4 s dans la même session. Lien de démo avec clé dans `web/lien_demo.txt` (exclu du dépôt).
 
+## 2026-09-09, tard : V2 de la page, le poste de commandement
+- Retour d'Antoine : un chat seul ne donne pas envie ; il faut un écran visuel utilisable par des non-techniciens. Trois onglets : **Course** (frise des points de passage avec coche verte / croix rouge, planning en barres par site et par créneau coloré selon l'état, détail d'un créneau au clic avec équipe, trou, violations et **signalement depuis le poste** qui part à l'agent comme un événement du jour J ; l'assistant à droite), **Notre course** (fiche, points de passage, profil tiré de la trace GPS, page du roadbook, extrait du formulaire, règles, journal, documents), **Comment ça marche** (schéma et principes).
+- L'agent hébergé expose l'état de la session (`{"action": "etat"}`) : fiche, créneaux, équipes, plan, violations, journal, règles. Le relais a une route `GET /etat`.
+- Testé en ligne : après « Calcule un plan », les barres se colorent et la frise montre l'état de chaque point.
+
 ## Prochaines étapes
-2. Outil « Feuilles de route » (LLM) à la place des messages simulés bruts.
-3. Réduire le bruit des alertes A8 (remarques « autre » et éditions) avant de les donner au contradicteur.
-4. AgentCore, README avec les scores, vidéo.
+2. Vidéo (11 et 12 septembre) avec la V2, soumission Devpost le 13.
+3. Si le temps le permet : feuilles de route rédigées par le modèle, bilan d'après course, moins de bruit dans les alertes A8.
