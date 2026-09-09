@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.agentcore.aws.dev/v1/agentcore.json",
+  "name": "benevolestrail",
+  "version": 1,
+  "managedBy": "CDK",
+  "tags": {
+    "agentcore:created-by": "agentcore-cli",
+    "agentcore:project-name": "benevolestrail"
+  },
+  "runtimes": [
+    {
+      "name": "orchestrateur",
+      "build": "CodeZip",
+      "entrypoint": "agents/agentcore_app.py",
+      "codeLocation": "./",
+      "runtimeVersion": "PYTHON_3_12",
+      "networkMode": "PUBLIC",
+      "protocol": "HTTP",
+      "description": "Orchestrateur des bénévoles de trail (Strands + MCP + OR-Tools)",
+      "envVars": [
+        {
+          "name": "COURSE_ETAT_RACINE",
+          "value": "/tmp/etat"
+        },
+        {
+          "name": "PYTHONIOENCODING",
+          "value": "utf-8"
+        }
+      ]
+    }
+  ],
+  "memories": [],
+  "knowledgeBases": [],
+  "credentials": [],
+  "evaluators": [],
+  "onlineEvalConfigs": [],
+  "agentCoreGateways": [],
+  "policyEngines": [],
+  "configBundles": [],
+  "abTests": [],
+  "harnesses": [],
+  "datasets": [],
+  "payments": []
+}

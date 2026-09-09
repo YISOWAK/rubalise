@@ -1,0 +1,22 @@
+[
+  {"id": "B1", "type": "bloquante", "enonce": "Un poste qui exige un responsable en a au moins un", "active": true, "parametres": {}},
+  {"id": "B2", "type": "bloquante", "enonce": "Un créneau atteint son effectif minimum", "active": true, "parametres": {}},
+  {"id": "B3", "type": "bloquante", "enonce": "Un bénévole n'est affecté que dans ses disponibilités déclarées, refus de nuit compris", "active": true, "parametres": {}},
+  {"id": "B4", "type": "bloquante", "enonce": "Deux créneaux d'une même personne ne se chevauchent pas et le trajet entre les deux est faisable", "active": true, "parametres": {}},
+  {"id": "B5", "type": "bloquante", "enonce": "Un mineur n'est jamais sur un poste route, ni sur un créneau qui finit après l'heure limite, ni seul sur un poste isolé", "active": true, "parametres": {"heure_limite_mineur": 22}},
+  {"id": "B6", "type": "bloquante", "enonce": "Un poste à accès à pied n'est tenu que par des personnes aptes à la marche en montagne", "active": true, "parametres": {}},
+  {"id": "B7", "type": "bloquante", "enonce": "Une compétence exigée par le poste (PSC1, permis, 4x4...) est présente", "active": true, "parametres": {}},
+  {"id": "B8", "type": "bloquante", "enonce": "Un bénévole qui court la course n'est pas affecté pendant la course", "active": true, "parametres": {}},
+  {"id": "B9", "type": "bloquante", "enonce": "Un créneau qui passe minuit est couvert par une disponibilité qui va au-delà de minuit", "active": true, "parametres": {}},
+  {"id": "A1", "type": "alerte", "enonce": "Un poste tenu uniquement par des personnes à leur première édition", "active": true, "parametres": {}},
+  {"id": "A2", "type": "alerte", "enonce": "Un binôme souhaité qui n'a pas pu être réuni", "active": true, "parametres": {}},
+  {"id": "A3", "type": "alerte", "enonce": "Un habitué (2 éditions ou plus) placé hors de ses rôles préférés", "active": true, "parametres": {}},
+  {"id": "A4", "type": "alerte", "enonce": "Une journée trop longue pour un même bénévole", "active": true, "parametres": {"journee_longue_h": 10}},
+  {"id": "A5", "type": "alerte", "enonce": "Un poste isolé sans véhicule dans l'équipe", "active": true, "parametres": {}},
+  {"id": "A6", "type": "alerte", "enonce": "Un responsable qui vient avec des personnes non listées, prénoms à confirmer", "active": true, "parametres": {}},
+  {"id": "A7", "type": "alerte", "enonce": "Deux lignes du fichier qui sont probablement la même personne", "active": true, "parametres": {}},
+  {"id": "A8", "type": "alerte", "enonce": "Une remarque libre ou une question restée ouverte, à relire au regard du poste", "active": true, "parametres": {}},
+  {"id": "A9", "type": "alerte", "enonce": "Un poste partagé avec une autre course dont la fenêtre n'a pas été élargie", "active": true, "parametres": {}},
+  {"id": "A10", "type": "alerte", "enonce": "Un effectif idéal non atteint", "active": true, "parametres": {}},
+  {"id": "A11", "type": "alerte", "enonce": "Un poste tenu par une seule personne listée et ses accompagnants anonymes", "active": true, "parametres": {}}
+]

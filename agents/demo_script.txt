@@ -1,0 +1,9 @@
+# Une ligne = un message de l'organisateur. Les lignes qui commencent par # sont ignorées.
+Où en est-on ?
+Charge les données de la course et calcule un plan.
+Qui est à Taney le samedi matin ?
+Pour le Grand Pré du soir on tiendra à 2, Sandra me l'a confirmé : accorde la dérogation.
+Oui, c'est bien ça, vas-y.
+Publie le plan, on l'a validé en réunion, on recrutera pour les trous.
+Oui, publie quand même, je prends la responsabilité.
+Il est 11h, Marc Saudan et Fabien Carraux ne viennent pas. On fait quoi ?

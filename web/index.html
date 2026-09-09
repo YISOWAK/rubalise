@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Rubalise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+:root{
+  --bg:#F4F5F6; --surface:#FFFFFF; --surface2:#F2F6F9; --line:#E4E7EA; --line2:#D3D8DD;
+  --ink:#22272E; --ink2:#454C54; --muted:#71787F;
+  --accent:#1E8BE0; --accent-soft:#E8F3FC;
+  --ok:#1E9E63; --ok-soft:#E4F5EC; --warn:#96690A; --warn-soft:#FBF3DB; --bad:#C24A44; --bad-soft:#FBE9E8;
+  --focus:#1E8BE0; --shadow:0 1px 2px rgba(30,40,50,.05);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Roboto",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13.5px;line-height:1.5;margin:0;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}
+:is(button,input,textarea,a,[tabindex]):focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-radius:4px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.mono{font-family:"Roboto Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+.wrap{max-width:1280px;margin:0 auto;padding:18px 22px 24px;height:100%;display:flex;flex-direction:column;gap:14px}
+header.top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+header.top h1{font-size:20px;font-weight:500;letter-spacing:-.005em;margin:0}
+header.top .sub{color:var(--muted);font-size:13px}
+header.top .spacer{flex:1}
+#etat{font-family:"Roboto Mono",monospace;font-size:11.5px;color:var(--muted)}
+#etat.busy{color:var(--warn)} #etat.err{color:var(--bad)}
+.btn{background:var(--surface);border:1px solid var(--line2);border-radius:4px;padding:6px 12px;cursor:pointer;font-size:12.5px;font-weight:500}
+.btn:hover{background:var(--surface2)} .btn:disabled{opacity:.5;cursor:default}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff} .btn.primary:hover{background:#1979C4}
+
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;flex:1;min-height:0}
+@media (max-width:860px){.cols{grid-template-columns:1fr}.aside{display:none}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0}
+.panel h2{font-size:13.5px;font-weight:500;margin:0;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--ink2)}
+
+#fil{flex:1;overflow:auto;padding:6px 16px 10px;min-height:280px}
+.msg{padding:10px 0 12px;border-bottom:1px solid var(--line)}
+.msg:last-child{border-bottom:0}
+.msg .qui{font-size:11.5px;color:var(--muted);font-family:"Roboto Mono",monospace;margin-bottom:4px;display:flex;gap:10px}
+.msg.orga .corps{white-space:pre-wrap}
+.msg.agent .corps{max-width:78ch}
+.msg.agent .corps p{margin:0 0 8px} .msg.agent .corps p:last-child{margin:0}
+.msg.agent .corps h1,.msg.agent .corps h2,.msg.agent .corps h3{font-size:13.5px;font-weight:500;margin:12px 0 6px;color:var(--ink2)}
+.msg.agent .corps ul,.msg.agent .corps ol{margin:4px 0 8px;padding-left:20px}
+.msg.agent .corps li{margin:2px 0}
+.msg.agent .corps table{border-collapse:collapse;width:100%;margin:6px 0 10px;font-size:13px}
+.msg.agent .corps th,.msg.agent .corps td{text-align:left;padding:5px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.msg.agent .corps th{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.02em}
+.msg.agent .corps tr:nth-child(even) td{background:var(--surface2)}
+.msg.agent .corps code{font-family:"Roboto Mono",monospace;font-size:12px;background:var(--surface2);padding:1px 4px;border-radius:3px}
+.msg.agent .corps hr{border:0;border-top:1px solid var(--line);margin:8px 0}
+.msg.agent.attente .corps{border-left:3px solid var(--warn);padding-left:12px}
+.msg.pending .corps{color:var(--muted)}
+.msg .corps .tick{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warn);margin-right:6px;vertical-align:middle;animation:p 1.2s infinite}
+@keyframes p{0%,100%{opacity:.3}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.msg .corps .tick{animation:none}}
+
+.saisie{border-top:1px solid var(--line);padding:10px 16px 12px;display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line2);background:var(--surface);border-radius:4px;padding:4px 10px;cursor:pointer;font-size:12px;color:var(--ink2)}
+.chip:hover{background:var(--surface2)}
+.ligne{display:flex;gap:8px;align-items:flex-end}
+textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid var(--line2);border-radius:4px;padding:8px 10px;background:var(--surface);line-height:1.4}
+
+.aside{gap:14px;display:flex;flex-direction:column;min-height:0;overflow:auto}
+.aside .panel{flex:0 0 auto}
+.aside .contenu{padding:10px 16px 12px;color:var(--ink2);font-size:12.5px}
+.aside .contenu p{margin:0 0 8px}
+.aside ol{margin:0;padding-left:18px} .aside li{margin:3px 0}
+.aside .phase{font-weight:500;color:var(--ink)}
+.aside .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:12.5px}
+.aside .kv span:first-child{color:var(--muted)}
+.note{font-size:12px;color:var(--muted);padding:0 2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Rubalise</h1>
+    <span class="sub">assistant du responsable des bénévoles, SwissPeaks Marathon 2025</span>
+    <span class="spacer"></span>
+    <span id="etat" class="mono">session nouvelle</span>
+    <button class="btn" id="nouvelle" type="button">Nouvelle session</button>
+  </header>
+
+  <div class="cols">
+    <section class="panel">
+      <h2>Conversation</h2>
+      <div id="fil" aria-live="polite"></div>
+      <div class="saisie">
+        <div class="chips" id="chips">
+          <button class="chip" type="button" data-m="Où en est-on ?">Où en est-on ?</button>
+          <button class="chip" type="button" data-m="Charge les données de la course et calcule un plan.">Calcule un plan</button>
+          <button class="chip" type="button" data-m="Qui est à Taney le samedi matin ?">Qui est à Taney ?</button>
+          <button class="chip" type="button" data-m="Pour le Grand Pré du soir on tiendra à 2, Sandra me l'a confirmé : accorde la dérogation.">Dérogation Grand Pré</button>
+          <button class="chip" type="button" data-m="Publie le plan, on l'a validé en réunion.">Publie le plan</button>
+          <button class="chip" type="button" data-m="Il est 11h, Marc Saudan et Fabien Carraux ne viennent pas. On fait quoi ?">Jour J : deux absents</button>
+        </div>
+        <div class="ligne">
+          <textarea id="entree" rows="1" placeholder="Écris comme tu parlerais au responsable bénévoles. Entrée pour envoyer, Maj+Entrée pour une nouvelle ligne."></textarea>
+          <button class="btn primary" id="envoyer" type="button">Envoyer</button>
+        </div>
+        <div class="note">Les actions réservées à l'organisateur (publier, déroger, changer une règle) ne s'exécutent que si tu réponds « oui, confirme » au message qui les demande.</div>
+      </div>
+    </section>
+
+    <aside class="aside">
+      <section class="panel">
+        <h2>Le parcours de démonstration</h2>
+        <div class="contenu">
+          <ol>
+            <li><span class="phase">Les entrées.</span> Les données de la course sont chargées : 6 points de passage lus dans le roadbook, 50 créneaux, 75 bénévoles traduits depuis un formulaire en texte libre.</li>
+            <li><span class="phase">Le plan.</span> Le solveur affecte, le vérificateur relit les règles, le contradicteur cherche ce que le code ne voit pas.</li>
+            <li><span class="phase">La publication.</span> Rien ne part sans confirmation explicite. Chaque décision va au journal.</li>
+            <li><span class="phase">Le jour J.</span> Un imprévu, une réparation avec le moins de mouvements possible, les créneaux terminés ne bougent pas.</li>
+          </ol>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Ce qui est réel, ce qui ne l'est pas</h2>
+        <div class="contenu">
+          <div class="kv">
+            <span>Course</span><span>réelle : roadbook public, trace GPS d'un coureur</span>
+            <span>Bénévoles</span><span>75 profils synthétiques, avec 14 pièges volontaires</span>
+            <span>Messages</span><span>écrits dans un fichier, jamais envoyés</span>
+            <span>Modèles</span><span>Claude Sonnet 4.6 et Opus 4.6 sur Amazon Bedrock</span>
+            <span>Hébergement</span><span>Amazon Bedrock AgentCore Runtime</span>
+            <span>Temps</span><span>un plan complet prend 30 à 60 secondes</span>
+          </div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Sous le capot</h2>
+        <div class="contenu">
+          <p>Un agent Strands qui parle, un serveur d'outils MCP, un solveur OR-Tools, un second agent qui contredit. Le modèle ne calcule jamais le planning.</p>
+          <p><a href="https://github.com/YISOWAK/rubalise" target="_blank" rel="noopener">Code et architecture</a></p>
+        </div>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function(){
+  const fil = document.getElementById('fil');
+  const entree = document.getElementById('entree');
+  const envoyer = document.getElementById('envoyer');
+  const etat = document.getElementById('etat');
+  const cle = new URLSearchParams(location.search).get('k') || '';
+  let session = null, occupe = false;
+  try { session = localStorage.getItem('rubalise.session'); } catch (e) {}
+
+  marked.setOptions({ breaks: true, gfm: true });
+
+  function setEtat(txt, cls){ etat.textContent = txt; etat.className = 'mono' + (cls ? ' ' + cls : ''); }
+  function sessionCourte(){ return session ? 'session ' + session.slice(0, 8) : 'session nouvelle'; }
+  setEtat(sessionCourte());
+
+  function ajouter(qui, texte, opts){
+    const div = document.createElement('div');
+    div.className = 'msg ' + qui + (opts && opts.classe ? ' ' + opts.classe : '');
+    const q = document.createElement('div'); q.className = 'qui';
+    q.textContent = (qui === 'orga' ? 'organisateur' : 'agent') + ' · ' + new Date().toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+    const c = document.createElement('div'); c.className = 'corps';
+    if (qui === 'agent' && !(opts && opts.brut)) c.innerHTML = marked.parse(texte); else c.textContent = texte;
+    div.appendChild(q); div.appendChild(c); fil.appendChild(div); fil.scrollTop = fil.scrollHeight;
+    return div;
+  }
+
+  async function poser(message){
+    if (!message.trim() || occupe) return;
+    occupe = true; envoyer.disabled = true;
+    ajouter('orga', message);
+    entree.value = ''; entree.style.height = '';
+    const attente = ajouter('agent', '', {classe: 'pending', brut: true});
+    attente.querySelector('.corps').innerHTML = '<span class="tick"></span>L\'agent travaille. Un plan complet (solveur, vérification, relecture) prend 30 à 60 secondes.';
+    setEtat('appel en cours', 'busy');
+    try {
+      const r = await fetch('invoke?k=' + encodeURIComponent(cle), {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({prompt: message, session_id: session})
+      });
+      const lance = await r.json();
+      if (!r.ok || lance.erreur) throw new Error(lance.erreur || ('HTTP ' + r.status));
+      session = lance.session_id || session;
+      try { localStorage.setItem('rubalise.session', session); } catch (e) {}
+      let data = null;
+      const debut = Date.now();
+      while (true) {
+        await new Promise(res => setTimeout(res, 3000));
+        const rr = await fetch('result?k=' + encodeURIComponent(cle) + '&id=' + encodeURIComponent(lance.job_id), {cache: 'no-store'});
+        data = await rr.json();
+        if (data.statut === 'fini' || data.statut === 'erreur') break;
+        if (Date.now() - debut > 600000) throw new Error('pas de réponse après 10 minutes');
+        setEtat('appel en cours, ' + Math.round((Date.now() - debut) / 1000) + ' s', 'busy');
+      }
+      attente.remove();
+      if (data.statut === 'erreur') throw new Error(data.result);
+      const texte = data.result || '';
+      ajouter('agent', texte, {classe: /réponds « oui, confirme »/i.test(texte) ? 'attente' : ''});
+      setEtat(sessionCourte());
+    } catch (err) {
+      attente.remove();
+      ajouter('agent', 'Erreur : ' + err.message + '. Réessaie dans un instant ; si ça persiste, la session a peut-être expiré, ouvre-en une nouvelle.', {brut: true});
+      setEtat('erreur', 'err');
+    } finally { occupe = false; envoyer.disabled = false; entree.focus(); }
+  }
+
+  envoyer.addEventListener('click', () => poser(entree.value));
+  entree.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); poser(entree.value); } });
+  entree.addEventListener('input', () => { entree.style.height = 'auto'; entree.style.height = Math.min(entree.scrollHeight, 140) + 'px'; });
+  document.getElementById('chips').addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (b) poser(b.dataset.m); });
+  document.getElementById('nouvelle').addEventListener('click', () => {
+    session = null; try { localStorage.removeItem('rubalise.session'); } catch (e) {}
+    fil.innerHTML = ''; setEtat(sessionCourte());
+    ajouter('agent', 'Nouvelle session. L\'état repart de zéro : les données de la course sont chargées, aucun plan n\'est calculé.', {brut: true});
+  });
+
+  ajouter('agent', 'Bonjour. Je suis l\'assistant du responsable bénévoles. Dis-moi où tu veux commencer, ou clique une des demandes ci-dessous.', {brut: true});
+})();
+</script>
+</body>
+</html>

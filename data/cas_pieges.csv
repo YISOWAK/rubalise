@@ -1,0 +1,15 @@
+benevole_id;nom;titre;ce_que_l_agent_doit_detecter
+B041;Christophe Praz;Binôme souhaité incompatible;B041 veut être avec B042 mais leurs disponibilités du samedi ne se recouvrent pas
+B044;Stéphanie Curdy;Mineur;17 ans : pas de poste signaleur seul sur route, pas de créneau après 22h00, pas de serre-file
+B046;Corinne Pittet;Dit être partout mais ne peut pas monter;Souhaite Taney ou Blancsex mais 71 ans et non apte marche montagne : accès Taney = 400 m D+ à pied
+B048;Sylvie Trombert;Disponibilité partielle sur le créneau;Dispo samedi 06:00-13:00 seulement : ne couvre aucun créneau d'arrivée ni de Grand Pré en entier
+B050,B051;Pierre-Alain Défago;Doublon d'inscription;B050 et B051 sont la même personne (même téléphone, orthographe différente du prénom)
+B053;Michel Perrin;Bénévole aussi coureur du Marathon;Inscrit comme coureur du Marathon (dossard 312) : indisponible samedi de 07h00 à son arrivée, ne peut tenir que vendredi ou dimanche
+B055;Gérard Rouiller;Trajet impossible entre deux postes;Si affecté à la navette 07h00 au Bouveret puis aux dossards à Morgins 07h30 : 45 min de route, impossible
+B057;Hugo Favre;Sans véhicule sur un poste isolé;Vient en train, pas de voiture : ne peut pas rejoindre Chalet de Conche à 07h45 sans covoiturage organisé
+B059;Arnaud Bender;Refuse la nuit mais seule dispo tardive;Dispo 15:00-24:00 mais accepte_nuit = non : ne peut pas tenir Grand Pré créneau 2 ni l'arrivée après 20h00 sans accord explicite
+B061;Simon Mariétan;Contrainte médicale incompatible avec le poste préféré;Genou : pas de station debout prolongée, incompatible avec signaleur 9h30 d'affilée
+B063;Benoît Gay-Balmaz;Chef de poste sans expérience;Se propose chef de poste avec 0 édition précédente : à valider par l'organisateur, pas automatique
+;;Pénurie de PSC1 sur les serre-files;Les deux postes serre-file demandent PSC1 + trail + montagne : vérifier qu'il existe assez de profils, sinon alerter l'organisateur au lieu d'affecter sans PSC1
+;;Postes partagés avec le SP70;Blancsex, Taney, Grand Pré et Bouveret reçoivent les deux courses : la fenêtre du poste est l'union des deux, pas seulement celle du Marathon
+;;Créneau qui dépasse minuit;L'arrivée créneau 2 finit à 00:15 le dimanche : les disponibilités 'jusqu'à 24:00' du samedi ne couvrent pas la fin

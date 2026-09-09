@@ -1,0 +1,54 @@
+{
+  "nom": "trail",
+  "description": "Ce qu'est une course de trail pour un planificateur de bénévoles : quels postes découlent de chaque service d'un point de passage, quels postes existent toujours, comment on découpe les créneaux. Un triathlon ou un festival serait un autre fichier du même format.",
+  "marges_minutes": {"avant_premier": 60, "apres_dernier": 30},
+  "decoupe": {"max_minutes": 360, "cible_minutes": 300, "chevauchement_minutes": 30},
+  "acces_a_pied_si": ["pied", "voiture interdit", "taxi"],
+  "competence_si_acces_a_pied": "montagne",
+
+  "par_service": {
+    "depart": [
+      {"categorie": "depart", "nom": "Zone de départ (sas, consignes, sacs) {lieu}", "min": 4, "ideal": 6, "responsable": true, "competences": [], "debut": "premier-90", "fin": "premier+30"},
+      {"categorie": "signaleur", "nom": "Signaleurs traversée de route au départ {lieu}", "min": 2, "ideal": 3, "responsable": false, "competences": ["majeur", "gilet"], "debut": "premier-30", "fin": "premier+45"}
+    ],
+    "ravitaillement": [
+      {"categorie": "ravitaillement", "nom": "Ravitaillement {lieu}", "min": 3, "ideal": 5, "responsable": true, "competences": []},
+      {"categorie": "pointage", "nom": "Pointage {lieu}", "min": 1, "ideal": 2, "responsable": false, "competences": ["experience", "telephone"]}
+    ],
+    "barriere_horaire": [
+      {"categorie": "controle", "nom": "Barrière horaire et abandons {lieu}", "min": 2, "ideal": 2, "responsable": false, "competences": ["experience", "telephone"], "debut": "barriere-60", "fin": "barriere+60"}
+    ],
+    "arrivee": [
+      {"categorie": "arrivee", "nom": "Arrivée : ligne, médailles et bracelets {lieu}", "min": 4, "ideal": 6, "responsable": true, "competences": [], "debut": "premier-90", "fin": "dernier+60"},
+      {"categorie": "signaleur", "nom": "Signaleurs zone d'arrivée {lieu}", "min": 2, "ideal": 4, "responsable": false, "competences": ["majeur", "gilet"], "debut": "premier-60", "fin": "dernier+15"}
+    ],
+    "repas_chaud": [
+      {"categorie": "restauration", "nom": "Repas chaud finishers {lieu}", "min": 4, "ideal": 8, "responsable": false, "competences": ["hygiene"], "debut": "premier-60", "fin": "dernier+30"}
+    ],
+    "sac_suiveur": [
+      {"categorie": "logistique", "nom": "Sacs suiveurs et consigne {lieu}", "min": 2, "ideal": 3, "responsable": false, "competences": [], "debut": "premier-60", "fin": "dernier+30"}
+    ],
+    "point_de_secours": [
+      {"categorie": "secours", "nom": "Assistance point de secours {lieu}", "min": 2, "ideal": 3, "responsable": false, "competences": ["PSC1"], "debut": "premier-30", "fin": "dernier+30"}
+    ],
+    "bus_abandon": [],
+    "douche": [],
+    "massage": [],
+    "lits": []
+  },
+
+  "postes_fixes": [
+    {"categorie": "dossards", "nom": "Retrait des dossards {lieu}", "source": "retrait_dossards", "min": 4, "ideal": 6, "responsable": true, "competences": ["controle_materiel"], "debut": "debut-30", "fin": "fin+15"},
+    {"categorie": "navette", "nom": "Accueil navette coureurs {lieu}", "source": "navettes_coureurs", "min": 1, "ideal": 2, "responsable": false, "competences": [], "debut": "depart-30", "fin": "depart+15"},
+    {"categorie": "pc_course", "nom": "PC course : standard téléphonique et suivi live", "site": "arrivee", "min": 2, "ideal": 3, "responsable": true, "competences": ["experience", "informatique"], "debut": "depart-60", "fin": "dernier_arrivee+60"},
+    {"categorie": "reserve_volante", "nom": "Réserve volante au PC (véhicule chargé)", "site": "arrivee", "min": 2, "ideal": 3, "responsable": false, "competences": ["permis_B", "vehicule"], "debut": "depart-60", "fin": "dernier_arrivee"},
+    {"categorie": "parking", "nom": "Parking et navettes", "site": "arrivee", "min": 2, "ideal": 4, "responsable": false, "competences": ["gilet"], "debut": "depart-180", "fin": "dernier_arrivee-180"},
+    {"categorie": "logistique", "nom": "Préparation logistique ravitos (chargement)", "site": "arrivee", "min": 3, "ideal": 5, "responsable": false, "competences": ["permis_B"], "debut": "veille 13:00", "fin": "veille 17:00"},
+    {"categorie": "livraison", "nom": "Livraison des postes isolés en 4x4", "site": "premier_a_pied", "min": 2, "ideal": 3, "responsable": false, "competences": ["permis_B", "4x4", "montagne"], "debut": "veille 13:00", "fin": "veille 18:00", "si": "a_pied"},
+    {"categorie": "livraison", "nom": "Livraison du frais aux postes accessibles", "site": "premier_ravito", "min": 2, "ideal": 2, "responsable": false, "competences": ["permis_B"], "debut": "depart-180", "fin": "depart"},
+    {"categorie": "serre_file", "nom": "Serre-file {segment}", "source": "segments", "min": 2, "ideal": 2, "responsable": false, "competences": ["trail", "montagne", "telephone", "PSC1"], "debut": "dernier_debut_segment", "fin": "dernier_fin_segment+30"},
+    {"categorie": "rangement", "nom": "Démontage et rangement du matériel", "site": "arrivee", "min": 4, "ideal": 8, "responsable": false, "competences": [], "debut": "lendemain 14:00", "fin": "lendemain 18:00"}
+  ],
+
+  "segments_serre_file": "un serre-file par tronçon entre deux points de passage avec ravitaillement, regroupés par deux si le tronçon fait moins de 10 km"
+}

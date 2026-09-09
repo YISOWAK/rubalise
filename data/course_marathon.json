@@ -1,0 +1,191 @@
+{
+  "evenement": "SwissPeaks Trail 2025",
+  "course": "SwissPeaks Marathon",
+  "source": "Roadbook coureurs 2025 (FR), pages 23 et 24, édité par l'organisation",
+  "distance_km": 46,
+  "denivele_positif_m": 2483,
+  "denivele_negatif_m": 3453,
+  "depart": {
+    "lieu": "Morgins",
+    "date_heure": "2025-09-06T09:00:00"
+  },
+  "arrivee": {
+    "lieu": "Le Bouveret, quai Bussien"
+  },
+  "coureurs_max": 500,
+  "temps_max": "14:00",
+  "premier_estime": "04:30",
+  "retrait_dossards": [
+    {
+      "lieu": "Le Bouveret, quai Bussien",
+      "debut": "2025-09-05T15:00:00",
+      "fin": "2025-09-05T19:00:00"
+    },
+    {
+      "lieu": "Morgins, route de France 33 (tennis)",
+      "debut": "2025-09-06T07:30:00",
+      "fin": "2025-09-06T08:30:00"
+    }
+  ],
+  "navettes_coureurs": [
+    {
+      "trajet": "Le Bouveret (parking voitures) vers Morgins",
+      "depart": "2025-09-05T17:00:00"
+    },
+    {
+      "trajet": "Le Bouveret (parking voitures) vers Morgins",
+      "depart": "2025-09-06T07:00:00"
+    }
+  ],
+  "points_de_passage": [
+    {
+      "nom": "Morgins",
+      "altitude_m": 1342,
+      "km": 0,
+      "dplus_cumul": 0,
+      "dmoins_cumul": 0,
+      "premier": "2025-09-06T09:00:00",
+      "dernier": "2025-09-06T09:00:00",
+      "barriere": null,
+      "services": [
+        "depart"
+      ],
+      "assistance_perso": false,
+      "acces": "route, village"
+    },
+    {
+      "nom": "Chalet de Conche",
+      "altitude_m": 1693,
+      "km": 6,
+      "dplus_cumul": 475,
+      "dmoins_cumul": 124,
+      "premier": "2025-09-06T09:45:00",
+      "dernier": "2025-09-06T10:45:00",
+      "barriere": null,
+      "services": [
+        "ravitaillement",
+        "bus_abandon"
+      ],
+      "assistance_perso": true,
+      "acces": "route d'alpage"
+    },
+    {
+      "nom": "Chalet de Blancsex",
+      "altitude_m": 1500,
+      "km": 19,
+      "dplus_cumul": 1286,
+      "dmoins_cumul": 1128,
+      "premier": "2025-09-06T11:00:00",
+      "dernier": "2025-09-06T14:00:00",
+      "barriere": "2025-09-06T14:00:00",
+      "services": [
+        "ravitaillement",
+        "bus_abandon",
+        "barriere_horaire"
+      ],
+      "assistance_perso": true,
+      "acces": "parking puis accès à pied (assistance), véhicules organisation seulement"
+    },
+    {
+      "nom": "Taney",
+      "altitude_m": 1416,
+      "km": 25,
+      "dplus_cumul": 1716,
+      "dmoins_cumul": 1644,
+      "premier": "2025-09-06T11:45:00",
+      "dernier": "2025-09-06T16:15:00",
+      "barriere": null,
+      "services": [
+        "ravitaillement"
+      ],
+      "assistance_perso": true,
+      "acces": "accès voiture interdit : parking obligatoire à Le Flon puis taxi payant ou montée à pied (400 m D+)"
+    },
+    {
+      "nom": "Le Grand Pré",
+      "altitude_m": 903,
+      "km": 35,
+      "dplus_cumul": 2268,
+      "dmoins_cumul": 2707,
+      "premier": "2025-09-06T12:45:00",
+      "dernier": "2025-09-06T20:00:00",
+      "barriere": null,
+      "services": [
+        "ravitaillement"
+      ],
+      "assistance_perso": true,
+      "acces": "route"
+    },
+    {
+      "nom": "Le Bouveret",
+      "altitude_m": 372,
+      "km": 46,
+      "dplus_cumul": 2483,
+      "dmoins_cumul": 3453,
+      "premier": "2025-09-06T13:30:00",
+      "dernier": "2025-09-06T23:00:00",
+      "barriere": "2025-09-06T23:00:00",
+      "services": [
+        "arrivee",
+        "barriere_horaire",
+        "repas_chaud",
+        "sac_suiveur",
+        "point_de_secours",
+        "douche",
+        "massage"
+      ],
+      "assistance_perso": false,
+      "acces": "village, quai Bussien"
+    }
+  ],
+  "autres_courses_sur_les_memes_postes": [
+    {
+      "course": "SwissPeaks 70",
+      "poste": "Morgins",
+      "km": 26.8,
+      "premier": "2025-09-06T08:00:00",
+      "dernier": "2025-09-06T11:00:00",
+      "barriere": "2025-09-06T11:00:00"
+    },
+    {
+      "course": "SwissPeaks 70",
+      "poste": "Chalet de Conche",
+      "km": 32.8,
+      "premier": "2025-09-06T08:45:00",
+      "dernier": "2025-09-06T12:30:00",
+      "barriere": null
+    },
+    {
+      "course": "SwissPeaks 70",
+      "poste": "Chalet de Blancsex",
+      "km": 45.8,
+      "premier": "2025-09-06T10:00:00",
+      "dernier": "2025-09-06T15:30:00",
+      "barriere": "2025-09-06T15:30:00"
+    },
+    {
+      "course": "SwissPeaks 70",
+      "poste": "Taney",
+      "km": 51.7,
+      "premier": "2025-09-06T10:45:00",
+      "dernier": "2025-09-06T17:30:00",
+      "barriere": null
+    },
+    {
+      "course": "SwissPeaks 70",
+      "poste": "Le Grand Pré",
+      "km": 61.4,
+      "premier": "2025-09-06T12:00:00",
+      "dernier": "2025-09-06T20:45:00",
+      "barriere": null
+    },
+    {
+      "course": "SwissPeaks 70",
+      "poste": "Le Bouveret",
+      "km": 72.5,
+      "premier": "2025-09-06T13:00:00",
+      "dernier": "2025-09-06T23:30:00",
+      "barriere": "2025-09-06T23:30:00"
+    }
+  ]
+}

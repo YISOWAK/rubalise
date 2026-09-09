@@ -1,0 +1,18 @@
+[project]
+name = "benevoles-trail"
+version = "0.1.0"
+description = "Agent de coordination des bénévoles d'une course de trail (Strands + MCP + OR-Tools)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "strands-agents>=1.50",
+  "bedrock-agentcore",
+  "mcp",
+  "anthropic[bedrock]>=1.4",
+  "ortools>=9.12",
+  "pymupdf",
+  "pydantic",
+  "boto3",
+]
+
+[tool.setuptools]
+packages = []

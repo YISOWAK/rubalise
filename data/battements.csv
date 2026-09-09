@@ -1,0 +1,17 @@
+categorie_poste;battement_depart_min;battement_arrivee_min
+ravitaillement;15;10
+arrivee;10;10
+dossards;10;5
+signaleur;5;5
+serre_file;20;10
+logistique;15;10
+controle;10;10
+pointage;10;10
+navette;5;5
+parking;5;5
+depart;10;10
+restauration;15;10
+secours;10;10
+pc_course;15;10
+defaut;10;10
+reserve_volante;5;5

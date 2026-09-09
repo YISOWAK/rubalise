@@ -1,0 +1,31 @@
+de;vers;minutes_voiture;marche_supplementaire_min
+Le Bouveret;Morgins;45;0
+Le Bouveret;Chalet de Conche;55;0
+Le Bouveret;Chalet de Blancsex;40;25
+Le Bouveret;Taney;25;60
+Le Bouveret;Le Grand Pré;15;0
+Morgins;Chalet de Conche;15;0
+Morgins;Chalet de Blancsex;50;25
+Morgins;Taney;60;60
+Morgins;Le Grand Pré;40;0
+Chalet de Conche;Chalet de Blancsex;55;25
+Chalet de Blancsex;Taney;35;60
+Taney;Le Grand Pré;20;0
+Chalet de Blancsex;Le Grand Pré;35;0
+Chalet de Conche;Taney;65;60
+Chalet de Conche;Le Grand Pré;50;0
+Morgins;Le Bouveret;45;0
+Chalet de Conche;Le Bouveret;55;0
+Chalet de Blancsex;Le Bouveret;40;0
+Taney;Le Bouveret;25;0
+Le Grand Pré;Le Bouveret;15;0
+Chalet de Conche;Morgins;15;0
+Chalet de Blancsex;Morgins;50;0
+Taney;Morgins;60;0
+Le Grand Pré;Morgins;40;0
+Chalet de Blancsex;Chalet de Conche;55;0
+Taney;Chalet de Blancsex;35;25
+Le Grand Pré;Taney;20;60
+Le Grand Pré;Chalet de Blancsex;35;25
+Taney;Chalet de Conche;65;0
+Le Grand Pré;Chalet de Conche;50;0
