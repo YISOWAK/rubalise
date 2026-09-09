@@ -152,8 +152,11 @@ def main():
 
     cl = client()
     deja = {}
-    if Path(args.sortie).exists() and not args.lignes and not args.forcer:
+    if Path(args.sortie).exists():
         deja = {s["id"]: s for s in json.loads(Path(args.sortie).read_text(encoding="utf-8"))}
+    if args.forcer or args.lignes:                       # on retraduit les lignes demandées, on garde les autres
+        for l in lignes:
+            deja.pop(l["_id_verite"], None)
     sorties = []
     for l in lignes:
         bid = l["_id_verite"]
