@@ -53,6 +53,12 @@
 - L'agent hébergé expose l'état de la session (`{"action": "etat"}`) : fiche, créneaux, équipes, plan, violations, journal, règles. Le relais a une route `GET /etat`.
 - Testé en ligne : après « Calcule un plan », les barres se colorent et la frise montre l'état de chaque point.
 
+## 2026-09-10 : retours d'Antoine sur la V2, appliqués
+- Jeu de données recalibré pour la démo : 100 bénévoles, dispos plus larges, plages contiguës fusionnées par le solveur (« jusqu'à 1h du matin »). Résultat : plan complet en mode strict, un seul créneau en manque (le 4x4 du vendredi), une vingtaine « un peu justes ». Les scénarios de tension restent dans `solveur/scenarios.py`.
+- Frise : kilomètres et horaires seulement (départ, premier à dernier, barrière), étiquettes en quinconce ; barres avec le manque en toutes lettres (« manque 1 », « +2 bienvenus », « personne ») au lieu des fractions ; états renommés (complet, un peu juste, il manque du monde, personne).
+- Traduction re-mesurée sur 100 lignes : dispos 99/100 (le coureur, à raison), compétences 100, nuit 99, accompagnants, responsables, binômes 100. Comparateur corrigé pour les plages multiples par jour.
+- Noms de la démo mis à jour (Emma Morisod et Sandra Rappaz absentes le jour J ; Sandra responsable du Grand Pré soir).
+
 ## Prochaines étapes
 2. Vidéo (11 et 12 septembre) avec la V2, soumission Devpost le 13.
 3. Si le temps le permet : feuilles de route rédigées par le modèle, bilan d'après course, moins de bruit dans les alertes A8.

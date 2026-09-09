@@ -48,6 +48,8 @@ def page_construite() -> str:
     page = page.replace("{{ARCHITECTURE_SVG}}", svg)
     profil = ICI / "profil.svg"
     page = page.replace("{{PROFIL_SVG}}", profil.read_text(encoding="utf-8") if profil.exists() else "")
+    score = ICI / "score_traduction.txt"
+    page = page.replace("{{SCORE_TRADUCTION}}", score.read_text(encoding="utf-8").strip() if score.exists() else "mesure en cours sur les 100 lignes")
     return page
 
 

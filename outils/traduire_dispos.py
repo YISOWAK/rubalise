@@ -115,9 +115,13 @@ def verite_de(b: dict) -> dict:
 
 
 def comparer(sortie: dict, verite: dict) -> dict:
-    d_sortie = {d["jour"]: f"{d['debut']}-{d['fin']}" for d in sortie["disponibilites"]}
+    d_sortie = {}
+    for d in sortie["disponibilites"]:                      # plusieurs plages le même jour : on les concatène, triées
+        d_sortie.setdefault(d["jour"], []).append(f"{d['debut']}-{d['fin']}")
+    d_sortie = {j: ",".join(sorted(v)) for j, v in d_sortie.items()}
+    d_verite = {j: ",".join(sorted(v.split(","))) for j, v in verite["dispos"].items()}
     return {
-        "dispos": d_sortie == verite["dispos"],
+        "dispos": d_sortie == d_verite,
         "competences": set(sortie["competences"]) == verite["competences"],
         "nuit": (sortie["accepte_nuit"] is False) == (not verite["accepte_nuit"]),
         "accompagnants": sortie["accompagnants"] == verite["accompagnants"],

@@ -67,8 +67,9 @@ nav.onglets button:hover{color:var(--ink)}
 .frise .pt.haut .nom{top:2px}
 .frise .pt .ico{position:absolute;left:50%;top:50px;transform:translateX(-50%);width:22px;height:22px;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .frise .pt .km{position:absolute;left:0;right:0;top:78px;font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace}
-.frise .pt .alt{position:absolute;left:0;right:0;top:94px;font-size:10.5px;color:var(--muted);font-family:"Roboto Mono",monospace;white-space:nowrap}
-.frise .pt.bas .alt{top:106px}
+.frise .pt .alt{position:absolute;left:0;right:0;top:94px;font-size:10.5px;line-height:12px;color:var(--muted);font-family:"Roboto Mono",monospace;white-space:nowrap}
+.frise .pt.bas .alt{top:118px}
+.frise{height:146px}
 .frise .pt.ok .ico{border:2px solid var(--ok)} .frise .pt.partiel .ico{border:2px solid var(--warn)} .frise .pt.critique .ico,.frise .pt.vide .ico{border:2px solid var(--bad)} .frise .pt.neutre .ico{border:2px solid var(--line2)}
 .frise .pt svg{width:12px;height:12px}
 .legende{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:0 2px 10px}
@@ -190,7 +191,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
               <button class="chip" type="button" data-m="Charge les données de la course et calcule un plan.">Calcule un plan</button>
               <button class="chip" type="button" data-m="Pour le Grand Pré du soir on tiendra à 2, Sandra me l'a confirmé : accorde la dérogation.">Dérogation Grand Pré</button>
               <button class="chip" type="button" data-m="Publie le plan, on l'a validé en réunion.">Publie le plan</button>
-              <button class="chip" type="button" data-m="Il est 11h, Marc Saudan et Fabien Carraux ne viennent pas. On fait quoi ?">Jour J : deux absents</button>
+              <button class="chip" type="button" data-m="Il est 11h, Emma Morisod et Sandra Rappaz ne viennent pas. On fait quoi ?">Jour J : deux absentes</button>
             </div>
             <div class="ligne">
               <textarea id="entree" rows="1" placeholder="Écris comme tu parlerais au responsable bénévoles. Entrée pour envoyer."></textarea>
@@ -232,7 +233,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
               <tr><td>samedi 10h-20h</td><td>samaritain, randonneur, 5 éditions comme bénévole</td><td>le PC course, je peux tenir un poste</td><td>Je viens avec 3 personnes, on prend un ravito ensemble.</td></tr>
               <tr><td>Je suis libre samedi toute la journée et le soir</td><td>je fais du trail, déjà bénévole 2 fois</td><td>plutôt ravito, pas après 20h, je peux tenir un poste</td><td>Je viens en train, pas de voiture.</td></tr>
             </table>
-            <p class="note">75 lignes comme celles-ci, en texte libre. Le modèle les traduit en champs que le solveur comprend ; ce qui ne rentre dans aucun champ devient une remarque pour le contradicteur.</p>
+            <p class="note">100 lignes comme celles-ci, en texte libre. Le modèle les traduit en champs que le solveur comprend ; ce qui ne rentre dans aucun champ devient une remarque pour le contradicteur.</p>
           </div>
         </div>
         <div class="deux">
@@ -249,7 +250,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
         <ul class="texte">
           <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/course_marathon.json" target="_blank" rel="noopener">La fiche de course</a>, telle que lue dans le roadbook et corrigée.</li>
           <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/parcours.gpx" target="_blank" rel="noopener">La trace GPX du parcours</a>, nettoyée, et <a href="https://github.com/YISOWAK/rubalise/blob/master/data/passages_reference.csv" target="_blank" rel="noopener">les temps de passage réels d'un coureur</a>.</li>
-          <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/postes.csv" target="_blank" rel="noopener">Les 50 créneaux</a> et <a href="https://github.com/YISOWAK/rubalise/blob/master/data/formulaire_benevoles.csv" target="_blank" rel="noopener">le formulaire des 75 bénévoles</a> (synthétiques).</li>
+          <li><a href="https://github.com/YISOWAK/rubalise/blob/master/data/postes.csv" target="_blank" rel="noopener">Les 50 créneaux</a> et <a href="https://github.com/YISOWAK/rubalise/blob/master/data/formulaire_benevoles.csv" target="_blank" rel="noopener">le formulaire des 100 bénévoles</a> (synthétiques).</li>
           <li><a href="https://github.com/YISOWAK/rubalise/blob/master/gabarits/trail.json" target="_blank" rel="noopener">Le gabarit « trail »</a>, ce que le système sait d'une course de trail.</li>
         </ul>
       </div>
@@ -274,7 +275,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
             <tr><td>Lire le roadbook</td><td>Des pages de PDF en image vers une fiche de course fermée, avec les doutes à relire</td><td>un appel au modèle, schéma JSON strict</td></tr>
             <tr><td>Traduire les dispos</td><td>Chaque ligne du formulaire (texte libre) vers les champs que le solveur comprend, plus des remarques étiquetées</td><td>un appel au modèle par ligne</td></tr>
             <tr><td>Construire les postes</td><td>La fiche de course et un gabarit « trail » vers 50 à 60 créneaux datés</td><td>code</td></tr>
-            <tr><td>Solveur</td><td>Affecte 75 personnes sur 50 créneaux : contraintes dures, objectif pondéré, coût des changements le jour J</td><td>code, OR-Tools CP-SAT, moins de 10 s</td></tr>
+            <tr><td>Solveur</td><td>Affecte 100 personnes sur 50 créneaux : contraintes dures, objectif pondéré, coût des changements le jour J</td><td>code, OR-Tools CP-SAT, moins de 10 s</td></tr>
             <tr><td>Vérificateur</td><td>9 règles bloquantes, 11 alertes, doublons par téléphone</td><td>code</td></tr>
             <tr><td>Journal</td><td>Qui a décidé quoi, quand, pourquoi ; jamais effacé</td><td>code</td></tr>
           </table>
@@ -289,11 +290,11 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
           <h3>Ce qui a été mesuré</h3>
           <table>
             <tr><th>Quoi</th><th>Résultat</th></tr>
-            <tr><td>Traduction du formulaire, 75 lignes</td><td>dispos 74/75, compétences 74/75, nuit 74/75, accompagnants, responsables et binômes 75/75</td></tr>
+            <tr><td>Traduction du formulaire, 100 lignes</td><td>{{SCORE_TRADUCTION}}</td></tr>
             <tr><td>Lecture du roadbook, 5 pages</td><td>6 points de passage exacts (km, altitude, horaires, barrières) ; 2 icônes de service confondues et signalées comme doutes</td></tr>
-            <tr><td>Solveur, 50 créneaux et 75 bénévoles</td><td>optimal en 5 s, 16 personnes manquantes sur 9 créneaux, chacune avec la raison</td></tr>
-            <tr><td>Jour J, 5 absents à 6h30</td><td>2 retraits, 4 ajouts, 0,4 s</td></tr>
-            <tr><td>Contradicteur, sans consigne</td><td>la chaîne des serre-files cassée, la livraison 4x4 vide qui bloque quatre postes, une mineure déclarée responsable</td></tr>
+            <tr><td>Solveur, 50 créneaux et 100 bénévoles</td><td>plan complet en 10 s, une seule personne manquante (un 4x4 le vendredi), avec la raison ; sur 55 bénévoles, 19 personnes manquantes sur 11 créneaux, chacune nommée</td></tr>
+            <tr><td>Jour J, 5 absents à 6h30</td><td>1 retrait, 6 ajouts, 0,5 s, aucun créneau sous le minimum</td></tr>
+            <tr><td>Contradicteur, sans consigne</td><td>une responsable dont les trois accompagnants non listés portent tout le retrait des dossards, un bénévole seul nommé sur la réserve du soir, une journée de 13 heures, un enchaînement en 4x4 trop serré</td></tr>
           </table>
           <p>Le code, les données et les notes de conception sont publics : <a href="https://github.com/YISOWAK/rubalise" target="_blank" rel="noopener">github.com/YISOWAK/rubalise</a>. Ce qui est réel : la course (roadbook public, trace GPS). Ce qui ne l'est pas : les 75 bénévoles, synthétiques, et les messages, écrits dans un fichier.</p>
         </div>
@@ -399,7 +400,16 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
 
   // ---- état et vue course
   const JOURS = ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam'];
-  const LIBELLE = {ok: 'couvert', partiel: 'sous l\'idéal', critique: 'sous le minimum ou sans responsable', vide: 'personne', neutre: 'pas de plan'};
+  const LIBELLE = {ok: 'complet', partiel: 'un peu juste', critique: 'il manque du monde', vide: 'personne', neutre: 'pas de plan'};
+  function texteBarre(p, plan){
+    if (!plan) return '';
+    const c = couverture(p);
+    if (c === 0) return 'personne';
+    if (c < p.min) return 'manque ' + (p.min - c);
+    if (plan.postes_sans_responsable && plan.postes_sans_responsable.includes(p.id)) return 'sans responsable';
+    if (c < p.ideal) return '+' + (p.ideal - c) + ' bienvenu' + (p.ideal - c > 1 ? 's' : '');
+    return String(c);
+  }
   const RANG = {neutre: 0, ok: 1, partiel: 2, critique: 3, vide: 4};
   function h(iso){ const d = new Date(iso); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
   function jh(iso){ const d = new Date(iso); return JOURS[d.getDay()] + ' ' + h(iso); }
@@ -428,7 +438,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
       const r = await fetch('etat?k=' + encodeURIComponent(cle) + '&session=' + encodeURIComponent(assurerSession()), {cache: 'no-store'});
       const d = await r.json();
       if (!r.ok || d.erreur) throw new Error(d.erreur || ('HTTP ' + r.status));
-      donnees = d.etat; rendreCourse(); rendreDoc();
+      donnees = d.etat; rendreCourse(); rendreDoc(); if (!occupe) setEtat(sessionCourte());
     } catch (err) {
       zone.innerHTML = '<p class="note">Impossible de lire l\'état : ' + esc(err.message) + '</p>';
     }
@@ -453,10 +463,10 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
       const cr = (parSite[p.nom] || []).filter(x => estJourCourse(x, d));
       const k = cr.reduce((worst, x) => { const c = classeDe(x, plan); return RANG[c] > RANG[worst] ? c : worst; }, plan ? (cr.length ? 'ok' : 'neutre') : 'neutre');
       const xp = p.km / total * 100, proche = (xp - xPrec) < 16; xPrec = xp;
-      html += '<div class="pt ' + k + (proche ? ' haut bas' : '') + '" style="left:' + xp + '%" title="' + esc(LIBELLE[k]) + '"><div class="nom">' + esc(p.nom) + '</div><div class="ico">' + ICONES[k] + '</div><div class="km">km ' + p.km + (p.altitude_m ? ' · ' + p.altitude_m + ' m' : '') + '</div><div class="alt">' + h(p.premier) + ' à ' + h(p.dernier) + (p.barriere ? ' · barrière ' + h(p.barriere) : '') + '</div></div>';
+      html += '<div class="pt ' + k + (proche ? ' haut bas' : '') + '" style="left:' + xp + '%" title="' + esc(LIBELLE[k]) + '"><div class="nom">' + esc(p.nom) + '</div><div class="ico">' + ICONES[k] + '</div><div class="km">km ' + p.km + '</div><div class="alt">' + (p.km === 0 ? 'départ ' + h(p.premier) : h(p.premier) + ' à ' + h(p.dernier)) + (p.barriere ? '<br>barrière ' + h(p.barriere) : '') + '</div></div>';
     });
     html += '</div>';
-    html += '<div class="legende"><span><i style="background:var(--ok)"></i>couvert</span><span><i style="background:#C08A1E"></i>sous l\'idéal</span><span><i style="background:var(--bad)"></i>sous le minimum ou sans responsable</span><span><i style="background:var(--bad-soft);border:1px solid var(--bad)"></i>personne</span>' + (plan ? '' : '<span><i style="background:var(--line2)"></i>pas encore de plan : demande « Calcule un plan »</span>') + '</div>';
+    html += '<div class="legende"><span><i style="background:var(--ok)"></i>complet</span><span><i style="background:#C08A1E"></i>un peu juste : ça tient, du renfort serait bienvenu</span><span><i style="background:var(--bad)"></i>il manque du monde, ou un responsable</span><span><i style="background:var(--bad-soft);border:1px solid var(--bad)"></i>personne</span>' + (plan ? '' : '<span><i style="background:var(--line2)"></i>pas encore de plan : demande « Calcule un plan »</span>') + '</div>';
     // planning du jour de course
     const jc = jourCourse(d);
     const debutAxe = new Date(jc); debutAxe.setHours(6, 0);
@@ -488,7 +498,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
         const k = classeDe(p, plan), c = couverture(p);
         const l = Math.max(0, (new Date(p.debut) - debutAxe) / duree * 100), r = Math.min(100, (new Date(p.fin) - debutAxe) / duree * 100);
         s += '<div class="lib" title="' + esc(p.nom) + '"><span class="t">' + h(p.debut) + '</span>' + esc(nomCourt(p)) + '</div>';
-        s += '<div class="piste"><button type="button" class="barre ' + k + (selection === p.id ? ' sel' : '') + '" data-id="' + esc(p.id) + '" style="left:' + l + '%;width:' + Math.max(r - l, 1.2) + '%" title="' + esc(p.nom) + ' : ' + esc(LIBELLE[k]) + '">' + (plan ? c + '/' + p.min + '–' + p.ideal : p.min + '–' + p.ideal) + '</button></div>';
+        s += '<div class="piste"><button type="button" class="barre ' + k + (selection === p.id ? ' sel' : '') + '" data-id="' + esc(p.id) + '" style="left:' + l + '%;width:' + Math.max(r - l, 1.2) + '%" title="' + esc(p.nom) + ' : ' + esc(LIBELLE[k]) + '">' + esc(texteBarre(p, plan)) + '</button></div>';
       });
     });
     return s + '</div></div>';
@@ -505,7 +515,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     document.getElementById('detail').hidden = false;
     document.getElementById('detail-titre').innerHTML = esc(p.nom) + '<span class="pill ' + k + '">' + LIBELLE[k] + '</span><span class="spacer"></span><button class="btn lien" id="detail-fermer" type="button" aria-label="Fermer">fermer</button>';
     document.getElementById('detail-fermer').addEventListener('click', fermerDetail);
-    let s = '<dl><dt>Où</dt><dd>' + esc(p.site) + '</dd><dt>Quand</dt><dd>' + jh(p.debut) + ' à ' + jh(p.fin) + '</dd><dt>Effectif</dt><dd>' + (plan ? c + ' présent' + (c > 1 ? 's' : '') + ', ' : '') + 'minimum ' + p.min + ', idéal ' + p.ideal + '</dd>';
+    let s = '<dl><dt>Où</dt><dd>' + esc(p.site) + '</dd><dt>Quand</dt><dd>' + jh(p.debut) + ' à ' + jh(p.fin) + '</dd><dt>Effectif</dt><dd>' + (plan ? c + ' présent' + (c > 1 ? 's' : '') + ' ; ' : '') + 'il en faut ' + p.min + ', on aimerait ' + p.ideal + '</dd>';
     if (p.responsable_requis) s += '<dt>Responsable</dt><dd>requis</dd>';
     if (p.competences) s += '<dt>Compétences</dt><dd>' + esc(p.competences.replace(/,/g, ', ')) + '</dd>';
     if (p.notes) s += '<dt>Notes</dt><dd>' + esc(p.notes) + '</dd>';

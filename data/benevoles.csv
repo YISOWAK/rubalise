@@ -1,76 +1,101 @@
 benevole_id;prenom;nom;age;commune;email;telephone;dispo_vendredi;dispo_samedi;dispo_dimanche;editions_precedentes;PSC1_ou_samaritain;permis_B;vehicule;vehicule_4x4;apte_marche_montagne;pratique_trail;langues;roles_preferes;accepte_nuit;accepte_chef_de_poste;binome_souhaite;accompagnants;contraintes;commentaire_libre
-B001;Marc;Saudan;22;Le Bouveret;marc.saudan@example.org;+41 79 480 58 82;;10:00-20:00;;5;True;False;False;False;True;True;FR;pc_course;True;True;;3;;Je viens avec 3 personnes, on prend un ravito ensemble.
-B002;Sophie;Bochatay;61;Saint-Gingolph;sophie.bochatay@example.org;+41 79 127 39 91;;15:00-24:00;;0;False;True;True;False;False;True;FR;arrivee,dossards,pointage;True;False;;0;;Je peux apporter mon barnum 3x3 si besoin.
-B003;Nicolas;Vuadens;24;Vouvry;nicolas.vuadens@example.org;+41 79 700 68 45;14:00-19:30;06:00-24:00;;8;False;False;False;False;False;True;FR,IT;parking,restauration;True;False;;0;;
-B004;Laura;Rouiller;22;Champéry;laura.rouiller@example.org;+41 79 975 88 41;;17:00-24:00;13:00-18:00;3;False;True;True;False;True;True;FR,DE;logistique,serre_file;True;True;;2;;Je viens avec 2 personnes, on prend un ravito ensemble.
-B005;Thomas;Gex-Fabry;61;Monthey;thomas.gexfabry@example.org;+41 79 614 59 53;;12:00-24:00;;0;False;True;False;False;False;True;DE,EN;arrivee,ravitaillement;True;False;B006;0;;
-B006;Camille;Vannay;27;Monthey;camille.vannay@example.org;+41 79 364 75 11;;12:00-24:00;;5;True;False;False;False;True;False;FR,EN;arrivee,logistique,serre_file;False;False;B005;0;;
-B007;David;Chevalley;43;Morgins;david.chevalley@example.org;+41 79 719 67 33;14:00-19:30;06:00-24:00;;3;True;False;False;False;True;True;FR,DE,EN;parking,pointage;True;False;;0;;
-B008;Emma;Monnay;58;Vouvry;emma.monnay@example.org;+41 79 252 49 74;;06:00-13:00;13:00-18:00;2;False;True;True;False;True;True;FR;arrivee,logistique,signaleur;False;True;;2;;Je viens avec 2 personnes, on prend un ravito ensemble.
-B009;Yann;Clerc;55;Vionnaz;yann.clerc@example.org;+41 79 287 43 54;;10:00-20:00;;0;False;True;True;False;False;True;DE,EN;pointage;False;False;;0;;J'ai un chien, est-ce que je peux le prendre au ravito ?
-B010;Léa;Pittet;38;Port-Valais;lea.pittet@example.org;+41 79 768 61 81;;07:00-14:00;;1;False;True;True;False;True;True;FR,DE;logistique;True;False;;0;;
-B011;Fabien;Carraux;43;Thonon (FR);fabien.carraux@example.org;+41 79 666 29 99;;06:00-24:00;;8;False;True;False;False;True;False;FR,DE,EN;pc_course,serre_file;True;True;;3;;Je viens avec 3 personnes, on prend un ravito ensemble.
-B012;Anne;Berrut;22;Vouvry;anne.berrut@example.org;+41 79 359 24 53;;06:00-24:00;13:00-18:00;8;False;True;True;False;True;False;FR,EN;dossards,logistique,restauration;True;True;;0;;
-B013;Cédric;Barman;17;Val-d'Illiez;cedric.barman@example.org;+41 79 765 42 15;;17:00-24:00;13:00-18:00;2;True;False;False;False;True;False;FR,DE;pc_course,ravitaillement,signaleur;False;True;B014;0;;
-B014;Marion;Rappaz;41;Monthey;marion.rappaz@example.org;+41 79 727 40 43;;17:00-24:00;13:00-18:00;2;True;True;False;False;True;False;FR,EN;arrivee;False;False;B013;0;;
-B015;Loïc;Michellod;36;Morgins;loic.michellod@example.org;+41 79 158 63 77;14:00-19:30;06:00-24:00;;0;False;True;False;False;True;False;FR,EN;ravitaillement;True;False;;0;;
-B016;Chloé;Mariétan;41;Val-d'Illiez;chloe.mariétan@example.org;+41 79 239 12 36;;08:00-18:00;;1;False;True;True;True;True;False;FR;dossards;False;False;;0;;
-B017;Steve;Favre;27;Monthey;steve.favre@example.org;+41 79 198 80 16;;07:00-14:00;;0;True;True;False;False;True;False;FR,IT;dossards;False;False;;0;;
-B018;Aurélie;Vannay;71;Martigny;aurelie.vannay@example.org;+41 79 352 31 51;;06:00-13:00;13:00-18:00;0;False;True;True;True;True;False;FR,DE;restauration,signaleur;False;False;;0;;
-B019;Jonas;Bonvin;19;Saint-Gingolph;jonas.bonvin@example.org;+41 79 869 16 53;;10:00-20:00;;0;False;True;False;False;True;False;DE,EN;restauration;True;False;;0;;J'ai un chien, est-ce que je peux le prendre au ravito ?
-B020;Manon;Zufferey;67;Thonon (FR);manon.zufferey@example.org;+41 79 231 25 54;;10:00-20:00;;0;True;True;False;False;False;True;FR,IT;dossards,ravitaillement,serre_file;False;False;;0;;
-B021;Vincent;Perrin;22;Val-d'Illiez;vincent.perrin@example.org;+41 79 424 27 10;;17:00-24:00;13:00-18:00;1;False;True;False;False;False;False;FR,IT;arrivee,ravitaillement,serre_file;False;False;;0;;
-B022;Sarah;Rappaz;58;Troistorrents;sarah.rappaz@example.org;+41 79 299 89 25;;06:00-13:00;13:00-18:00;2;True;False;False;False;True;True;FR;dossards,logistique,parking;True;False;;0;;
-B023;Kevin;Chevalley;29;Martigny;kevin.chevalley@example.org;+41 79 223 46 34;;17:00-24:00;13:00-18:00;8;False;True;True;True;False;False;FR,DE,EN;signaleur;False;True;;0;;
-B024;Elodie;Grenon;48;Val-d'Illiez;elodie.grenon@example.org;+41 79 401 30 57;;08:00-18:00;;3;False;True;True;False;True;True;FR,DE;restauration;True;True;;0;;Disponible mais je dois récupérer mes enfants à 17h.
-B025;Sébastien;Fornay;29;Troistorrents;sebastien.fornay@example.org;+41 79 140 44 42;;08:00-18:00;;1;True;True;True;False;True;False;FR;dossards,logistique;False;False;;0;;Je préfère être avec des gens que je connais.
-B026;Nadia;Chevalley;43;Collombey;nadia.chevalley@example.org;+41 79 594 56 64;;08:00-18:00;;0;True;True;False;False;True;True;DE,EN;dossards,logistique,pc_course;False;False;;0;;
-B027;Grégory;Pellaud;29;Le Bouveret;gregory.pellaud@example.org;+41 79 627 60 22;;06:00-13:00;13:00-18:00;5;False;True;True;False;True;False;FR,DE;pc_course,pointage,restauration;True;True;;0;;OK pour la nuit si on me ramène au Bouveret après.
-B028;Isabelle;Vuadens;61;Thonon (FR);isabelle.vuadens@example.org;+41 79 961 94 83;;12:00-24:00;;1;True;True;False;False;False;False;FR;logistique,restauration,serre_file;True;False;;0;;
-B029;Mathieu;Monnay;52;Troistorrents;mathieu.monnay@example.org;+41 79 296 62 79;;17:00-24:00;13:00-18:00;0;False;True;True;True;False;False;FR,DE;logistique,pc_course,restauration;False;False;;0;;J'ai un chien, est-ce que je peux le prendre au ravito ?
-B030;Sandra;Morisod;34;Saint-Gingolph;sandra.morisod@example.org;+41 79 532 70 97;;15:00-24:00;;8;False;True;True;False;True;True;FR,IT;pc_course,signaleur;True;True;;0;;OK pour la nuit si on me ramène au Bouveret après.
-B031;Bastien;Vuadens;61;Collombey;bastien.vuadens@example.org;+41 79 699 49 99;;15:00-24:00;;0;False;True;True;False;False;False;FR,DE;dossards,logistique,parking;False;False;B032;0;;
-B032;Céline;Gross;67;Évian (FR);celine.gross@example.org;+41 79 284 65 49;;15:00-24:00;;2;True;True;True;False;False;False;FR;dossards,restauration;False;True;B031;0;;
-B033;Pascal;Roch;43;Évian (FR);pascal.roch@example.org;+41 79 721 36 81;;06:00-12:00;;0;False;False;False;False;False;True;FR;dossards;False;False;;0;;
-B034;Jessica;Favre;24;Villeneuve;jessica.favre@example.org;+41 79 552 33 65;;06:00-24:00;;8;True;True;True;False;True;False;FR,DE;arrivee;True;False;;0;;
-B035;Olivier;Vannay;17;Champéry;olivier.vannay@example.org;+41 79 232 87 50;13:00-19:30;;13:00-18:00;0;False;False;False;False;True;False;FR,DE;dossards,logistique;False;False;;0;;
-B036;Valérie;Praz;45;Collombey;valerie.praz@example.org;+41 79 654 67 61;;12:00-24:00;;3;False;True;True;False;True;False;FR,EN;pc_course,ravitaillement,restauration;False;True;;0;;
-B037;Alexandre;Rappaz;67;Troistorrents;alexandre.rappaz@example.org;+41 79 484 49 19;;06:00-24:00;13:00-18:00;0;True;True;True;False;False;True;FR,DE,EN;dossards,restauration;True;False;;0;;
-B038;Nathalie;Rey-Bellet;52;Port-Valais;nathalie.reybellet@example.org;+41 79 473 63 48;;06:00-12:00;;0;False;True;True;True;False;False;FR;ravitaillement,restauration;True;False;;0;;
-B039;Romain;Roch;17;Villeneuve;romain.roch@example.org;+41 79 598 77 87;;07:00-14:00;;5;True;False;False;False;True;True;FR;arrivee,pc_course;True;True;;0;;
-B040;Florence;Favre;45;Collombey;florence.favre@example.org;+41 79 280 21 59;;06:00-24:00;13:00-18:00;3;False;True;True;True;False;False;FR;arrivee;False;True;;0;;
-B041;Christophe;Praz;43;Val-d'Illiez;christophe.praz@example.org;+41 79 111 99 14;14:00-19:30;06:00-12:00;;8;False;True;True;False;True;False;FR,DE,EN;restauration,serre_file;True;False;B042;0;;
-B042;Mélanie;Barman;71;Vouvry;melanie.barman@example.org;+41 79 388 23 31;;15:00-24:00;;1;False;True;True;False;True;True;DE,EN;ravitaillement,serre_file,signaleur;False;False;B041;0;;
-B043;Jérôme;Rappaz;48;Saint-Gingolph;jerôme.rappaz@example.org;+41 79 808 73 46;13:00-19:30;;13:00-18:00;0;True;True;True;False;False;True;FR,EN;pointage,serre_file,signaleur;True;False;;0;;Je préfère être avec des gens que je connais.
-B044;Stéphanie;Curdy;17;Thonon (FR);stephanie.curdy@example.org;+41 79 140 39 91;;06:00-24:00;;0;False;False;False;False;True;False;FR,EN;signaleur,serre_file;True;False;;0;;
-B045;Pierre-Alain;Roch;58;Morgins;pierrealain.roch@example.org;+41 79 588 56 30;14:00-19:30;06:00-24:00;;8;True;True;True;True;True;False;FR,IT;ravitaillement;True;False;;0;;
-B046;Corinne;Pittet;71;Val-d'Illiez;corinne.pittet@example.org;+41 79 868 87 97;13:00-19:30;;13:00-18:00;0;False;False;False;False;False;False;DE,EN;ravitaillement;True;False;;0;;Mettez-moi à Taney, j'adore cet endroit.
-B047;Raphaël;Pellaud;29;Le Bouveret;raphael.pellaud@example.org;+41 79 353 45 32;;08:00-18:00;;0;True;True;True;False;True;False;FR,DE;pc_course,ravitaillement,signaleur;False;False;;0;;
-B048;Sylvie;Trombert;55;Champéry;sylvie.trombert@example.org;+41 79 219 94 19;;06:00-13:00;;1;False;True;True;False;True;True;FR,DE;arrivee;False;False;;0;;
-B049;Damien;Derivaz;17;Monthey;damien.derivaz@example.org;+41 79 308 51 89;;08:00-18:00;;0;False;False;False;False;False;False;FR,DE;logistique,pointage,ravitaillement;True;False;;0;;
-B050;Pierre-Alain;Défago;52;Troistorrents;pa.defago@example.org;+41 79 512 44 18;;17:00-24:00;13:00-18:00;2;False;True;True;False;True;True;FR;parking,signaleur;True;True;;0;;
-B051;Pierre Alain;Defago;58;Évian (FR);pierrealain.defago@example.org;+41 79 512 44 18;;12:00-24:00;;2;False;True;True;False;True;False;FR,EN;logistique;False;False;;0;;
-B052;Josiane;Gex-Fabry;58;Vouvry;josiane.gexfabry@example.org;+41 79 157 17 87;;10:00-20:00;;2;False;False;False;False;True;True;FR,IT;arrivee,pointage;False;False;;0;;
-B053;Michel;Perrin;67;Thonon (FR);michel.perrin@example.org;+41 79 948 34 62;;06:00-24:00;;1;True;True;True;False;True;False;FR,IT;parking,pointage;False;False;;0;;Je cours le Marathon (dossard 312) mais je peux aider le vendredi soir et le dimanche.
-B054;Claudine;Berrut;67;Aigle;claudine.berrut@example.org;+41 79 419 87 19;;06:00-24:00;13:00-18:00;2;False;True;False;False;True;False;DE,EN;arrivee;True;True;;0;;OK pour la nuit si on me ramène au Bouveret après.
-B055;Gérard;Rouiller;27;Le Bouveret;gerard.rouiller@example.org;+41 79 944 72 97;;06:00-12:00;;1;False;True;True;False;True;False;FR,IT;navette,dossards;True;False;;0;;
-B056;Lucie;Bender;55;Morgins;lucie.bender@example.org;+41 79 328 91 30;;06:00-13:00;13:00-18:00;8;False;False;False;False;True;False;FR,DE,EN;pc_course,serre_file;True;True;;0;;Je peux apporter mon barnum 3x3 si besoin.
-B057;Hugo;Favre;24;Vionnaz;hugo.favre@example.org;+41 79 312 38 76;;06:00-24:00;;2;False;False;False;False;False;True;FR,IT;ravitaillement;False;True;;0;;Je viens en train, pas de voiture.
-B058;Noémie;Saudan;36;Port-Valais;noemie.saudan@example.org;+41 79 932 19 43;;07:00-14:00;;0;False;True;True;False;True;False;FR,IT;ravitaillement,serre_file;True;False;;0;;
-B059;Arnaud;Bender;22;Martigny;arnaud.bender@example.org;+41 79 730 52 88;;15:00-24:00;;0;True;True;True;True;True;False;DE,EN;arrivee,parking;False;False;;0;;
-B060;Maëlle;Bender;17;Villeneuve;maelle.bender@example.org;+41 79 387 20 62;;06:00-24:00;;8;True;False;False;False;True;False;FR,EN;dossards,parking,ravitaillement;True;True;;0;;
-B061;Simon;Mariétan;34;Champéry;simon.mariétan@example.org;+41 79 983 67 13;;06:00-12:00;;0;False;True;True;False;True;True;DE,EN;signaleur;True;False;;0;pas de station debout prolongée;Pas de station debout prolongée (genou).
-B062;Justine;Grenon;41;Saint-Gingolph;justine.grenon@example.org;+41 79 711 87 97;;10:00-20:00;;3;False;True;True;False;True;False;FR,IT;logistique,parking,pointage;False;True;;0;;
-B063;Benoît;Gay-Balmaz;22;Vouvry;benoît.gaybalmaz@example.org;+41 79 673 57 53;;12:00-24:00;;0;True;True;True;False;False;True;FR,EN;ravitaillement;True;True;;0;;
-B064;Océane;Chevalley;61;Thonon (FR);oceane.chevalley@example.org;+41 79 745 63 52;;06:00-24:00;;5;False;True;True;False;False;False;FR;logistique,serre_file,signaleur;True;True;;0;;Je préfère être avec des gens que je connais.
-B065;Lucas;Rouiller;71;Villeneuve;lucas.rouiller@example.org;+41 79 216 41 81;;06:00-24:00;;1;True;True;True;False;False;False;DE,EN;parking,restauration;True;False;;0;;
-B066;Amélie;Perrin;61;Port-Valais;amelie.perrin@example.org;+41 79 333 65 60;;12:00-24:00;;1;False;True;True;False;False;True;FR,IT;dossards;False;False;;0;;
-B067;Guillaume;Grenon;48;Val-d'Illiez;guillaume.grenon@example.org;+41 79 266 80 95;;06:00-12:00;;5;False;True;True;False;True;True;FR,DE;restauration;True;False;;0;;
-B068;Charlotte;Derivaz;61;Évian (FR);charlotte.derivaz@example.org;+41 79 947 24 93;;06:00-12:00;;1;False;True;True;False;False;False;FR;arrivee,pc_course,signaleur;False;False;;0;;
-B069;Xavier;Pittet;34;Champéry;xavier.pittet@example.org;+41 79 390 43 65;;06:00-12:00;;2;True;False;False;False;True;False;FR,DE,EN;restauration,signaleur;False;False;;0;;
-B070;Inès;Favre;55;Monthey;ines.favre@example.org;+41 79 403 79 24;;06:00-12:00;;0;False;True;True;False;True;False;FR,DE;pointage;True;False;;0;;Je viens en train, pas de voiture.
-B071;Killian;Curdy;34;Thonon (FR);killian.curdy@example.org;+41 79 168 82 65;14:00-19:30;06:00-24:00;;0;False;True;True;True;True;True;FR,IT;arrivee,pointage;True;False;;0;;
-B072;Zoé;Vannay;61;Thonon (FR);zoe.vannay@example.org;+41 79 349 10 94;13:00-19:30;;13:00-18:00;2;False;True;True;False;True;False;FR,DE,EN;parking,pc_course,ravitaillement;True;False;;0;;
-B073;Théo;Barman;61;Collombey;theo.barman@example.org;+41 79 176 19 19;;07:00-14:00;;3;False;False;False;False;False;False;FR,EN;pc_course,restauration;True;True;;0;;Je parle allemand, utile pour les coureurs suisses alémaniques.
-B074;Margaux;Cornut;38;Val-d'Illiez;margaux.cornut@example.org;+41 79 381 15 71;;12:00-24:00;;2;False;False;False;False;False;True;DE,EN;restauration;False;False;;0;;
-B075;Julie;Rouiller;19;Val-d'Illiez;julie.rouiller@example.org;+41 79 237 78 84;;07:00-14:00;;1;True;True;True;False;True;False;FR,IT;arrivee;True;False;;0;;
+B001;Marc;Saudan;22;Villeneuve;marc.saudan@example.org;+41 79 683 39 18;13:00-19:30;06:00-24:00;;0;False;True;True;True;True;True;FR,DE,EN;pc_course;True;False;;0;;
+B002;Sophie;Bochatay;61;Morgins;sophie.bochatay@example.org;+41 79 904 91 60;;06:00-24:00;13:00-18:00;1;False;True;True;False;False;False;DE,EN;arrivee;True;False;;0;;Je peux apporter mon barnum 3x3 si besoin.
+B003;Nicolas;Mariétan;27;Thonon (FR);nicolas.mariétan@example.org;+41 79 883 45 66;;08:00-18:00;;0;False;False;False;False;True;False;FR,DE;parking,pointage,restauration;True;False;;0;;Première fois, mettez-moi où vous voulez.
+B004;Laura;Défago;64;Morgins;laura.défago@example.org;+41 79 452 39 79;;06:00-12:00;;0;False;True;False;False;True;False;FR,DE;dossards,serre_file;True;False;;0;;
+B005;Thomas;Gex-Fabry;61;Monthey;thomas.gexfabry@example.org;+41 79 614 59 53;;12:00-24:00;;0;False;True;False;False;True;True;DE,EN;arrivee,ravitaillement;True;False;B006;0;;
+B006;Camille;Vannay;27;Évian (FR);camille.vannay@example.org;+41 79 300 28 32;;12:00-24:00;;0;False;True;True;True;True;False;FR,EN;pointage,serre_file,signaleur;True;False;B005;0;;Première fois, mettez-moi où vous voulez.
+B007;David;Fornay;67;Morgins;david.fornay@example.org;+41 79 784 63 50;;10:00-20:00;;0;False;True;True;False;False;False;FR,EN;serre_file;False;False;;0;;
+B008;Emma;Morisod;43;Vouvry;emma.morisod@example.org;+41 79 252 49 74;;08:00-18:00;;8;False;True;True;False;True;True;FR;arrivee,logistique,signaleur;False;True;;3;;Je viens avec 3 personnes, on prend un ravito ensemble.
+B009;Yann;Clerc;55;Troistorrents;yann.clerc@example.org;+41 79 458 88 17;;06:00-24:00;00:00-01:00,13:00-18:00;8;False;True;True;True;True;False;DE,EN;arrivee,logistique,serre_file;True;True;;2;;Je viens avec 2 personnes, on prend un ravito ensemble.
+B010;Léa;Bressoud;71;Val-d'Illiez;lea.bressoud@example.org;+41 79 675 44 95;;06:00-24:00;;3;True;True;True;False;False;False;FR,IT;serre_file;True;True;;2;;Je viens avec 2 personnes, on prend un ravito ensemble.
+B011;Fabien;Bender;52;Villeneuve;fabien.bender@example.org;+41 79 458 63 16;13:00-19:00;06:00-24:00;13:00-18:00;0;False;True;True;False;True;True;FR;pc_course,restauration,serre_file;False;False;;0;;
+B012;Anne;Perrin;24;Le Bouveret;anne.perrin@example.org;+41 79 940 26 79;13:00-19:30;;13:00-18:00;2;False;False;False;False;False;True;FR,DE;dossards,restauration;True;True;;3;;Je viens avec 3 personnes, on prend un ravito ensemble.
+B013;Cédric;Chevalley;38;Val-d'Illiez;cedric.chevalley@example.org;+41 79 410 94 65;;12:00-24:00;;0;True;True;True;False;True;False;FR,DE;parking,serre_file,signaleur;True;False;B014;0;;
+B014;Marion;Trombert;36;Martigny;marion.trombert@example.org;+41 79 289 35 40;;12:00-24:00;;5;False;False;False;False;False;True;FR,DE;dossards;True;False;B013;0;;
+B015;Loïc;Trombert;19;Saint-Gingolph;loic.trombert@example.org;+41 79 313 15 75;;06:00-12:00;;8;False;True;True;True;False;True;FR;logistique;True;True;;0;;J'ai un chien, est-ce que je peux le prendre au ravito ?
+B016;Chloé;Clerc;36;Monthey;chloe.clerc@example.org;+41 79 807 11 27;;06:00-13:00;13:00-18:00;0;True;True;True;False;False;False;FR,EN;parking;True;False;;0;;
+B017;Steve;Saudan;27;Aigle;steve.saudan@example.org;+41 79 228 50 83;14:00-19:30;06:00-24:00;;0;False;True;True;False;True;False;FR,EN;arrivee,logistique,pointage;True;False;;0;;
+B018;Aurélie;Derivaz;64;Monthey;aurelie.derivaz@example.org;+41 79 221 91 34;;10:00-20:00;;2;False;True;True;True;True;False;FR,EN;arrivee,parking,restauration;True;True;;0;;
+B019;Jonas;Fellay;71;Monthey;jonas.fellay@example.org;+41 79 938 25 54;14:00-19:30;06:00-24:00;;3;True;True;True;False;True;False;FR,DE;pointage;True;True;;0;;
+B020;Manon;Rey-Bellet;38;Vouvry;manon.reybellet@example.org;+41 79 841 82 37;;06:00-13:00;13:00-18:00;2;False;True;True;False;True;False;FR,DE;logistique,parking,serre_file;True;False;;0;;OK pour la nuit si on me ramène au Bouveret après.
+B021;Vincent;Mariétan;52;Vionnaz;vincent.mariétan@example.org;+41 79 247 99 37;;06:00-24:00;00:00-01:00,13:00-18:00;0;True;True;True;False;True;True;FR,DE,EN;logistique;False;False;;0;;
+B022;Sarah;Bressoud;29;Monthey;sarah.bressoud@example.org;+41 79 752 49 28;;12:00-24:00;00:00-01:00;0;True;True;False;False;True;True;FR,DE,EN;parking,signaleur;False;False;;0;;
+B023;Kevin;Berrut;29;Vouvry;kevin.berrut@example.org;+41 79 464 49 41;;08:00-18:00;;1;False;True;True;False;True;False;FR,DE,EN;arrivee;True;False;;0;;
+B024;Elodie;Vuadens;36;Évian (FR);elodie.vuadens@example.org;+41 79 242 14 49;;12:00-24:00;;0;True;True;True;False;False;False;FR,DE;dossards,restauration;True;False;;0;;
+B025;Sébastien;Derivaz;55;Champéry;sebastien.derivaz@example.org;+41 79 631 85 82;;08:00-18:00;;3;False;True;True;False;False;False;FR,DE;serre_file;False;True;;0;;
+B026;Nadia;Monnay;17;Évian (FR);nadia.monnay@example.org;+41 79 698 28 97;;15:00-24:00;00:00-01:00;0;True;False;False;False;True;False;FR,DE,EN;parking,pc_course,restauration;False;False;;0;;
+B027;Grégory;Vannay;19;Thonon (FR);gregory.vannay@example.org;+41 79 961 94 83;;12:00-24:00;;1;True;True;False;False;False;False;FR;logistique,restauration,serre_file;True;False;;0;;
+B028;Isabelle;Zufferey;27;Saint-Gingolph;isabelle.zufferey@example.org;+41 79 521 79 68;;15:00-24:00;00:00-01:00;1;False;True;True;False;True;True;DE,EN;logistique,pc_course;True;False;;0;;
+B029;Mathieu;Trombert;61;Martigny;mathieu.trombert@example.org;+41 79 796 78 94;;07:00-14:00;;3;True;True;True;False;True;False;FR,EN;pc_course,pointage,ravitaillement;True;True;;0;;
+B030;Sandra;Rappaz;24;Val-d'Illiez;sandra.rappaz@example.org;+41 79 813 75 35;;06:00-24:00;;2;False;True;True;False;True;True;FR,DE;dossards,logistique,parking;True;True;;0;;
+B031;Bastien;Pittet;64;Collombey;bastien.pittet@example.org;+41 79 545 49 40;;06:00-13:00;13:00-18:00;0;False;False;False;False;False;True;DE,EN;serre_file;True;False;B032;0;;J'ai un chien, est-ce que je peux le prendre au ravito ?
+B032;Céline;Monnay;29;Morgins;celine.monnay@example.org;+41 79 762 63 87;;06:00-13:00;13:00-18:00;2;True;True;False;False;False;False;FR,EN;dossards,pointage,ravitaillement;True;True;B031;0;;OK pour la nuit si on me ramène au Bouveret après.
+B033;Pascal;Favre;61;Thonon (FR);pascal.favre@example.org;+41 79 286 65 37;;06:00-24:00;00:00-01:00,13:00-18:00;0;True;True;True;True;False;True;FR;serre_file;True;False;;0;;
+B034;Jessica;Favre;31;Champéry;jessica.favre@example.org;+41 79 232 87 50;;06:00-24:00;;3;True;True;True;False;True;True;FR;pc_course,signaleur;False;True;;0;;
+B035;Olivier;Morisod;19;Champéry;olivier.morisod@example.org;+41 79 235 87 83;14:00-19:30;06:00-24:00;;0;False;True;True;False;False;True;FR,DE,EN;dossards,ravitaillement,restauration;True;False;;0;;
+B036;Valérie;Dubosson;29;Vouvry;valerie.dubosson@example.org;+41 79 228 80 41;;06:00-13:00;13:00-18:00;1;True;True;False;False;True;False;FR,DE,EN;dossards,restauration;True;True;;0;;
+B037;Alexandre;Bender;24;Val-d'Illiez;alexandre.bender@example.org;+41 79 986 95 10;;07:00-14:00;;0;False;True;True;True;True;True;FR;dossards,signaleur;False;False;;0;;
+B038;Nathalie;Bressoud;55;Vionnaz;nathalie.bressoud@example.org;+41 79 186 41 15;;15:00-24:00;00:00-01:00;5;True;True;True;True;True;True;FR,IT;pc_course;True;True;;0;;
+B039;Romain;Fellay;61;Vionnaz;romain.fellay@example.org;+41 79 359 77 89;;06:00-24:00;00:00-01:00,13:00-18:00;0;False;True;True;True;False;True;DE,EN;parking,signaleur;False;False;;0;;
+B040;Florence;Fellay;67;Troistorrents;florence.fellay@example.org;+41 79 239 30 90;;06:00-13:00;13:00-18:00;0;False;True;True;False;False;True;FR,EN;logistique,pointage,restauration;True;False;;0;;
+B041;Christophe;Berrut;22;Vouvry;christophe.berrut@example.org;+41 79 330 81 53;;06:00-12:00;13:00-18:00;0;True;True;False;False;True;False;FR,DE,EN;restauration,signaleur;False;False;B042;0;;
+B042;Mélanie;Clerc;67;Collombey;melanie.clerc@example.org;+41 79 116 10 37;;15:00-24:00;00:00-01:00;5;False;True;True;False;True;False;FR;dossards;False;False;B041;0;;
+B043;Jérôme;Lattion;52;Vionnaz;jerôme.lattion@example.org;+41 79 292 10 87;;06:00-24:00;;1;False;True;True;True;True;True;FR,EN;arrivee,pc_course,signaleur;True;False;;0;;
+B044;Stéphanie;Bressoud;17;Saint-Gingolph;stephanie.bressoud@example.org;+41 79 779 13 49;;12:00-24:00;;5;True;False;False;False;True;False;FR,DE,EN;signaleur,serre_file;True;False;;0;;
+B045;Pierre-Alain;Praz;41;Champéry;pierrealain.praz@example.org;+41 79 232 29 66;;06:00-24:00;13:00-18:00;1;True;True;True;False;True;True;FR,DE;arrivee;False;True;;0;;
+B046;Corinne;Grenon;71;Port-Valais;corinne.grenon@example.org;+41 79 498 33 89;;15:00-24:00;00:00-01:00;1;False;True;True;False;False;False;FR,DE;ravitaillement;True;False;;0;;Mettez-moi à Taney, j'adore cet endroit.
+B047;Raphaël;Défago;71;Villeneuve;raphael.défago@example.org;+41 79 738 30 13;;06:00-24:00;;1;False;True;True;False;True;False;FR;logistique,pointage,ravitaillement;False;False;;0;;
+B048;Sylvie;Vuadens;38;Le Bouveret;sylvie.vuadens@example.org;+41 79 991 82 92;;06:00-13:00;00:00-01:00;5;True;True;True;False;True;False;DE,EN;arrivee;True;True;;0;;
+B049;Damien;Pellaud;58;Le Bouveret;damien.pellaud@example.org;+41 79 600 75 42;;06:00-24:00;00:00-01:00,13:00-18:00;0;True;False;False;False;True;True;FR,DE,EN;logistique,restauration;True;False;;0;;Première fois, mettez-moi où vous voulez.
+B050;Pierre-Alain;Défago;24;Collombey;pa.defago@example.org;+41 79 512 44 18;14:00-19:30;06:00-24:00;;1;True;True;True;False;True;True;DE,EN;logistique;False;False;;0;;
+B051;Pierre Alain;Defago;67;Troistorrents;pierrealain.defago@example.org;+41 79 512 44 18;;12:00-24:00;00:00-01:00;1;False;True;False;False;False;False;FR;arrivee,parking;False;False;;0;;Disponible mais je dois récupérer mes enfants à 17h.
+B052;Josiane;Bonvin;64;Morgins;josiane.bonvin@example.org;+41 79 664 80 74;;06:00-13:00;13:00-18:00;0;True;True;True;False;True;False;FR,DE,EN;arrivee,dossards,pointage;True;False;;0;;
+B053;Michel;Bender;41;Le Bouveret;michel.bender@example.org;+41 79 105 72 97;;06:00-24:00;00:00-01:00;0;False;True;True;False;True;False;FR,DE;logistique,pc_course,restauration;False;False;;0;;Je cours le Marathon (dossard 312) mais je peux aider le vendredi soir et le dimanche.
+B054;Claudine;Rappaz;38;Thonon (FR);claudine.rappaz@example.org;+41 79 690 36 71;;07:00-14:00;;1;True;True;True;False;True;False;FR,DE,EN;dossards,logistique,ravitaillement;True;True;;0;;
+B055;Gérard;Grenon;31;Val-d'Illiez;gerard.grenon@example.org;+41 79 427 51 96;;06:00-12:00;;8;False;True;True;False;True;True;FR,IT;navette,dossards;True;False;;0;;
+B056;Lucie;Vuadens;22;Thonon (FR);lucie.vuadens@example.org;+41 79 448 14 72;;12:00-24:00;;3;True;True;True;True;False;False;DE,EN;pointage,serre_file;True;True;;0;;
+B057;Hugo;Monnay;58;Morgins;hugo.monnay@example.org;+41 79 793 93 99;;06:00-24:00;;5;False;False;False;False;True;True;FR,DE,EN;ravitaillement;True;False;;0;;Je viens en train, pas de voiture.
+B058;Noémie;Trombert;71;Vouvry;noemie.trombert@example.org;+41 79 224 25 39;;06:00-24:00;;0;False;True;True;True;True;False;FR,DE;ravitaillement,serre_file;False;False;;0;;Déjà fait Blancsex l'an dernier, je connais le poste.
+B059;Arnaud;Gross;24;Champéry;arnaud.gross@example.org;+41 79 744 58 41;;15:00-24:00;00:00-01:00,13:00-18:00;3;False;True;False;False;True;False;FR,IT;parking,restauration;False;True;;0;;
+B060;Maëlle;Mariétan;36;Thonon (FR);maelle.mariétan@example.org;+41 79 173 44 46;;12:00-24:00;;1;True;True;True;False;True;True;FR,DE;arrivee,dossards;True;False;;0;;Je peux apporter mon barnum 3x3 si besoin.
+B061;Simon;Rey-Bellet;34;Port-Valais;simon.reybellet@example.org;+41 79 552 77 72;13:00-19:30;;13:00-18:00;0;True;True;True;False;True;True;FR,DE;signaleur;True;False;;0;pas de station debout prolongée;Pas de station debout prolongée (genou).
+B062;Justine;Mariétan;61;Villeneuve;justine.mariétan@example.org;+41 79 750 13 36;;06:00-24:00;00:00-01:00,13:00-18:00;2;True;True;True;False;False;True;FR,EN;pc_course;False;True;;0;;
+B063;Benoît;Gay-Balmaz;67;Thonon (FR);benoît.gaybalmaz@example.org;+41 79 516 95 42;;15:00-24:00;00:00-01:00;0;False;False;False;False;False;False;FR,EN;ravitaillement;False;True;;0;;
+B064;Océane;Bender;48;Vionnaz;oceane.bender@example.org;+41 79 912 64 88;;15:00-24:00;00:00-01:00;0;False;True;True;False;True;True;DE,EN;logistique,parking,pointage;True;False;;0;;
+B065;Lucas;Salamin;36;Collombey;lucas.salamin@example.org;+41 79 657 83 34;;06:00-24:00;13:00-18:00;2;False;True;True;False;True;False;FR,IT;parking,pc_course,ravitaillement;True;True;;0;;
+B066;Amélie;Cornut;48;Champéry;amelie.cornut@example.org;+41 79 870 39 85;;12:00-24:00;00:00-01:00;0;True;True;True;False;True;True;DE,EN;pointage,serre_file;True;False;;0;;
+B067;Guillaume;Roch;52;Martigny;guillaume.roch@example.org;+41 79 707 12 88;;06:00-13:00;13:00-18:00;1;True;True;True;True;False;False;DE,EN;dossards,pc_course,signaleur;True;False;;0;;Première fois, mettez-moi où vous voulez.
+B068;Charlotte;Pittet;31;Port-Valais;charlotte.pittet@example.org;+41 79 570 44 47;13:00-19:30;06:00-24:00;;3;False;True;True;False;True;True;FR,DE,EN;pc_course;True;True;;0;;
+B069;Xavier;Perrin;34;Évian (FR);xavier.perrin@example.org;+41 79 466 20 46;;07:00-14:00;;5;False;True;True;True;True;True;DE,EN;parking;True;False;;0;;
+B070;Inès;Lattion;17;Morgins;ines.lattion@example.org;+41 79 597 81 39;;06:00-12:00;;0;False;False;False;False;True;False;FR;dossards;True;False;;0;;
+B071;Killian;Michellod;17;Villeneuve;killian.michellod@example.org;+41 79 597 69 58;;12:00-24:00;00:00-01:00;3;False;False;False;False;False;True;FR,DE;logistique,pointage,ravitaillement;False;True;;0;;
+B072;Zoé;Fellay;31;Val-d'Illiez;zoe.fellay@example.org;+41 79 820 61 14;;06:00-24:00;00:00-01:00,13:00-18:00;5;True;True;True;False;True;True;FR,DE;parking;True;True;;0;;
+B073;Théo;Gay-Balmaz;55;Évian (FR);theo.gaybalmaz@example.org;+41 79 286 63 70;;06:00-24:00;;1;False;True;True;True;True;True;FR,DE,EN;pc_course;True;False;;0;;
+B074;Margaux;Bonvin;24;Évian (FR);margaux.bonvin@example.org;+41 79 578 62 95;;06:00-13:00;13:00-18:00;0;False;False;False;False;True;True;DE,EN;ravitaillement;True;False;;0;;
+B075;Julie;Clerc;64;Le Bouveret;julie.clerc@example.org;+41 79 415 67 79;;06:00-12:00;;0;True;True;True;False;True;False;FR;signaleur;True;False;;0;;
+B076;Marc;Pellaud;55;Troistorrents;marc.pellaud@example.org;+41 79 371 42 44;;12:00-24:00;;1;False;True;True;False;False;True;FR,EN;dossards,logistique,signaleur;True;False;;0;;
+B077;Sophie;Rey-Bellet;38;Vionnaz;sophie.reybellet@example.org;+41 79 437 86 85;;06:00-24:00;13:00-18:00;0;False;True;True;False;True;True;FR,DE,EN;dossards;True;False;;0;;
+B078;Nicolas;Bender;34;Vionnaz;nicolas.bender@example.org;+41 79 461 29 29;;07:00-14:00;;1;True;True;False;False;True;False;DE,EN;dossards,parking,pc_course;True;False;;0;;
+B079;Laura;Trombert;19;Saint-Gingolph;laura.trombert@example.org;+41 79 662 96 74;;12:00-24:00;00:00-01:00;8;True;True;True;True;True;False;FR,DE;pc_course,restauration;False;True;;0;;
+B080;Thomas;Derivaz;34;Troistorrents;thomas.derivaz@example.org;+41 79 472 65 64;;08:00-18:00;;8;True;True;True;False;True;True;DE,EN;dossards,pointage,signaleur;True;True;;0;;
+B081;Camille;Praz;67;Troistorrents;camille.praz@example.org;+41 79 824 62 26;;10:00-20:00;;8;True;True;True;False;True;False;FR,DE,EN;dossards;True;True;;0;;
+B082;David;Clerc;58;Champéry;david.clerc@example.org;+41 79 433 86 48;;06:00-24:00;;5;True;True;False;False;False;False;FR,DE;arrivee,pc_course,restauration;True;True;;0;;Je préfère être avec des gens que je connais.
+B083;Emma;Clerc;36;Monthey;emma.clerc@example.org;+41 79 704 14 18;;06:00-24:00;13:00-18:00;2;True;True;True;True;True;True;FR,IT;dossards,restauration;True;True;;0;;
+B084;Yann;Rappaz;61;Monthey;yann.rappaz@example.org;+41 79 621 17 16;;12:00-24:00;;1;False;True;True;False;False;False;DE,EN;arrivee,dossards,serre_file;False;True;;0;;
+B085;Léa;Vannay;31;Évian (FR);lea.bressoud@example.org;+41 79 390 65 51;13:00-19:00;06:00-24:00;13:00-18:00;5;False;True;True;False;True;False;DE,EN;parking,pc_course;True;True;;0;;
+B086;Fabien;Zufferey;31;Monthey;fabien.zufferey@example.org;+41 79 348 68 74;;15:00-24:00;00:00-01:00;3;False;True;True;False;False;True;FR,DE,EN;pc_course;True;False;;0;;
+B087;Anne;Barman;45;Aigle;anne.barman@example.org;+41 79 882 18 20;;15:00-24:00;00:00-01:00;0;False;False;False;False;False;True;FR,EN;pc_course,pointage;True;False;;0;;J'ai un chien, est-ce que je peux le prendre au ravito ?
+B088;Cédric;Pellaud;34;Collombey;cedric.pellaud@example.org;+41 79 265 40 70;;08:00-18:00;;2;False;True;True;False;True;False;FR;ravitaillement,serre_file,signaleur;False;True;;0;;
+B089;Marion;Perrin;34;Thonon (FR);marion.perrin@example.org;+41 79 542 17 61;;08:00-18:00;;0;False;False;False;False;True;False;FR;pc_course,ravitaillement;True;False;;0;;Je préfère être avec des gens que je connais.
+B090;Loïc;Rey-Bellet;38;Collombey;loic.reybellet@example.org;+41 79 469 25 26;;12:00-24:00;;1;True;False;False;False;True;True;FR;pointage,signaleur;False;False;;0;;Je peux apporter mon barnum 3x3 si besoin.
+B091;Chloé;Bochatay;41;Val-d'Illiez;chloe.bochatay@example.org;+41 79 458 84 85;;06:00-24:00;;5;False;True;False;False;True;True;FR,DE,EN;ravitaillement,serre_file;False;False;;0;;
+B092;Steve;Pellaud;58;Martigny;steve.pellaud@example.org;+41 79 995 76 85;;12:00-24:00;;3;False;True;True;False;False;False;FR,IT;ravitaillement,restauration;True;True;;0;;
+B093;Aurélie;Bressoud;45;Villeneuve;aurelie.bressoud@example.org;+41 79 729 30 34;;06:00-24:00;;1;True;True;True;True;True;True;FR,DE;dossards,ravitaillement,serre_file;True;False;;0;;
+B094;Jonas;Défago;17;Villeneuve;jonas.défago@example.org;+41 79 868 69 55;;12:00-24:00;;0;False;False;False;False;True;True;FR,DE;arrivee,pointage;False;False;;0;;OK pour la nuit si on me ramène au Bouveret après.
+B095;Manon;Bonvin;38;Troistorrents;manon.bonvin@example.org;+41 79 248 94 84;;12:00-24:00;00:00-01:00;0;True;True;True;False;True;False;FR,DE,EN;restauration;True;False;;0;;
+B096;Vincent;Michellod;71;Villeneuve;vincent.michellod@example.org;+41 79 242 26 88;13:00-19:00;06:00-24:00;13:00-18:00;1;False;True;False;False;False;False;DE,EN;pointage,signaleur;True;False;;0;;
+B097;Sarah;Grenon;24;Vionnaz;sarah.grenon@example.org;+41 79 939 84 38;;06:00-13:00;13:00-18:00;0;False;True;True;False;True;False;FR,EN;dossards;True;False;;0;;
+B098;Kevin;Curdy;55;Champéry;kevin.curdy@example.org;+41 79 115 48 48;13:00-19:00;06:00-24:00;13:00-18:00;0;False;True;False;False;True;False;FR,DE;parking,pc_course,restauration;False;False;;0;;
+B099;Elodie;Vannay;61;Villeneuve;elodie.vannay@example.org;+41 79 669 66 96;;08:00-18:00;;5;False;True;False;False;False;False;FR,DE;logistique,parking,ravitaillement;True;True;;0;;
+B100;Sébastien;Vannay;52;Champéry;sebastien.vannay@example.org;+41 79 189 68 93;;08:00-18:00;;1;True;True;True;False;True;False;DE,EN;arrivee,pointage,ravitaillement;True;True;;0;;

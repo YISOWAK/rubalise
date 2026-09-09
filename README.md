@@ -59,8 +59,8 @@ All on the SwissPeaks Marathon 2025 (46 km, 2 483 m D+, Morgins to Le Bouveret):
 | Solver, 50 shifts × 75 volunteers | optimal in 5 s; 16 people missing on 9 shifts, each with the reason others are excluded |
 | Race day, 5 no-shows at 06:30 against the published plan | 2 removals, 4 additions, 0.4 s |
 | Race day, 2 leaders (with 3 companions each) absent at 11:00 | 7 removals, 10 additions, finished shifts untouched |
-| Rule checker on the reference plan | catches the runner assigned on race day, two minors on shifts ending after 22:00, two rows with the same phone number |
-| Contradictor, unprompted | the sweeper chain fully broken, the empty 4x4 delivery that blocks four posts, a 17-year-old declared post leader, one leader's companions counted on three posts |
+| Rule checker | on the raw file it catches the Marathon runner assigned on race day and the two rows with the same phone number; after translation these traps never reach the solver (the runner loses his Saturday, minors are hard rules) |
+| Contradictor, unprompted | a post leader whose three unlisted companions carry the whole bib pick-up (if she cancels, the post falls), a helper who is the only named person on the evening standby team, a volunteer on a 13-hour day, a tight 4x4 hand-over between two posts |
 
 Full scenario table: `solveur/sortie/scenarios.md` (run `python solveur/scenarios.py`).
 

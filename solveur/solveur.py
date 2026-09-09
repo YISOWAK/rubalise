@@ -118,7 +118,14 @@ def fenetres(b: dict) -> list[tuple[datetime, datetime]]:
             debut = base + timedelta(hours=int(d[:2]), minutes=int(d[3:]))
             fin = base + timedelta(hours=int(f[:2]), minutes=int(f[3:]))  # 24:00 devient bien 00:00 le lendemain
             out.append((debut, fin))
-    return out
+    out.sort()
+    fusion = []
+    for d, f in out:                       # « samedi jusqu'à minuit » + « dimanche dès minuit » = une seule plage
+        if fusion and d <= fusion[-1][1]:
+            fusion[-1] = (fusion[-1][0], max(fusion[-1][1], f))
+        else:
+            fusion.append((d, f))
+    return fusion
 
 
 def est_de_nuit(p: dict) -> bool:

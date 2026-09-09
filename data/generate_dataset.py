@@ -261,19 +261,24 @@ LANGUES_OPTIONS = ["FR", "FR,EN", "FR,DE", "FR,DE,EN", "DE,EN", "FR,IT"]
 ROLES = ["ravitaillement", "dossards", "signaleur", "arrivee", "logistique", "serre_file", "pc_course", "restauration", "parking", "pointage"]
 
 DISPOS_TYPES = [
-    # (vendredi, samedi, dimanche) sous forme de plages "HH:MM-HH:MM" ou "" ; "24:00" = minuit
+    # (vendredi, samedi, dimanche) sous forme de plages "HH:MM-HH:MM" ou "" ; "24:00" = minuit ;
+    # une plage du dimanche qui commence à 00:00 prolonge celle du samedi (jusqu'à 1h du matin)
+    ("", "06:00-24:00", ""),
     ("", "06:00-24:00", ""),
     ("", "06:00-24:00", "13:00-18:00"),
     ("14:00-19:30", "06:00-24:00", ""),
+    ("13:00-19:00", "06:00-24:00", "13:00-18:00"),
+    ("", "06:00-24:00", "00:00-01:00,13:00-18:00"),
+    ("", "12:00-24:00", "00:00-01:00"),
     ("", "07:00-14:00", ""),
     ("", "12:00-24:00", ""),
     ("", "06:00-13:00", "13:00-18:00"),
     ("13:00-19:30", "", "13:00-18:00"),
     ("", "08:00-18:00", ""),
-    ("", "15:00-24:00", ""),
+    ("", "15:00-24:00", "00:00-01:00"),
     ("", "06:00-12:00", ""),
     ("", "10:00-20:00", ""),
-    ("", "17:00-24:00", "13:00-18:00"),
+    ("13:00-19:30", "06:00-24:00", ""),
 ]
 
 
@@ -283,8 +288,8 @@ def make_volunteer(i: int) -> dict:
     age = random.choice([17, 19, 22, 24, 27, 29, 31, 34, 36, 38, 41, 43, 45, 48, 52, 55, 58, 61, 64, 67, 71])
     ven, sam, dim = random.choice(DISPOS_TYPES)
     editions = random.choice([0, 0, 0, 1, 1, 2, 3, 5, 8])
-    permis = age >= 18 and random.random() < 0.85
-    vehicule = permis and random.random() < 0.8
+    permis = age >= 18 and random.random() < 0.88
+    vehicule = permis and random.random() < 0.85
     return {
         "benevole_id": f"B{i:03d}",
         "prenom": prenom, "nom": nom, "age": age,
@@ -293,16 +298,16 @@ def make_volunteer(i: int) -> dict:
         "telephone": f"+41 79 {random.randint(100,999)} {random.randint(10,99)} {random.randint(10,99)}",
         "dispo_vendredi": ven, "dispo_samedi": sam, "dispo_dimanche": dim,
         "editions_precedentes": editions,
-        "PSC1_ou_samaritain": random.random() < 0.25,
+        "PSC1_ou_samaritain": random.random() < 0.38,
         "permis_B": permis,
         "vehicule": vehicule,
-        "vehicule_4x4": vehicule and random.random() < 0.2,
-        "apte_marche_montagne": random.random() < (0.7 if age < 60 else 0.3),
-        "pratique_trail": random.random() < 0.35,
+        "vehicule_4x4": vehicule and random.random() < 0.25,
+        "apte_marche_montagne": random.random() < (0.8 if age < 60 else 0.35),
+        "pratique_trail": random.random() < 0.5,
         "langues": random.choice(LANGUES_OPTIONS),
         "roles_preferes": ",".join(sorted(random.sample(ROLES, random.choice([1, 2, 3])))),
-        "accepte_nuit": random.random() < 0.55,
-        "accepte_chef_de_poste": editions >= 2 and random.random() < 0.6,
+        "accepte_nuit": random.random() < 0.7,
+        "accepte_chef_de_poste": (editions >= 2 and random.random() < 0.7) or (editions == 1 and random.random() < 0.25),
         "binome_souhaite": "",
         "accompagnants": 0,
         "contraintes": "",
@@ -310,7 +315,15 @@ def make_volunteer(i: int) -> dict:
     }
 
 
-benevoles = [make_volunteer(i) for i in range(1, 76)]
+NB_BENEVOLES = 100
+benevoles = [make_volunteer(i) for i in range(1, NB_BENEVOLES + 1)]
+
+# Pas deux vrais homonymes dans le jeu (les doublons volontaires sont ajoutés plus bas, exprès)
+_vus = set()
+for b in benevoles:
+    while (b["prenom"], b["nom"]) in _vus:
+        b["nom"] = NOMS[(NOMS.index(b["nom"]) + 1) % len(NOMS)]
+    _vus.add((b["prenom"], b["nom"]))
 
 # Quelques commentaires libres réalistes (comme sur un formulaire d'inscription)
 commentaires = [
@@ -433,6 +446,10 @@ _rf = random.Random(7)
 def _plage(txt):
     if not txt:
         return ""
+    if "," in txt:
+        return " et ".join(_plage(x) for x in txt.split(","))
+    if txt == "00:00-01:00":
+        return _rf.choice(["jusqu'à 1h du matin", "je peux rester jusqu'à 1h", "encore une heure après minuit"])
     d, f = txt.split("-")
     h = lambda x: ("minuit" if x == "24:00" else (x[:2].lstrip("0") or "0") + "h" + ("" if x[3:] == "00" else x[3:]))
     if txt == "06:00-24:00":
