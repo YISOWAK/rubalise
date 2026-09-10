@@ -23,3 +23,4 @@ agentcore/.cli/
 agentcore/aws-targets.json
 agentcore/.env.local
 node_modules/
+web/lien_session_demo.txt
