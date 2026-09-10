@@ -1,56 +1,46 @@
-# La vidéo : 5 minutes maximum, démo + pitch
+# La vidéo : 5 minutes maximum, visite du site en anglais
 
-Règle du concours : démo qui marche + pitch (problème, pour qui, pourquoi ça compte). Slides, captures d'écran et voix off suffisent, pas besoin d'être à l'image. Le jury note Technical Implementation, Impact, Creativity, Presentation, Strands usage.
+Règle du concours : une démo qui marche et un pitch (le problème, pour qui, pourquoi ça compte). Écran enregistré et voix off suffisent, pas besoin d'être à l'image. Tout le dossier doit être en anglais ou traduit, donc voix off en anglais. Le jury note Technical Implementation, Impact, Creativity, Presentation, Strands usage. Pas de soutenance : le jury juge sur la vidéo, le texte et le dépôt, et n'est même pas obligé de tester le lien.
 
-## Découpage (4 min 45 s)
+Principe : tu fais visiter le site, en commençant par le schéma, et tu termines par une vraie interaction avec l'agent. Six scènes, 4 min 30 environ. Ce que tu vois à gauche, ce que tu dis à droite.
 
-| Temps | Ce qu'on voit | Ce qu'on dit (voix off) |
+## Le déroulé
+
+| Temps | À l'écran | Voix off (anglais) |
 |---|---|---|
-| 0:00 - 0:30 | Une page du roadbook SwissPeaks (le tableau en image), puis un Google Form avec des réponses en texte libre, puis un fil WhatsApp | « Sur chaque trail, une personne passe ses soirées à faire ça : 100 bénévoles, 50 créneaux, un PDF fait d'images et un formulaire où les gens écrivent ce qu'ils veulent. Un trou dans un créneau, c'est un coureur seul sur une route la nuit. Les grandes courses achètent des plateformes. Les petites ont Excel et de la bonne volonté. » |
-| 0:30 - 0:50 | Le schéma d'architecture, 15 secondes fixes | « Rubalise, c'est un agent Strands qui parle à l'organisateur, un serveur d'outils MCP, un solveur de contraintes, et un second agent, le contradicteur, qui relit tout avec un regard neuf. Le modèle ne calcule jamais le planning ; il lit, traduit, explique. » |
-| 0:50 - 1:35 | La page Rubalise, onglet Course, puis l'assistant : « Voici le roadbook, pages 14, 18, 22 à 24, course Marathon ». Tableau des points de passage avec les doutes. « Conche a bien un bus d'abandon, ajoute-le ». « Construis les postes ». | « Phase 1 : il lit le PDF comme on le lirait, ligne par ligne, et dit ce dont il n'est pas sûr. L'organisateur corrige en français. Un gabarit transforme la fiche en 60 créneaux : ravitos, serre-files, dossards, PC course. » |
-| 1:35 - 2:35 | Onglet « Notre course » : le formulaire à l'écran, deux lignes (« je cours le Marathon mais je peux aider vendredi », « samedi toute la journée, je viens avec mes 3 potes ») puis leur traduction. Puis « Calcule un plan » : postes sans responsable, trous avec la raison, remarques du contradicteur. | « Phase 2 : chaque ligne devient des champs fermés que le solveur comprend ; 99 sur 100 justes. Le solveur rend un plan complet en dix secondes, et surtout il nomme ce qui manque : un 4x4 le vendredi, et pourquoi personne d'autre ne peut le faire. Puis le contradicteur : une responsable dont les trois accompagnants portent tout le poste, une journée de treize heures. Aucune règle ne le disait. » |
-| 2:35 - 3:05 | « Accorde la dérogation, le responsable confirme » : le garde-fou demande confirmation, on tape oui. « Publie le plan » : confirmation, 73 messages écrits, journal. | « Rien ne part sans l'organisateur. La confirmation est dans le code, pas dans le prompt. Chaque décision est journalisée avec son auteur et sa raison. » |
-| 3:05 - 4:05 | « Il est 11h, Emma et Sandra ne viennent pas. » L'agent liste qui est touché, recalcule, montre les mouvements personne par personne, « untel est déjà en poste, à prévenir en direct », ce qui reste cassé, et demande s'il doit publier. | « Le jour J, c'est là que ça compte. Le plan publié est un engagement : chaque changement coûte, plus cher si la personne est déjà en poste. Le solveur répare avec le moins de mouvements possible, les créneaux terminés ne bougent pas, et l'agent dit ce qu'il ne peut pas résoudre. » |
-| 4:05 - 4:30 | Tableau des résultats mesurés, puis 8 secondes de traces AgentCore Observability | « Tout est mesuré : la traduction, la lecture du roadbook, dix scénarios de solveur. L'agent est hébergé sur AgentCore. » |
-| 4:30 - 4:45 | Le schéma, avec « trail.json » surligné, puis le mot fin | « Un triathlon, c'est un autre fichier de gabarit. Et après la course, l'agent relit le journal et propose ce qu'il faut changer l'an prochain. Les bénévoles font tourner les courses ; celui qui les organise mérite un outil. » |
+| 0:00 - 0:30 | Onglet **How it works**, en haut, sans bouger | On every trail race, someone spends their evenings doing this. A hundred volunteers, fifty shifts, a PDF made of images, and a form where people write whatever they want. One gap in one shift means a runner alone on a road at night. Big races buy a platform. Small races have Excel and good will. This is Rubalise. |
+| 0:30 - 1:30 | Le schéma. Tu suis les blocs à la souris, dans l'ordre du texte : Organizer, Orchestrator, Tools, Contradictor, State | Here is how it works. The organizer, at the top, talks to the agent in the chat. Nothing goes out without them. The orchestrator is a Strands agent: an LLM that loops over tools. During preparation, the order of the steps is known, so it just runs them. On race day, the order is unknown, so it reasons. The tools are exposed by an MCP server: read the roadbook, translate the form, build the posts, solve, check the rules, log every decision. Only two of them use a model. The plan itself comes from a constraint solver, OR-Tools, never from the LLM. On the right, the contradictor: a second agent, with a blank context and a stronger model. It reviews every plan with the rules and common sense, and reports what the code cannot see. It changes nothing. And everything the agents know lives in this state, on disk, not in their memory. |
+| 1:30 - 2:15 | Onglet **Notre course**. Tu descends lentement : fiche, points de passage, profil, page du roadbook, formulaire et traduction, règles, journal | The organizer's screen is in French: the race is in Switzerland. It is a real race, the SwissPeaks Marathon, forty-six kilometers, and I ran it last year. The agent read the official roadbook, page by page, as images, and produced this race sheet: checkpoints, cut-off times, first and last runner. It flagged what it was not sure about. Below, the volunteer form: free text, and its translation into closed fields the solver understands. Ninety-nine lines out of a hundred are right. Then the rules, which the organizer edits from the chat, and the log: who decided what, when, and why. |
+| 2:15 - 3:15 | Onglet **Course**, plan déjà calculé. Tu cliques un point de la frise (Taney), puis un créneau, puis « Toute la course » | This is the race, post by post. The timeline shows each checkpoint with its status: green when the team is complete, orange when it is a bit short, red when someone is missing. Below, the schedule, shift by shift, over three days. I click a checkpoint: only its shifts remain. A shift shows its team, who leads it, and what is missing, with the reason. On the whole race, one person is missing: a four-by-four driver on Friday, and nobody else can do it. The contradictor had remarks too: a post leader whose three companions carry the whole post, a thirteen-hour day. No rule said that. |
+| 3:15 - 4:15 | Le chat. Tu tapes le message du jour J, l'attente se coupe au montage, la réponse s'affiche, la frise se met à jour | Now, race day. It is eleven o'clock, and two volunteers are not coming. I tell the agent, in plain language. It lists who is affected, repairs the plan with as few moves as possible, and explains each move. Shifts already finished never move. People already on site are flagged: warn them in person. The timeline updates. And it asks before publishing. That confirmation is in the code, not in the prompt. Publishing, waiving a rule, changing a rule: all of it goes through the organizer. |
+| 4:15 - 4:45 | Retour sur **How it works**, tableau « What was measured », puis le lien du dépôt | Everything is measured: the translation, the roadbook reading, ten solver scenarios, the race-day repairs. The agents run on Amazon Bedrock AgentCore. The code and the data are public. A triathlon is just another template file. Volunteers make races happen. The person who organizes them deserves a tool. |
 
-## Voix off en anglais
+Environ 580 mots : à un rythme posé, 4 min 30. Si une scène est trop longue à dire, coupe des phrases, personne ne vérifie le mot à mot.
 
-Règle Devpost : « All Submission materials must be in English or, if not in English, the Entrant must provide an English translation of the demonstration video, text description, and testing instructions ». Voix off en anglais, écran en français (course suisse, on le dit une fois au début). Phrases courtes, faciles à dire.
+## Le message à taper (scène 5)
 
-| Temps | Voix off |
-|---|---|
-| 0:00 - 0:30 | On every trail race, someone spends their evenings doing this. A hundred volunteers, fifty shifts, a PDF made of images, and a form where people write whatever they want. One gap in one shift means a runner alone on a road at night. Big races buy a platform. Small races have Excel and good will. |
-| 0:30 - 0:50 | Rubalise is a Strands agent that talks with the organizer, an MCP server of tools, a constraint solver, and a second agent, the contradictor, that reviews every plan with fresh eyes. The model never computes the schedule. It reads, translates and explains. |
-| 0:50 - 1:35 | The race is in Switzerland, so the interface and the messages are in French. Phase one. The agent reads the PDF the way a person would, line by line, and says what it is not sure about. The organizer corrects it in plain French. A template turns the race sheet into sixty shifts: aid stations, sweepers, bib pickup, race control. |
-| 1:35 - 2:35 | Phase two. Each line of the form becomes closed fields the solver understands. Ninety-nine out of a hundred are correct. The solver returns a full plan in ten seconds, and above all it names what is missing: a four-by-four on Friday, and why nobody else can do it. Then the contradictor: a post leader whose three companions carry the whole post, a thirteen-hour day. No rule said that. |
-| 2:35 - 3:05 | Nothing goes out without the organizer. The confirmation lives in the code, not in the prompt. Every decision is logged, with who took it and why. |
-| 3:05 - 4:05 | Race day is where it matters. The published plan is a commitment. Every change has a cost, and a higher one when the person is already on site. The solver repairs with as few moves as possible, finished shifts never move, and the agent says what it cannot fix. |
-| 4:05 - 4:30 | Everything is measured: the translation, the roadbook reading, ten solver scenarios. The agent runs on Amazon Bedrock AgentCore. |
-| 4:30 - 4:45 | A triathlon is just another template file. After the race, the agent reads the log and suggests what to change next year. Volunteers make races happen. The person who organizes them deserves a tool. |
+1. Il est 11h, Emma Morisod et Sandra Rappaz ne viennent pas. On fait quoi ?
+2. Facultatif, si tu veux montrer le garde-fou à l'écran : « Oui, publie le plan corrigé. » L'agent demande confirmation, tu réponds « oui ».
 
-Sur Devpost, la description du projet et les instructions de test sont en anglais aussi (le README l'est déjà, on le reprend).
+## Avant d'enregistrer
 
-## Messages à taper pendant l'enregistrement (mode interactif)
+- Chrome, fenêtre en plein écran 1920 × 1080, zoom de la page à 110 ou 125 % pour que le texte reste lisible sur YouTube.
+- Ouvre le lien de démo (`web/lien_demo.txt`), lance **Calculer le plan**, attends la minute et demie : l'onglet Course doit être vert avant la première seconde de film.
+- Ouvre une fois chaque onglet pour que tout soit chargé. Une session s'endort après 15 minutes sans message : enchaîne, ou renvoie un message avant de filmer.
+- Ferme les autres fenêtres et les notifications (Windows : Paramètres > Système > Notifications > Ne pas déranger).
 
-1. Où en est-on ?
-2. Voici le roadbook : ../sources-privees/roadbook-2025.pdf, pages 14,18,22,23,24, course « Marathon (46 km, départ Morgins) », départ le 2025-09-06.
-3. Le Chalet de Conche a bien un bus d'abandon, ajoute-le. Ensuite construis les postes.
-4. Traduis le formulaire des bénévoles.
-5. Calcule un plan.
-6. Pour le Grand Pré du soir on tiendra à 2, le responsable du poste me l'a confirmé : accorde la dérogation.
-7. Oui, vas-y.
-8. Publie le plan, on l'a validé en réunion.
-9. Oui, publie.
-10. Il est 11h, Emma Morisod et Sandra Rappaz ne viennent pas. On fait quoi ?
+## Pendant
 
-Les étapes 2 et 4 prennent 40 s et 10 min : on les enregistre à part et on coupe au montage. Police du terminal à 18 pt minimum, fenêtre 1280 × 720, thème clair.
+- Win + Alt + R lance l'enregistreur de Windows sur la fenêtre active. Tu n'as pas besoin de parler : la voix vient après.
+- Enregistre les scènes dans l'ordre du tableau, en un ou plusieurs clips. Pour la scène 5, tape le message, laisse tourner, attends la réponse : la minute d'attente se coupera au montage.
+- Va lentement à la souris, deux fois plus lentement que d'habitude. Ce qui semble lent en direct est normal en vidéo.
+
+## Montage
+
+- Clipchamp (fourni avec Windows 11) : importe les clips, mets-les dans l'ordre, coupe les temps morts et l'attente de l'agent.
+- Voix off : dans Clipchamp, « Enregistrer et créer » > « Audio », tu lis la colonne de droite scène par scène, tu recommences une scène autant de fois que tu veux.
+- Exporte en MP4 1080p, envoie sur YouTube en **public** (exigé par le règlement), et colle le lien dans le formulaire Devpost.
 
 ## À préparer
 
-- 3 captures : page du roadbook, formulaire, fil WhatsApp (flouté ou inventé).
-- Le schéma en anglais, déjà rendu en PNG : `docs/architecture.png` (2400 × 1700). Le français reste dans `docs/architecture_fr.svg`.
-- Le tableau des résultats en une image.
-- 8 secondes de traces AgentCore Observability dans la console.
-- Enregistrement : OBS ou l'enregistreur Windows (Win + Alt + R), voix off avec le micro du casque, montage dans Clipchamp (fourni avec Windows).
+- Rien d'autre que le site : le schéma en anglais est dans l'onglet How it works, et en PNG dans `docs/architecture.png` si tu veux l'afficher en plein écran dans la scène 2.
