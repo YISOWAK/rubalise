@@ -24,3 +24,6 @@ agentcore/aws-targets.json
 agentcore/.env.local
 node_modules/
 web/lien_session_demo.txt
+
+# vidéo de démo : clips, voix, photos, montage
+video/
