@@ -137,6 +137,9 @@ body .frise .pt.ok .ico{background:var(--ok)} body .frise .pt.partiel .ico{backg
 #detail .lienpost:hover{color:var(--ink)}
 #detail .lienpost .t{font-size:11px;color:var(--muted);flex:none}
 #detail .lienpost .pill{margin-left:auto}
+#detail .viol .etiq{display:inline-block;font-size:10.5px;font-family:"Roboto Mono",monospace;text-transform:uppercase;letter-spacing:.05em;padding:1px 6px;border-radius:3px;margin-right:8px;background:var(--warn-soft);color:#8A6414;vertical-align:1px}
+#detail .viol.bloquante .etiq{background:var(--bad-soft);color:#9E3630}
+#detail .viol b{font-weight:500}
 #detail .viol{font-size:12.5px;padding:4px 8px;border-left:3px solid var(--bad);background:var(--bad-soft);margin:4px 0;border-radius:2px}
 #detail .viol.alerte{border-left-color:var(--warn);background:var(--warn-soft)}
 #detail h4{font-size:11.5px;font-weight:500;color:var(--muted);margin:10px 0 4px;letter-spacing:.03em;text-transform:uppercase}
@@ -442,6 +445,26 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   ajouter('agent', 'Bonjour. Le tableau de gauche montre la course poste par poste ; clique un créneau pour voir l\'équipe ou signaler quelque chose. Demande-moi un plan, une dérogation, ou signale un imprévu.', {brut: true});
 
   // ---- état et vue course
+  const REFUS = {
+    dispo: n => n + (n > 1 ? ' ne sont pas libres' : " n'est pas libre") + ' sur tout le cr\u00e9neau',
+    nuit: n => n + (n > 1 ? ' ne font pas' : ' ne fait pas') + ' la nuit',
+    mineur: n => n + (n > 1 ? ' sont mineurs' : ' est mineur'),
+    PSC1: n => n + (n > 1 ? " n'ont pas" : " n'a pas") + ' le PSC1',
+    permis_B: n => n + (n > 1 ? " n'ont pas" : " n'a pas") + ' le permis',
+    vehicule: n => n + (n > 1 ? " n'ont pas" : " n'a pas") + ' de voiture',
+    '4x4': n => n + (n > 1 ? " n'ont pas" : " n'a pas") + ' de 4x4',
+    montagne: n => n + (n > 1 ? ' ne marchent pas' : ' ne marche pas') + ' en montagne',
+    trail: n => n + (n > 1 ? ' ne pratiquent pas' : ' ne pratique pas') + ' le trail',
+    majeur: n => n + (n > 1 ? ' sont mineurs' : ' est mineur'),
+    experience: n => n + (n > 1 ? " n'ont jamais fait" : " n'a jamais fait") + ' la course',
+    controle_materiel: n => n + (n > 1 ? " n'ont jamais fait" : " n'a jamais fait") + ' la course',
+  };
+  function pourquoiEcartes(refus){
+    const l = Object.entries(refus || {}).sort((a, b) => b[1] - a[1])
+      .map(([k, n]) => (REFUS[k] ? REFUS[k](n) : n + ' pour ' + k.replace(/_/g, ' ')));
+    if (!l.length) return '';
+    return l.length === 1 ? l[0] : l.slice(0, -1).join(', ') + ' et ' + l[l.length - 1];
+  }
   const JOURS = ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam'];
   const LIBELLE = {ok: 'complet', partiel: 'un peu juste', critique: 'il manque du monde', vide: 'personne', neutre: 'pas de plan'};
   function texteBarre(p, plan){
@@ -593,7 +616,11 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     document.getElementById('detail').hidden = false;
     document.getElementById('detail-titre').innerHTML = esc(p.nom) + '<span class="pill ' + k + '">' + LIBELLE[k] + '</span><span class="spacer"></span><button class="btn lien" id="detail-fermer" type="button" aria-label="Fermer">fermer</button>';
     document.getElementById('detail-fermer').addEventListener('click', fermerDetail);
-    let s = '<dl><dt>Où</dt><dd>' + esc(p.site) + '</dd><dt>Quand</dt><dd>' + jh(p.debut) + ' à ' + jh(p.fin) + '</dd><dt>Effectif</dt><dd>' + (plan ? c + ' présent' + (c > 1 ? 's' : '') + ' ; ' : '') + 'il en faut ' + p.min + ', on aimerait ' + p.ideal + '</dd>';
+    let s = '<dl><dt>Où</dt><dd>' + esc(p.site) + '</dd><dt>Quand</dt><dd>' + jh(p.debut) + ' à ' + jh(p.fin) + '</dd><dt>Effectif</dt><dd>' + (plan ? (c ? c + ' personne' + (c > 1 ? 's' : '') + ' sur ce cr\u00e9neau' : 'Personne sur ce cr\u00e9neau') + '. ' : '') +
+      'Il en faut ' + p.min + ' au minimum, ' + p.ideal + ' pour \u00eatre \u00e0 l\'aise' +
+      (plan ? (c < p.min ? ', il en manque donc ' + (p.min - c) + ' pour tenir le poste.'
+                         : (c < p.ideal ? ', il en manque ' + (p.ideal - c) + ' pour \u00eatre \u00e0 l\'aise, mais le minimum est atteint.'
+                                        : '. Le compte y est.')) : '.') + '</dd>';
     if (p.responsable_requis) s += '<dt>Responsable</dt><dd>requis</dd>';
     if (p.competences) s += '<dt>Compétences</dt><dd>' + esc(p.competences.replace(/,/g, ', ')) + '</dd>';
     if (p.notes) s += '<dt>Notes</dt><dd>' + esc(p.notes) + '</dd>';
@@ -601,9 +628,24 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     if (!p.equipe.length) s += '<p class="note">' + (plan ? 'Personne sur ce créneau.' : 'Pas encore de plan.') + '</p>';
     else s += '<ul class="equipe">' + p.equipe.map(e => '<li>' + esc(e.nom) + (e.role === 'responsable' ? '<span class="role">responsable</span>' : '') + (e.accompagnants ? '<span class="role">+' + e.accompagnants + ' non listé' + (e.accompagnants > 1 ? 's' : '') + '</span>' : '') + '</li>').join('') + '</ul>';
     const trou = plan && plan.trous.find(t => t.poste_id === p.id);
-    if (trou) s += '<div class="viol">Il manque ' + trou.manque + ' personne' + (trou.manque > 1 ? 's' : '') + '. ' + trou.eligibles + ' éligible' + (trou.eligibles > 1 ? 's' : '') + ' ; exclus : ' + esc(Object.entries(trou.refus || {}).map(([a, b]) => a + ' ' + b).join(', ')) + '</div>';
+    if (trou) {
+      const ec = pourquoiEcartes(trou.refus);
+      s += '<div class="viol bloquante"><b>Il manque ' + trou.manque + ' personne' + (trou.manque > 1 ? 's' : '') + ', et l\'agent ne peut pas la trouver.</b> ' +
+        (trou.eligibles > 1 ? trou.eligibles + ' personnes seulement peuvent' : (trou.eligibles === 1 ? 'Une seule personne peut' : 'Personne ne peut')) +
+        ' prendre ce cr\u00e9neau' + (ec ? ' : ' + esc(ec) + '.' : '.') + '</div>';
+    }
     const viols = (donnees.violations || []).filter(v => v.poste === p.id);
-    if (viols.length) { s += '<h4>Vérificateur</h4>'; viols.slice(0, 6).forEach(v => { s += '<div class="viol ' + v.gravite + '">[' + esc(v.regle) + '] ' + esc(v.message) + (v.derogee ? ' (dérogé)' : '') + '</div>'; }); }
+    if (viols.length) {
+      s += '<h4>Ce que la v\u00e9rification signale</h4>';
+      viols.slice(0, 6).forEach(v => {
+        let m = String(v.message);
+        const sep = m.indexOf(' : ');
+        if (sep > 0 && p.nom.slice(0, 12) === m.slice(0, 12)) m = m.slice(sep + 3);
+        m = m.charAt(0).toUpperCase() + m.slice(1);
+        s += '<div class="viol ' + v.gravite + '"><span class="etiq">' + (v.gravite === 'bloquante' ? '\u00e0 corriger' : '\u00e0 regarder') + '</span>' + esc(m) + (v.derogee ? ' <i>(d\u00e9rogation accord\u00e9e)</i>' : '') + '</div>';
+      });
+      if (viols.length > 6) s += '<p class="note">' + (viols.length - 6) + ' autre' + (viols.length > 7 ? 's' : '') + ' remarque' + (viols.length > 7 ? 's' : '') + ' sur ce cr\u00e9neau.</p>';
+    }
     s += '<h4>Signaler depuis le poste</h4><div id="signal"><div class="chips">' +
       ['Il manque de l\'eau', 'Nous sommes un de moins que prévu', 'Un bénévole n\'est pas venu', 'Le dernier coureur a du retard', 'Tout va bien'].map(t => '<button type="button" class="chip" data-t="' + esc(t) + '">' + esc(t) + '</button>').join('') +
       '</div><textarea id="signal-texte" placeholder="Ce qui se passe au poste, en une phrase."></textarea><div class="ligne"><span class="note" style="flex:1">Part à l\'assistant comme un événement du jour J, avec le poste et l\'heure.</span><button type="button" class="btn primary small" id="signal-envoyer">Envoyer</button></div></div>';
