@@ -24,6 +24,28 @@ a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 .mono{font-family:"Roboto Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
 [hidden]{display:none!important}
 
+/* Variante terrain : un peu plus de couleur, accent rubalise */
+body[data-v="terrain"]{--bg:#F1F3F0;--surface2:#F5F7F3;--accent:#D9530B;--accent-soft:#FBE9DD;--focus:#D9530B;--ok:#2E9E5B;--ok-soft:#E0F3E6;--bad:#D0433C}
+body[data-v="terrain"] header.top{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:10px 14px;border-left:4px solid var(--accent)}
+body[data-v="terrain"] .grille .site{background:var(--accent-soft);color:#8A3A0C;border-bottom:1px solid #F1D3C0}
+body[data-v="terrain"] .barre.ok{background:#2E9E5B} body[data-v="terrain"] .barre.partiel{background:#D9910B} body[data-v="terrain"] .barre.critique{background:#D0433C}
+body[data-v="terrain"] .frise .pt .ico{background:var(--surface2)}
+body[data-v="terrain"] .btn.primary{background:var(--accent);border-color:var(--accent)} body[data-v="terrain"] .btn.primary:hover{background:#BE470A}
+body[data-v="terrain"] nav.onglets button[aria-selected=true]{border-bottom-color:var(--accent)}
+
+/* Variante nuit : PC course de nuit, fond sombre, etats vifs */
+body[data-v="nuit"]{--bg:#161A1E;--surface:#1F252B;--surface2:#242B32;--line:#2E363E;--line2:#3B454F;--ink:#E8ECEF;--ink2:#C3CAD1;--muted:#8A949E;--accent:#5AA9F0;--accent-soft:#1E3448;--focus:#5AA9F0;--ok:#3FBF77;--ok-soft:#1B3A2A;--warn:#E0A83A;--warn-soft:#3B2E14;--bad:#E4645C;--bad-soft:#3E2422;--shadow:none}
+body[data-v="nuit"] .barre.partiel{background:#C9901F} body[data-v="nuit"] .barre.vide{background:var(--bad-soft);color:#F1A29C}
+body[data-v="nuit"] .grille .site{background:var(--surface2)}
+body[data-v="nuit"] .frise .pt .ico{background:var(--surface2)}
+body[data-v="nuit"] .doc img,body[data-v="nuit"] .doc svg{background:#fff}
+
+/* Variante large : la frise et le planning sur toute la largeur, l'assistant dessous */
+body[data-v="large"] .cockpit{grid-template-columns:1fr;grid-template-rows:minmax(0,58fr) minmax(0,42fr)}
+body[data-v="large"] .cockpit .droite{flex-direction:row}
+body[data-v="large"] .cockpit .droite .panel{flex:1 1 0;max-height:none}
+body[data-v="large"] .cockpit .droite .panel.detail{flex:0 0 380px}
+
 .wrap{max-width:1400px;margin:0 auto;padding:14px 20px 18px;height:100%;display:flex;flex-direction:column;gap:10px}
 header.top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 header.top h1{font-size:20px;font-weight:500;letter-spacing:-.005em;margin:0}
@@ -60,16 +82,15 @@ nav.onglets button:hover{color:var(--ink)}
 .droite .panel.detail .contenu{overflow:auto}
 
 /* frise */
-.frise{position:relative;height:118px;margin:2px 70px 10px}
-.frise .axe{position:absolute;left:0;right:0;top:60px;height:2px;background:var(--line2)}
-.frise .pt{position:absolute;top:0;transform:translateX(-50%);text-align:center;width:150px;height:118px}
-.frise .pt .nom{position:absolute;left:0;right:0;top:22px;font-size:12.5px;font-weight:500;color:var(--ink);white-space:nowrap}
-.frise .pt.haut .nom{top:2px}
-.frise .pt .ico{position:absolute;left:50%;top:50px;transform:translateX(-50%);width:22px;height:22px;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.frise .pt .km{position:absolute;left:0;right:0;top:78px;font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace}
-.frise .pt .alt{position:absolute;left:0;right:0;top:94px;font-size:10.5px;line-height:12px;color:var(--muted);font-family:"Roboto Mono",monospace;white-space:nowrap}
-.frise .pt.bas .alt{top:118px}
-.frise{height:146px}
+.frise{position:relative;height:104px;margin:4px 70px 6px}
+.frise .axe{position:absolute;left:0;right:0;top:42px;height:2px;background:var(--line2)}
+.frise .pt{position:absolute;top:0;transform:translateX(-50%);text-align:center;width:150px;height:104px;background:none;border:0;padding:0;cursor:pointer;border-radius:4px}
+.frise .pt:hover .nom{text-decoration:underline}
+.frise .pt.sel .ico{box-shadow:0 0 0 3px var(--accent-soft)}
+.frise .pt .nom{position:absolute;left:0;right:0;top:4px;font-size:12.5px;font-weight:500;color:var(--ink);white-space:nowrap}
+.frise .pt .ico{position:absolute;left:50%;top:32px;transform:translateX(-50%);width:22px;height:22px;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.frise .pt .km{position:absolute;left:0;right:0;top:60px;font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace}
+.frise .pt .alt{position:absolute;left:0;right:0;top:76px;font-size:11px;line-height:13px;color:var(--ink2);font-family:"Roboto Mono",monospace;white-space:nowrap}
 .frise .pt.ok .ico{border:2px solid var(--ok)} .frise .pt.partiel .ico{border:2px solid var(--warn)} .frise .pt.critique .ico,.frise .pt.vide .ico{border:2px solid var(--bad)} .frise .pt.neutre .ico{border:2px solid var(--line2)}
 .frise .pt svg{width:12px;height:12px}
 .legende{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:0 2px 10px}
@@ -103,6 +124,10 @@ nav.onglets button:hover{color:var(--ink)}
 #detail .equipe li{padding:2px 0;border-bottom:1px solid var(--line)}
 #detail .equipe li:last-child{border-bottom:0}
 #detail .role{font-size:11px;color:var(--muted);font-family:"Roboto Mono",monospace;margin-left:6px}
+#detail .lienpost{background:none;border:0;padding:2px 0;cursor:pointer;text-align:left;width:100%;color:var(--ink2);display:flex;gap:8px;align-items:center}
+#detail .lienpost:hover{color:var(--ink)}
+#detail .lienpost .t{font-size:11px;color:var(--muted);flex:none}
+#detail .lienpost .pill{margin-left:auto}
 #detail .viol{font-size:12.5px;padding:4px 8px;border-left:3px solid var(--bad);background:var(--bad-soft);margin:4px 0;border-radius:2px}
 #detail .viol.alerte{border-left-color:var(--warn);background:var(--warn-soft)}
 #detail h4{font-size:11.5px;font-weight:500;color:var(--muted);margin:10px 0 4px;letter-spacing:.03em;text-transform:uppercase}
@@ -310,6 +335,8 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   const envoyer = document.getElementById('envoyer');
   const etat = document.getElementById('etat');
   const cle = new URLSearchParams(location.search).get('k') || '';
+  const variante = new URLSearchParams(location.search).get('v') || '';
+  if (variante) document.body.dataset.v = variante;
   let session = null, occupe = false, donnees = null, selection = null;
   try { session = localStorage.getItem('rubalise.session'); } catch (e) {}
   marked.setOptions({ breaks: true, gfm: true });
@@ -458,12 +485,12 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     const parSite = {}; d.postes.forEach(p => { (parSite[p.site] = parSite[p.site] || []).push(p); });
     // frise
     let html = '<div class="frise"><div class="axe"></div>';
-    let xPrec = -100;
     pts.forEach((p, i) => {
       const cr = (parSite[p.nom] || []).filter(x => estJourCourse(x, d));
       const k = cr.reduce((worst, x) => { const c = classeDe(x, plan); return RANG[c] > RANG[worst] ? c : worst; }, plan ? (cr.length ? 'ok' : 'neutre') : 'neutre');
-      const xp = p.km / total * 100, proche = (xp - xPrec) < 16; xPrec = xp;
-      html += '<div class="pt ' + k + (proche ? ' haut bas' : '') + '" style="left:' + xp + '%" title="' + esc(LIBELLE[k]) + '"><div class="nom">' + esc(p.nom) + '</div><div class="ico">' + ICONES[k] + '</div><div class="km">km ' + p.km + '</div><div class="alt">' + (p.km === 0 ? 'départ ' + h(p.premier) : h(p.premier) + ' à ' + h(p.dernier)) + (p.barriere ? '<br>barrière ' + h(p.barriere) : '') + '</div></div>';
+      const xp = p.km / total * 100;
+      const sous = p.km === 0 ? 'départ ' + h(p.premier) : (p.barriere ? 'barrière ' + h(p.barriere) : '');
+      html += '<button type="button" class="pt ' + k + (selection === 'point:' + p.nom ? ' sel' : '') + '" data-point="' + esc(p.nom) + '" style="left:' + xp + '%" title="' + esc(p.nom) + ' : ' + esc(LIBELLE[k]) + '"><div class="nom">' + esc(p.nom) + '</div><div class="ico">' + ICONES[k] + '</div><div class="km">km ' + p.km + '</div><div class="alt">' + sous + '</div></button>';
     });
     html += '</div>';
     html += '<div class="legende"><span><i style="background:var(--ok)"></i>complet</span><span><i style="background:#C08A1E"></i>un peu juste : ça tient, du renfort serait bienvenu</span><span><i style="background:var(--bad)"></i>il manque du monde, ou un responsable</span><span><i style="background:var(--bad-soft);border:1px solid var(--bad)"></i>personne</span>' + (plan ? '' : '<span><i style="background:var(--line2)"></i>pas encore de plan : demande « Calcule un plan »</span>') + '</div>';
@@ -480,7 +507,8 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     if (lendemain.length) { const a = new Date(jc); a.setDate(a.getDate() + 1); a.setHours(13, 0); const b = new Date(a); b.setHours(19, 0); html += planning('Dimanche, le lendemain', lendemain, sites, a, b, plan); }
     zone.innerHTML = html;
     zone.querySelectorAll('.barre').forEach(b => b.addEventListener('click', () => selectionner(b.dataset.id)));
-    if (selection) selectionner(selection);
+    zone.querySelectorAll('.frise .pt').forEach(b => b.addEventListener('click', () => selectionnerPoint(b.dataset.point)));
+    if (selection && selection.startsWith('point:')) selectionnerPoint(selection.slice(6)); else if (selection) selectionner(selection);
   }
 
   function planning(titre, postes, ordreSites, debutAxe, finAxe, plan){
@@ -507,8 +535,33 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   function fermerDetail(){ selection = null; document.getElementById('detail').hidden = true; document.querySelectorAll('.barre.sel').forEach(b => b.classList.remove('sel')); }
   document.getElementById('detail-fermer').addEventListener('click', fermerDetail);
 
+  function selectionnerPoint(nom){
+    selection = 'point:' + nom;
+    document.querySelectorAll('.barre').forEach(b => b.classList.remove('sel'));
+    document.querySelectorAll('.frise .pt').forEach(b => b.classList.toggle('sel', b.dataset.point === nom));
+    const d = donnees, p = (d.course.points_de_passage || []).find(x => x.nom === nom); if (!p) return;
+    const plan = d.plan;
+    const cr = d.postes.filter(x => x.site === nom).slice().sort((a, b) => a.debut.localeCompare(b.debut));
+    const k = cr.filter(x => estJourCourse(x, d)).reduce((worst, x) => { const c = classeDe(x, plan); return RANG[c] > RANG[worst] ? c : worst; }, plan ? 'ok' : 'neutre');
+    document.getElementById('detail').hidden = false;
+    document.getElementById('detail-titre').innerHTML = esc(p.nom) + '<span class="pill ' + k + '">' + LIBELLE[k] + '</span><span class="spacer"></span><button class="btn lien" id="detail-fermer" type="button" aria-label="Fermer">fermer</button>';
+    document.getElementById('detail-fermer').addEventListener('click', fermerDetail);
+    let s = '<dl><dt>Kilomètre</dt><dd>' + p.km + (p.altitude_m ? ', ' + p.altitude_m + ' m d\'altitude' : '') + '</dd>';
+    if (p.km === 0) s += '<dt>Départ</dt><dd>' + jh(p.premier) + '</dd>';
+    else s += '<dt>Coureurs</dt><dd>premier attendu à ' + h(p.premier) + ', dernier à ' + h(p.dernier) + '</dd>';
+    if (p.barriere) s += '<dt>Barrière</dt><dd>' + h(p.barriere) + ' : les coureurs arrivés après sont arrêtés</dd>';
+    if (p.services && p.services.length) s += '<dt>Sur place</dt><dd>' + esc(p.services.join(', ').replace(/_/g, ' ')) + '</dd>';
+    if (p.acces) s += '<dt>Accès</dt><dd>' + esc(p.acces) + '</dd>';
+    s += '</dl><h4>Les créneaux de ce poste</h4>';
+    if (!cr.length) s += '<p class="note">Aucun créneau sur ce point.</p>';
+    else s += '<ul class="equipe">' + cr.map(x => { const kk = classeDe(x, plan); return '<li><button type="button" class="lienpost" data-id="' + esc(x.id) + '"><span class="t mono">' + jh(x.debut) + '</span> ' + esc(nomCourt(x)) + '<span class="pill ' + kk + '">' + (plan ? esc(texteBarre(x, plan) || LIBELLE[kk]) : x.min + ' à ' + x.ideal + ' attendus') + '</span></button></li>'; }).join('') + '</ul>';
+    const corps = document.getElementById('detail-corps'); corps.innerHTML = s;
+    corps.querySelectorAll('.lienpost').forEach(b => b.addEventListener('click', () => selectionner(b.dataset.id)));
+  }
+
   function selectionner(id){
     selection = id;
+    document.querySelectorAll('.frise .pt').forEach(b => b.classList.remove('sel'));
     document.querySelectorAll('.barre').forEach(b => b.classList.toggle('sel', b.dataset.id === id));
     const p = donnees.postes.find(x => x.id === id); if (!p) return;
     const plan = donnees.plan, k = classeDe(p, plan), c = couverture(p);
