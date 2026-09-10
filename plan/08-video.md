@@ -15,6 +15,23 @@ Règle du concours : démo qui marche + pitch (problème, pour qui, pourquoi ça
 | 4:05 - 4:30 | Tableau des résultats mesurés, puis 8 secondes de traces AgentCore Observability | « Tout est mesuré : la traduction, la lecture du roadbook, dix scénarios de solveur. L'agent est hébergé sur AgentCore. » |
 | 4:30 - 4:45 | Le schéma, avec « trail.json » surligné, puis le mot fin | « Un triathlon, c'est un autre fichier de gabarit. Et après la course, l'agent relit le journal et propose ce qu'il faut changer l'an prochain. Les bénévoles font tourner les courses ; celui qui les organise mérite un outil. » |
 
+## Voix off en anglais
+
+Règle Devpost : « All Submission materials must be in English or, if not in English, the Entrant must provide an English translation of the demonstration video, text description, and testing instructions ». Voix off en anglais, écran en français (course suisse, on le dit une fois au début). Phrases courtes, faciles à dire.
+
+| Temps | Voix off |
+|---|---|
+| 0:00 - 0:30 | On every trail race, someone spends their evenings doing this. A hundred volunteers, fifty shifts, a PDF made of images, and a form where people write whatever they want. One gap in one shift means a runner alone on a road at night. Big races buy a platform. Small races have Excel and good will. |
+| 0:30 - 0:50 | Rubalise is a Strands agent that talks with the organizer, an MCP server of tools, a constraint solver, and a second agent, the contradictor, that reviews every plan with fresh eyes. The model never computes the schedule. It reads, translates and explains. |
+| 0:50 - 1:35 | The race is in Switzerland, so the interface and the messages are in French. Phase one. The agent reads the PDF the way a person would, line by line, and says what it is not sure about. The organizer corrects it in plain French. A template turns the race sheet into sixty shifts: aid stations, sweepers, bib pickup, race control. |
+| 1:35 - 2:35 | Phase two. Each line of the form becomes closed fields the solver understands. Ninety-nine out of a hundred are correct. The solver returns a full plan in ten seconds, and above all it names what is missing: a four-by-four on Friday, and why nobody else can do it. Then the contradictor: a post leader whose three companions carry the whole post, a thirteen-hour day. No rule said that. |
+| 2:35 - 3:05 | Nothing goes out without the organizer. The confirmation lives in the code, not in the prompt. Every decision is logged, with who took it and why. |
+| 3:05 - 4:05 | Race day is where it matters. The published plan is a commitment. Every change has a cost, and a higher one when the person is already on site. The solver repairs with as few moves as possible, finished shifts never move, and the agent says what it cannot fix. |
+| 4:05 - 4:30 | Everything is measured: the translation, the roadbook reading, ten solver scenarios. The agent runs on Amazon Bedrock AgentCore. |
+| 4:30 - 4:45 | A triathlon is just another template file. After the race, the agent reads the log and suggests what to change next year. Volunteers make races happen. The person who organizes them deserves a tool. |
+
+Sur Devpost, la description du projet et les instructions de test sont en anglais aussi (le README l'est déjà, on le reprend).
+
 ## Messages à taper pendant l'enregistrement (mode interactif)
 
 1. Où en est-on ?
