@@ -58,7 +58,8 @@ Image : le schéma, que j'anime bloc par bloc au rythme de ta voix.
 > So the plan comes from a constraint solver. It takes about ten seconds,
 > and it can tell you why there wasn't a better answer.
 >
-> The agent running all of this is the orchestrator. It's a Strands agent.
+> The agent running all of this is the orchestrator.
+> It's built with Strands, the open-source agent SDK from AWS.
 > It talks to the organizer and it calls the tools.
 >
 > Then there's a second agent, and I call it the contradictor.
