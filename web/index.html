@@ -70,6 +70,11 @@ nav.onglets button:hover{color:var(--ink)}
 .panel h2 .spacer{flex:1}
 .panel h2 .info{font-family:"Roboto Mono",monospace;font-size:11.5px;color:var(--muted);font-weight:400}
 .note{font-size:12px;color:var(--muted)}
+.travail{display:inline-flex;align-items:center;gap:7px;font-family:"Roboto Mono",monospace;font-size:11.5px;color:var(--warn);font-weight:400}
+.travail .rond{width:12px;height:12px;border-radius:50%;border:2px solid var(--warn-soft);border-top-color:var(--warn);animation:tourne .9s linear infinite}
+@keyframes tourne{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.travail .rond{animation:none}}
+.gauche.occupe #course{opacity:.55;pointer-events:none}
 
 /* poste de commandement */
 .cockpit{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:12px;flex:1;min-height:0}
@@ -201,7 +206,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   <div class="vue" id="vue-course">
     <div class="cockpit">
       <section class="panel gauche">
-        <h2>La course, poste par poste <span class="spacer"></span><span id="course-info" class="info"></span><button class="btn small" id="rafraichir" type="button">Rafraîchir</button></h2>
+        <h2>La course, poste par poste <span class="spacer"></span><span id="course-travail" class="travail" hidden><span class="rond"></span><span id="course-travail-texte">calcul en cours</span></span><span id="course-info" class="info"></span><button class="btn primary small" id="calculer" type="button">Calculer le plan</button><button class="btn small" id="rafraichir" type="button">Actualiser</button></h2>
         <div id="course"><p class="note">Lecture de l'état de la session.</p></div>
       </section>
       <div class="droite">
@@ -388,6 +393,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     const attente = ajouter('agent', '', {classe: 'pending', brut: true});
     attente.querySelector('.corps').innerHTML = '<span class="tick"></span>L\'agent travaille. Un plan complet (solveur, vérification, relecture) prend 60 à 90 secondes.';
     setEtat('appel en cours', 'busy');
+    travail(true, /plan/i.test(message) ? 'calcul du plan en cours' : "l'agent travaille");
     try {
       const r = await fetch('invoke?k=' + encodeURIComponent(cle), {
         method: 'POST', headers: {'Content-Type': 'application/json'},
@@ -406,6 +412,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
         if (data.statut === 'fini' || data.statut === 'erreur') break;
         if (Date.now() - debut > 600000) throw new Error('pas de réponse après 10 minutes');
         setEtat('appel en cours, ' + Math.round((Date.now() - debut) / 1000) + ' s', 'busy');
+        travail(true, (/plan/i.test(message) ? 'calcul du plan, ' : "l'agent travaille, ") + Math.round((Date.now() - debut) / 1000) + ' s');
       }
       attente.remove();
       if (data.statut === 'erreur') throw new Error(data.result);
@@ -417,7 +424,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
       attente.remove();
       ajouter('agent', 'Erreur : ' + err.message + '. Réessaie dans un instant ; si ça persiste, la session a peut-être expiré, ouvre-en une nouvelle.', {brut: true});
       setEtat('erreur', 'err');
-    } finally { occupe = false; envoyer.disabled = false; entree.focus(); }
+    } finally { occupe = false; envoyer.disabled = false; travail(false); entree.focus(); }
   }
 
   envoyer.addEventListener('click', () => poser(entree.value));
@@ -468,6 +475,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   async function chargerCourse(){
     const zone = document.getElementById('course');
     if (!donnees) zone.innerHTML = '<p class="note"><span class="tick"></span>Lecture de l\'état de la session (quelques secondes, une dizaine si la session est nouvelle).</p>';
+    if (!occupe) travail(true, 'lecture de la session');
     try {
       const r = await fetch('etat?k=' + encodeURIComponent(cle) + '&session=' + encodeURIComponent(assurerSession()), {cache: 'no-store'});
       const d = await r.json();
@@ -475,7 +483,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
       donnees = d.etat; rendreCourse(); rendreDoc(); if (!occupe) setEtat(sessionCourte());
     } catch (err) {
       zone.innerHTML = '<p class="note">Impossible de lire l\'état : ' + esc(err.message) + '</p>';
-    }
+    } finally { if (!occupe) travail(false); }
   }
 
   function jourCourse(d){ const x = new Date(d.course.depart.date_heure); x.setHours(0, 0, 0, 0); return x; }
@@ -599,6 +607,13 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     });
   }
   document.getElementById('rafraichir').addEventListener('click', () => chargerCourse());
+  document.getElementById('calculer').addEventListener('click', () => poser(donnees && donnees.plan ? 'Recalcule le plan.' : 'Charge les données de la course et calcule un plan.'));
+  function travail(actif, texte){
+    const t = document.getElementById('course-travail'); t.hidden = !actif;
+    if (texte) document.getElementById('course-travail-texte').textContent = texte;
+    document.querySelector('.cockpit .gauche').classList.toggle('occupe', actif);
+    document.getElementById('calculer').disabled = actif;
+  }
 
   // ---- notre course
   function rendreDoc(){
