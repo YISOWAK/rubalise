@@ -1,10 +1,10 @@
 # Le texte à lire, scène par scène
 
-Une ligne = un souffle. Marque un temps à chaque ligne vide. Lis lentement, plus lentement que ça ne te paraît naturel : à l'écran ça passe bien.
+Anglais parlé, phrases entières, comme si tu expliquais à un collègue. Une ligne vide = un temps. Lis lentement.
 
 Mots à articuler : **SwissPeaks** (pas « Swiss peak »), **Rubalise** (roo-bah-LEEZ), **roadbook**, **cut-off**, **contradictor** (con-tra-DIC-tor), **Strands**.
 
-Tu n'enregistres l'écran que pour les scènes 3 et 4. Les scènes 1, 2 et 5 sont des images que j'ai déjà préparées dans `video/brut/`.
+Tu n'enregistres l'écran que pour les scènes 3 et 4. Les scènes 1, 2 et 5 sont des images déjà prêtes dans `video/brut/`.
 
 ---
 
@@ -14,122 +14,114 @@ Images : les trois photos, dix secondes chacune. Prise 2 gardée.
 
 ---
 
-## Scène 2 A · les deux documents · environ 65 s
+## Scène 2 A · les deux documents · environ 67 s
 
-Images (je les enchaîne) : la page du roadbook en entier, puis le tableau des points de passage en gros plan, puis le formulaire.
+Images : la page du roadbook, puis le tableau des points de passage en gros plan, puis le formulaire.
 
-> Two documents land on that person's desk.
+> So here's what the organizer starts with.
 >
-> The first one is the roadbook.
-> The part they need is a photograph of a table.
-> Every checkpoint of the race. The hour the first runner is expected.
-> The hour the last one is.
-> And the hour after which the mountain closes behind them.
+> The first thing is the roadbook. It's a PDF, and the page I care about
+> is basically a screenshot of a spreadsheet.
+> It lists every checkpoint, what time the fastest runner gets there,
+> what time the slowest one does, and the cut-off time, after which you're out of the race.
 >
-> The second one is the sign-up form.
-> A hundred people, writing in their own words.
+> The second thing is the sign-up form.
+> A hundred people filled it in, and they wrote in normal sentences.
 >
-> One of them is running the race himself, and offers Friday evening instead.
-> One is coming with three friends, and wants an aid station for the four of them.
-> One writes: put me at Taney, I love that place. I'm seventy-one, still fit.
+> One guy is running the race himself, so he can only help on Friday evening.
+> A woman is coming with three friends, and they'd like an aid station together.
+> Another one says: put me at Taney, I love that place, I'm seventy-one and still fit.
 >
-> None of that is data. It's paper, and it's people.
+> From those two files, one person has to work out who's where and at what time,
+> over three days and fifty shifts.
 >
-> And out of it, one person has to say who stands where, and at what hour,
-> across three days and fifty shifts.
->
-> Get it wrong, and at two in the morning
-> a runner comes down a mountain road to an empty aid station.
->
-> Those are the evenings I wanted to give back.
+> If they get it wrong, someone reaches an aid station at two in the morning
+> and there's nobody there.
 
 ---
 
-## Scène 2 B · comment ça marche · environ 70 s
+## Scène 2 B · comment ça marche · environ 85 s
 
-Image : le schéma, que j'anime bloc par bloc au rythme de ta voix. Tu n'as rien à filmer.
+Image : le schéma, que j'anime bloc par bloc au rythme de ta voix.
 
-> So how do you turn that into a schedule?
+> So how do you go from that to a schedule?
 >
-> You start by reading the roadbook the way a person would.
-> One model call on the pages, and it comes back with the checkpoints, the hours, the cut-offs,
-> and an honest list of what it couldn't make out.
+> First you read the roadbook.
+> That's one model call on the pages as images.
+> It gives back the checkpoints, the times, the cut-offs,
+> and a list of what it wasn't sure about, so the organizer can check.
 >
-> Then the form.
-> One call per line, and what a volunteer wrote in his own words
-> becomes fields the program can reason about.
+> Then the form. One call per line, and what someone wrote becomes real fields.
 >
-> And then you have to build the thing.
-> This is where I stopped trusting the model.
-> A language model is bad at counting, and worse at holding fifty constraints at once.
-> So the plan comes from a constraint solver. Ten seconds.
-> And it tells you not just the answer, but why there was no better one.
+> Then you build the schedule, and that part is not done by the model.
+> Language models are bad at counting, and bad at respecting fifty constraints at the same time.
+> So the plan comes from a constraint solver. It takes about ten seconds,
+> and it can tell you why there wasn't a better answer.
 >
-> The agent around all of this is the orchestrator.
-> It talks to the organizer, and it calls those tools.
+> The agent running all of this is the orchestrator. It's a Strands agent.
+> It talks to the organizer and it calls the tools.
 >
-> And there's a second agent. I call it the contradictor.
-> It reads the finished plan with no memory of how it was made,
-> and it looks for what no rule covers.
-> A thirteen-hour day. A post held up by one family.
-> It changes nothing. It just says what it sees.
+> Then there's a second agent, and I call it the contradictor.
+> It gets the finished plan without knowing how it was built,
+> and it looks for problems that no rule describes.
+> Someone working thirteen hours, or a checkpoint where one family does everything.
+> It can't change anything, it just reports.
 >
-> Nothing is ever sent without the organizer.
-> That confirmation lives in the code, not in the prompt.
+> And nothing is sent to the volunteers unless the organizer says yes.
+> That check is in the code, not in the prompt.
 
-Enregistre A et B dans deux fichiers, `video/voix/voix2a.m4a` et `voix2b.m4a`. Plus court à refaire si une phrase tombe mal.
+Enregistre A et B dans deux fichiers, `video/voix/voix2a.m4a` et `voix2b.m4a`.
 
 ---
 
-## Scène 3 · la course à l'écran · environ 50 s · **tu filmes**
+## Scène 3 · la course à l'écran · environ 55 s · **tu filmes**
 
 Onglet **Course**, plan déjà calculé. Tu cliques un point de la frise, puis un créneau, puis « Toute la course ».
 
-> Here is what comes out.
+> This is what comes out.
 >
-> Every checkpoint, with the state of its team.
-> Green when it's complete. Orange when it's a bit short. Red when someone is missing.
+> Every checkpoint has a colour. Green if the team is complete,
+> orange if it's a bit short, red if someone is missing.
 >
-> Underneath, the schedule itself, shift by shift, over three days.
-> I click on a checkpoint, and only its shifts remain.
-> A shift tells you who is there, who leads it, and what is missing, with the reason.
+> Underneath is the schedule, shift by shift, over three days.
+> I click on a checkpoint and I only see its shifts.
+> A shift tells me who's working, who's in charge, and what's missing and why.
 >
-> On the whole race, one person is missing.
-> A four-by-four driver on Friday, and the agent tells you why nobody else can take it.
+> On this plan, one person is missing in the whole race.
+> It's a four-by-four driver on Friday, and the agent explains why nobody else can do it.
 >
 > The contradictor had things to say too.
-> A post leader whose three companions are carrying the entire post.
-> A thirteen-hour day.
-> Nobody had written a rule for either of those.
+> One team leader brought three friends, and those three are doing most of the work
+> at that checkpoint. Nobody had written a rule about that.
 
 ---
 
-## Scène 4 · le jour J · environ 40 s · **tu filmes**
+## Scène 4 · le jour J · environ 33 s · **tu filmes**
 
 Le chat. Tu tapes le message, tu laisses tourner, l'attente se coupe au montage.
 
-> Now, race day. This is the part that matters.
+> And then there's race day, which is really the point.
 >
-> It's eleven in the morning, and two volunteers are not coming.
+> It's eleven in the morning and two volunteers aren't coming.
 > I tell the agent, the way I'd tell a colleague.
 >
-> It finds who is affected, and repairs the plan with as few moves as it can.
-> Shifts already finished never move.
-> People already standing at a post are flagged: those you call yourself.
+> It finds who's affected and fixes the plan with as few changes as possible.
+> Shifts that are already over don't move.
+> People who are already at their post get flagged, because those you call yourself.
 >
-> And it asks before it publishes anything.
+> And it asks before it sends anything.
 
 ---
 
-## Scène 5 · la fin · environ 25 s
+## Scène 5 · la fin · environ 23 s
 
 Image : le tableau des mesures, puis le lien du dépôt.
 
-> All of this is measured.
-> The roadbook reading, the form, ten solver scenarios, the race-day repairs.
+> Everything here is measured. The roadbook reading, the form,
+> ten solver scenarios, the race-day repairs.
 >
 > It runs on Amazon Bedrock AgentCore, and the code is public.
-> A triathlon is just another template file.
+> For a triathlon, it's another template file.
 >
 > Volunteers make races happen.
-> The person who organizes them deserves a tool.
+> The person who organizes them should have a decent tool.
