@@ -201,7 +201,7 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
   <nav class="onglets" role="tablist">
     <button role="tab" aria-selected="true" data-vue="course">Course</button>
     <button role="tab" aria-selected="false" data-vue="doc">Notre course</button>
-    <button role="tab" aria-selected="false" data-vue="archi">Comment ça marche</button>
+    <button role="tab" aria-selected="false" data-vue="archi">How it works</button>
   </nav>
 
   <!-- Poste de commandement -->
@@ -291,46 +291,46 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
     </section>
   </div>
 
-  <!-- Comment ça marche -->
+  <!-- How it works -->
   <div class="vue" id="vue-archi" hidden>
     <section class="panel" style="flex:1;min-height:0">
-      <h2>Comment ça marche</h2>
+      <h2>How it works</h2>
       <div class="doc" id="archi">
         <div class="texte">
-          <p>Un responsable bénévoles dépose le roadbook et le formulaire d'inscription. L'assistant en fait des postes et des bénévoles structurés, un solveur calcule le plan, deux relectures le contrôlent, et rien ne part sans que l'organisateur le dise. Le jour de la course, il répare avec le moins de mouvements possible.</p>
+          <p>A volunteer coordinator drops in the roadbook and the sign-up form. The assistant turns them into structured posts and volunteers, a solver computes the plan, two reviews check it, and nothing goes out unless the organizer says so. On race day, it repairs the plan with as few moves as possible.</p>
         </div>
         {{ARCHITECTURE_SVG}}
         <div class="texte">
-          <h3>Ce que fait chaque brique</h3>
+          <h3>What each block does</h3>
           <table>
-            <tr><th>Brique</th><th>Rôle</th><th>Nature</th></tr>
-            <tr><td>Orchestrateur</td><td>Tient la conversation, appelle les outils dans l'ordre pour préparer la course, raisonne librement le jour J</td><td>agent Strands, Claude Sonnet 4.6</td></tr>
-            <tr><td>Contradicteur</td><td>Relit chaque plan avec un contexte vierge et rend des remarques classées par gravité ; ne modifie rien</td><td>agent Strands, Claude Opus 4.6</td></tr>
-            <tr><td>Lire le roadbook</td><td>Des pages de PDF en image vers une fiche de course fermée, avec les doutes à relire</td><td>un appel au modèle, schéma JSON strict</td></tr>
-            <tr><td>Traduire les dispos</td><td>Chaque ligne du formulaire (texte libre) vers les champs que le solveur comprend, plus des remarques étiquetées</td><td>un appel au modèle par ligne</td></tr>
-            <tr><td>Construire les postes</td><td>La fiche de course et un gabarit « trail » vers 50 à 60 créneaux datés</td><td>code</td></tr>
-            <tr><td>Solveur</td><td>Affecte 100 personnes sur 50 créneaux : contraintes dures, objectif pondéré, coût des changements le jour J</td><td>code, OR-Tools CP-SAT, moins de 10 s</td></tr>
-            <tr><td>Vérificateur</td><td>9 règles bloquantes, 11 alertes, doublons par téléphone</td><td>code</td></tr>
-            <tr><td>Journal</td><td>Qui a décidé quoi, quand, pourquoi ; jamais effacé</td><td>code</td></tr>
+            <tr><th>Block</th><th>Role</th><th>Nature</th></tr>
+            <tr><td>Orchestrator</td><td>Holds the conversation, calls the tools in order to prepare the race, reasons freely on race day</td><td>Strands agent, Claude Sonnet 4.6</td></tr>
+            <tr><td>Contradictor</td><td>Re-reads every plan with a blank context and returns findings ranked by severity; changes nothing</td><td>Strands agent, Claude Opus 4.6</td></tr>
+            <tr><td>Read the roadbook</td><td>PDF pages as images to a closed race sheet, with the doubts to double-check</td><td>one model call, strict JSON schema</td></tr>
+            <tr><td>Translate the form</td><td>Each free-text line of the sign-up form to the fields the solver understands, plus labelled remarks</td><td>one model call per line</td></tr>
+            <tr><td>Build the posts</td><td>The race sheet and a &laquo;&nbsp;trail&nbsp;&raquo; template to 50 to 60 dated shifts</td><td>code</td></tr>
+            <tr><td>Solver</td><td>Assigns 100 people to 50 shifts: hard constraints, weighted objective, a cost for every change on race day</td><td>code, OR-Tools CP-SAT, under 10 s</td></tr>
+            <tr><td>Checker</td><td>9 blocking rules, 11 warnings, duplicates by phone number</td><td>code</td></tr>
+            <tr><td>Log</td><td>Who decided what, when, why; never erased</td><td>code</td></tr>
           </table>
-          <h3>Les principes</h3>
+          <h3>Principles</h3>
           <ul>
-            <li>Le modèle ne calcule jamais le planning. Il lit, traduit, explique, et remplit des formulaires fermés que du code vérifie. Chaque étape avec un modèle est mesurée contre une vérité connue.</li>
-            <li>Deux relectures : le code pour les règles écrites, un agent à contexte vierge pour ce qu'aucune règle ne dit.</li>
-            <li>L'humain garde la main par construction : publier, déroger, changer une règle passent par une confirmation vérifiée par le code, pas par le prompt.</li>
-            <li>Un plan publié est un engagement : le jour J, chaque changement coûte, et le solveur répare avec le moins de mouvements possible.</li>
-            <li>Les règles vivent dans un fichier que l'organisateur modifie depuis la conversation. Un autre type d'événement, c'est un autre gabarit.</li>
+            <li>The model never computes the schedule. It reads, translates, explains, and fills closed forms that code checks. Every step that uses a model is measured against a known truth.</li>
+            <li>Two reviews: code for the written rules, a blank-context agent for what no rule says.</li>
+            <li>The human keeps control by construction: publishing, waiving a rule or changing a rule all go through a confirmation checked by code, not by the prompt.</li>
+            <li>A published plan is a commitment: on race day every change has a cost, and the solver repairs with as few moves as possible.</li>
+            <li>The rules live in a file the organizer edits from the conversation. Another kind of event is another template.</li>
           </ul>
-          <h3>Ce qui a été mesuré</h3>
+          <h3>What was measured</h3>
           <table>
-            <tr><th>Quoi</th><th>Résultat</th></tr>
-            <tr><td>Traduction du formulaire, 100 lignes</td><td>{{SCORE_TRADUCTION}}</td></tr>
-            <tr><td>Lecture du roadbook, 5 pages</td><td>6 points de passage exacts (km, altitude, horaires, barrières) ; 2 icônes de service confondues et signalées comme doutes</td></tr>
-            <tr><td>Solveur, 50 créneaux et 100 bénévoles</td><td>plan complet en 10 s, une seule personne manquante (un 4x4 le vendredi), avec la raison ; sur 55 bénévoles, 19 personnes manquantes sur 11 créneaux, chacune nommée</td></tr>
-            <tr><td>Jour J, 5 absents à 6h30</td><td>1 retrait, 6 ajouts, 0,5 s, aucun créneau sous le minimum</td></tr>
-            <tr><td>Contradicteur, sans consigne</td><td>une responsable dont les trois accompagnants non listés portent tout le retrait des dossards, un bénévole seul nommé sur la réserve du soir, une journée de 13 heures, un enchaînement en 4x4 trop serré</td></tr>
+            <tr><th>What</th><th>Result</th></tr>
+            <tr><td>Form translation, 100 lines</td><td>{{SCORE_TRADUCTION}}</td></tr>
+            <tr><td>Roadbook reading, 5 pages</td><td>6 checkpoints exact (km, altitude, times, cut-offs); 2 service icons confused and flagged as doubts</td></tr>
+            <tr><td>Solver, 50 shifts and 100 volunteers</td><td>full plan in 10 s, one person missing (a 4x4 on Friday), with the reason; with 55 volunteers, 19 people missing across 11 shifts, each one named</td></tr>
+            <tr><td>Race day, 5 no-shows at 6:30</td><td>1 removal, 6 additions, 0.5 s, no shift below its minimum</td></tr>
+            <tr><td>Contradictor, unprompted</td><td>a post leader whose three unlisted companions carry the whole bib pickup, a lone volunteer named on the evening standby, a 13-hour day, a 4x4 chain too tight</td></tr>
           </table>
-          <p>Le code, les données et les notes de conception sont publics : <a href="https://github.com/YISOWAK/rubalise" target="_blank" rel="noopener">github.com/YISOWAK/rubalise</a>. Ce qui est réel : la course (roadbook public, trace GPS). Ce qui ne l'est pas : les 75 bénévoles, synthétiques, et les messages, écrits dans un fichier.</p>
+          <p>Code, data and design notes are public: <a href="https://github.com/YISOWAK/rubalise" target="_blank" rel="noopener">github.com/YISOWAK/rubalise</a>. What is real: the race (public roadbook, GPS track). What is not: the 100 volunteers, synthetic, and the messages, written in a file.</p>
         </div>
       </div>
     </section>

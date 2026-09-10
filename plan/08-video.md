@@ -50,7 +50,7 @@ Les étapes 2 et 4 prennent 40 s et 10 min : on les enregistre à part et on cou
 ## À préparer
 
 - 3 captures : page du roadbook, formulaire, fil WhatsApp (flouté ou inventé).
-- Le schéma en PNG (docs/architecture.svg).
+- Le schéma en anglais, déjà rendu en PNG : `docs/architecture.png` (2400 × 1700). Le français reste dans `docs/architecture_fr.svg`.
 - Le tableau des résultats en une image.
 - 8 secondes de traces AgentCore Observability dans la console.
 - Enregistrement : OBS ou l'enregistreur Windows (Win + Alt + R), voix off avec le micro du casque, montage dans Clipchamp (fourni avec Windows).

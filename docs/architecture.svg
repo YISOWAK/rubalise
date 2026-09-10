@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" class="diagram" viewBox="0 0 1200 850" role="img" aria-label="Schéma : l'organisateur dialogue avec l'orchestrateur, qui appelle des outils et consulte le contradicteur ; les outils lisent et écrivent l'état ; seul l'organisateur déclenche l'envoi aux bénévoles.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" class="diagram" viewBox="0 0 1200 850" role="img" aria-label="Diagram: the organizer talks with the orchestrator, which calls tools and consults the contradictor; the tools read and write the state; only the organizer triggers sending to volunteers.">
       <style>
   svg { font-family: "Segoe UI", Arial, sans-serif; color: #1E2429; background: #F3F5F4; }
   .box-agent { fill: rgba(217,83,11,0.10); stroke: #D9530B; stroke-width: 2.5; }
@@ -29,128 +29,129 @@
 
       <!-- Rangée 0 : humain, envoi, bénévoles -->
       <ellipse class="box-human" cx="600" cy="85" rx="185" ry="50"></ellipse>
-      <circle class="person" cx="462" cy="74" r="8"></circle>
-      <path class="person" d="M448,100 C448,88 476,88 476,100"></path>
-      <text class="t-title" x="610" y="76" text-anchor="middle">Organisateur</text>
-      <text class="t t-sub" x="610" y="96" text-anchor="middle">humain, dans le chat : dépose, corrige, arbitre, valide.</text>
-      <text class="t t-sub" x="610" y="112" text-anchor="middle">Rien ne part sans lui.</text>
+      <circle class="person" cx="445" cy="74" r="8"></circle>
+      <path class="person" d="M431,100 C431,88 459,88 459,100"></path>
+      <text class="t-title" x="610" y="76" text-anchor="middle">Organizer</text>
+      <text class="t t-sub" x="610" y="96" text-anchor="middle">in the chat: uploads, corrects, decides, approves.</text>
+      <text class="t t-sub" x="610" y="112" text-anchor="middle">Nothing goes out without them.</text>
 
       <rect class="box-code" x="830" y="50" width="160" height="70" rx="6"></rect>
-      <text class="t t-tool" x="910" y="80" text-anchor="middle">Envoyer</text>
-      <text class="t t-sub" x="910" y="98" text-anchor="middle">code, simulé pour la démo</text>
+      <text class="t t-tool" x="910" y="80" text-anchor="middle">Send</text>
+      <text class="t t-sub" x="910" y="98" text-anchor="middle">code, mocked for the demo</text>
 
       <ellipse class="box-human" cx="1115" cy="85" rx="66" ry="36"></ellipse>
-      <text class="t t-tool" x="1115" y="80" text-anchor="middle">Bénévoles</text>
-      <text class="t t-sub" x="1115" y="98" text-anchor="middle">feuilles de route</text>
+      <text class="t t-tool" x="1115" y="80" text-anchor="middle">Volunteers</text>
+      <text class="t t-sub" x="1115" y="98" text-anchor="middle">volunteer briefs</text>
 
       <line class="edge" x1="786" y1="85" x2="828" y2="85" marker-end="url(#arr)"></line>
-      <text class="t t-label" x="807" y="72" text-anchor="middle">valide, envoie</text>
+      <text class="t t-label" x="795" y="60" text-anchor="middle">approves,</text>
+      <text class="t t-label" x="805" y="74" text-anchor="middle">sends</text>
       <line class="edge" x1="990" y1="85" x2="1048" y2="85" marker-end="url(#arr)"></line>
       <text class="t t-label" x="1019" y="74" text-anchor="middle">messages</text>
 
       <!-- Rangée 1 : orchestrateur, contradicteur -->
       <rect class="box-agent" x="440" y="220" width="320" height="150" rx="10"></rect>
-      <text class="t-title" x="460" y="252">Orchestrateur</text>
-      <text class="t t-sub" x="460" y="276">agent Strands : un LLM qui boucle avec les outils</text>
-      <text class="t t-sub" x="460" y="296">phases 1 à 3 : l'ordre est connu, il enchaîne</text>
-      <text class="t t-sub" x="460" y="316">phase 4, le jour J : l'ordre est inconnu, il raisonne</text>
-      <text class="t t-sub" x="460" y="336">ne valide jamais seul</text>
+      <text class="t-title" x="460" y="252">Orchestrator</text>
+      <text class="t t-sub" x="460" y="276">Strands agent: an LLM looping over the tools</text>
+      <text class="t t-sub" x="460" y="296">phases 1 to 3: known order, it runs the steps</text>
+      <text class="t t-sub" x="460" y="316">phase 4, race day: unknown order, it reasons</text>
+      <text class="t t-sub" x="460" y="336">never approves on its own</text>
 
       <rect class="box-agent" x="880" y="220" width="290" height="150" rx="10"></rect>
-      <text class="t-title" x="900" y="252">Contradicteur</text>
-      <text class="t t-sub" x="900" y="276">agent, contexte vierge, modèle fort</text>
-      <text class="t t-sub" x="900" y="296">relit avec les règles et le bon sens</text>
-      <text class="t t-sub" x="900" y="316">cherche ce que le code ne voit pas</text>
-      <text class="t t-sub" x="900" y="336">ne modifie rien, ne parle qu'à l'orchestrateur</text>
+      <text class="t-title" x="900" y="252">Contradictor</text>
+      <text class="t t-sub" x="900" y="276">agent, blank context, strong model</text>
+      <text class="t t-sub" x="900" y="296">reviews with the rules and common sense</text>
+      <text class="t t-sub" x="900" y="316">looks for what the code cannot see</text>
+      <text class="t t-sub" x="900" y="336">edits nothing; talks to the orchestrator</text>
 
       <!-- Humain <-> orchestrateur -->
       <line class="edge" x1="540" y1="133" x2="540" y2="218" marker-end="url(#arr)"></line>
-      <text class="t t-label" x="530" y="168" text-anchor="end">roadbook, fichier de dispos,</text>
-      <text class="t t-label" x="530" y="184" text-anchor="end">ce qu'il sait, ses décisions</text>
+      <text class="t t-label" x="530" y="168" text-anchor="end">roadbook, availability file,</text>
+      <text class="t t-label" x="530" y="184" text-anchor="end">what they know, their decisions</text>
       <line class="edge" x1="660" y1="220" x2="660" y2="135" marker-end="url(#arr)"></line>
-      <text class="t t-label" x="670" y="168">questions, plan, trous,</text>
-      <text class="t t-label" x="670" y="184">propositions justifiées</text>
+      <text class="t t-label" x="670" y="168">questions, plan, gaps,</text>
+      <text class="t t-label" x="670" y="184">justified proposals</text>
 
       <!-- Orchestrateur <-> contradicteur -->
       <line class="edge-accent" x1="760" y1="265" x2="878" y2="265" marker-end="url(#arr-acc)"></line>
-      <text class="t t-label" x="820" y="254" text-anchor="middle">plan ou proposition</text>
+      <text class="t t-label" x="820" y="254" text-anchor="middle">plan or proposal</text>
       <line class="edge-accent" x1="880" y1="325" x2="762" y2="325" marker-end="url(#arr-acc)"></line>
-      <text class="t t-label" x="820" y="345" text-anchor="middle">remarques</text>
+      <text class="t t-label" x="820" y="345" text-anchor="middle">findings</text>
 
       <!-- Rangée 2 : outils -->
       <rect class="group" x="200" y="450" width="800" height="220" rx="12"></rect>
-      <text class="t-group" x="222" y="476">Outils</text>
-      <text class="t t-sub" x="290" y="476">exposés par un serveur MCP, appelés par l'orchestrateur, testables sans LLM</text>
+      <text class="t-group" x="222" y="476">Tools</text>
+      <text class="t t-sub" x="290" y="476">exposed by an MCP server, called by the orchestrator, testable without an LLM</text>
 
       <line class="edge" x1="600" y1="370" x2="600" y2="448" marker-end="url(#arr)"></line>
-      <text class="t t-label" x="612" y="414">appelle</text>
+      <text class="t t-label" x="612" y="414">calls</text>
 
       <rect class="box-llm" x="230" y="492" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="315" y="519" text-anchor="middle">Lire le roadbook</text>
-      <text class="t t-sub" x="315" y="538" text-anchor="middle">LLM, une passe</text>
+      <text class="t t-tool" x="315" y="519" text-anchor="middle">Read the roadbook</text>
+      <text class="t t-sub" x="315" y="538" text-anchor="middle">LLM, one pass</text>
 
       <rect class="box-llm" x="420" y="492" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="505" y="519" text-anchor="middle">Traduire les dispos</text>
-      <text class="t t-sub" x="505" y="538" text-anchor="middle">LLM, une passe par ligne</text>
+      <text class="t t-tool" x="505" y="519" text-anchor="middle">Translate the form</text>
+      <text class="t t-sub" x="505" y="538" text-anchor="middle">LLM, one pass per line</text>
 
       <rect class="box-code" x="610" y="492" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="695" y="519" text-anchor="middle">Construire les postes</text>
-      <text class="t t-sub" x="695" y="538" text-anchor="middle">code : lesquels, quand, combien</text>
+      <text class="t t-tool" x="695" y="519" text-anchor="middle">Build the posts</text>
+      <text class="t t-sub" x="695" y="538" text-anchor="middle">code: which, when, how many</text>
 
       <rect class="box-code" x="800" y="492" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="885" y="519" text-anchor="middle">Solveur d'affectation</text>
+      <text class="t t-tool" x="885" y="519" text-anchor="middle">Assignment solver</text>
       <text class="t t-sub" x="885" y="538" text-anchor="middle">code, OR-Tools CP-SAT</text>
 
       <rect class="box-code" x="230" y="584" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="315" y="611" text-anchor="middle">Vérifier les règles</text>
-      <text class="t t-sub" x="315" y="630" text-anchor="middle">code, bloquantes et alertes</text>
+      <text class="t t-tool" x="315" y="611" text-anchor="middle">Check the rules</text>
+      <text class="t t-sub" x="315" y="630" text-anchor="middle">code, blocking and warnings</text>
 
       <rect class="box-llm" x="420" y="584" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="505" y="611" text-anchor="middle">Feuilles de route</text>
-      <text class="t t-sub" x="505" y="630" text-anchor="middle">LLM, une passe par bénévole</text>
+      <text class="t t-tool" x="505" y="611" text-anchor="middle">Volunteer briefs</text>
+      <text class="t t-sub" x="505" y="630" text-anchor="middle">LLM, one pass per volunteer</text>
 
       <rect class="box-code" x="610" y="584" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="695" y="611" text-anchor="middle">Règles</text>
-      <text class="t t-sub" x="695" y="630" text-anchor="middle">code : lire, ajouter, déroger</text>
+      <text class="t t-tool" x="695" y="611" text-anchor="middle">Rules</text>
+      <text class="t t-sub" x="695" y="630" text-anchor="middle">code: read, add, waive</text>
 
       <rect class="box-code" x="800" y="584" width="170" height="64" rx="6"></rect>
-      <text class="t t-tool" x="885" y="611" text-anchor="middle">Journal</text>
-      <text class="t t-sub" x="885" y="630" text-anchor="middle">code : qui, quoi, quand, pourquoi</text>
+      <text class="t t-tool" x="885" y="611" text-anchor="middle">Log</text>
+      <text class="t t-sub" x="885" y="630" text-anchor="middle">code: who, what, when, why</text>
 
       <!-- Contradicteur lit l'état -->
       <path class="edge-accent edge-dashed" d="M1025,370 L1025,718" marker-end="url(#arr-acc)"></path>
-      <text class="t t-label" x="1037" y="548">lit l'état,</text>
-      <text class="t t-label" x="1037" y="564">jamais n'écrit</text>
+      <text class="t t-label" x="1037" y="548">reads the state,</text>
+      <text class="t t-label" x="1037" y="564">never writes</text>
 
       <!-- Rangée 3 : état -->
       <rect class="group" x="200" y="720" width="980" height="110" rx="12"></rect>
-      <text class="t-group" x="222" y="746">État</text>
-      <text class="t t-sub" x="270" y="746">fichiers JSON pour la v1, AgentCore Memory ensuite. Tout ce que les agents savent est ici, pas dans leur mémoire.</text>
+      <text class="t-group" x="222" y="746">State</text>
+      <text class="t t-sub" x="292" y="746">JSON files for v1, AgentCore Memory next. Everything the agents know lives here, not in their memory.</text>
 
       <line class="edge" x1="600" y1="670" x2="600" y2="718" marker-start="url(#arr)" marker-end="url(#arr)"></line>
-      <text class="t t-label" x="612" y="699">lit, écrit</text>
+      <text class="t t-label" x="612" y="699">reads, writes</text>
 
       <rect class="box-data" x="240" y="762" width="130" height="50" rx="6"></rect>
-      <text class="t t-tool" x="305" y="783" text-anchor="middle">Course</text>
-      <text class="t t-sub" x="305" y="800" text-anchor="middle">roadbook extrait</text>
+      <text class="t t-tool" x="305" y="783" text-anchor="middle">Race</text>
+      <text class="t t-sub" x="305" y="800" text-anchor="middle">extracted roadbook</text>
 
       <rect class="box-data" x="394" y="762" width="130" height="50" rx="6"></rect>
-      <text class="t t-tool" x="459" y="783" text-anchor="middle">Postes</text>
-      <text class="t t-sub" x="459" y="800" text-anchor="middle">créneaux, effectifs</text>
+      <text class="t t-tool" x="459" y="783" text-anchor="middle">Posts</text>
+      <text class="t t-sub" x="459" y="800" text-anchor="middle">shifts, headcounts</text>
 
       <rect class="box-data" x="548" y="762" width="130" height="50" rx="6"></rect>
-      <text class="t t-tool" x="613" y="783" text-anchor="middle">Bénévoles</text>
-      <text class="t t-sub" x="613" y="800" text-anchor="middle">dispos, contraintes</text>
+      <text class="t t-tool" x="613" y="783" text-anchor="middle">Volunteers</text>
+      <text class="t t-sub" x="613" y="800" text-anchor="middle">dates, constraints</text>
 
       <rect class="box-data" x="702" y="762" width="130" height="50" rx="6"></rect>
-      <text class="t t-tool" x="767" y="783" text-anchor="middle">Règles</text>
-      <text class="t t-sub" x="767" y="800" text-anchor="middle">modifiables par l'orga</text>
+      <text class="t t-tool" x="767" y="783" text-anchor="middle">Rules</text>
+      <text class="t t-sub" x="767" y="800" text-anchor="middle">organizer can edit</text>
 
       <rect class="box-data" x="856" y="762" width="130" height="50" rx="6"></rect>
       <text class="t t-tool" x="921" y="783" text-anchor="middle">Plan</text>
-      <text class="t t-sub" x="921" y="800" text-anchor="middle">brouillon, puis figé</text>
+      <text class="t t-sub" x="921" y="800" text-anchor="middle">draft, then frozen</text>
 
       <rect class="box-data" x="1010" y="762" width="130" height="50" rx="6"></rect>
-      <text class="t t-tool" x="1075" y="783" text-anchor="middle">Journal</text>
-      <text class="t t-sub" x="1075" y="800" text-anchor="middle">décisions horodatées</text>
+      <text class="t t-tool" x="1075" y="783" text-anchor="middle">Log</text>
+      <text class="t t-sub" x="1075" y="800" text-anchor="middle">dated decisions</text>
     </svg>

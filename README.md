@@ -27,6 +27,8 @@ The solver never solves a shortage of volunteers. It makes the shortage precise:
 
 ![Architecture](docs/architecture.svg)
 
+The same diagram in French: `docs/architecture_fr.svg`. A PNG for slides: `docs/architecture.png`.
+
 Two agents, one tool server, one state:
 
 | Component | Role | Implementation |

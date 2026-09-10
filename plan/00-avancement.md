@@ -59,6 +59,11 @@
 - Traduction re-mesurée sur 100 lignes : dispos 99/100 (le coureur, à raison), compétences 100, nuit 99, accompagnants, responsables, binômes 100. Comparateur corrigé pour les plages multiples par jour.
 - Noms de la démo mis à jour (Emma Morisod et Sandra Rappaz absentes le jour J ; Sandra responsable du Grand Pré soir).
 
+## 2026-09-10 : l'anglais pour le jury
+- Règle Devpost : tout le dossier en anglais ou traduit. Voix off de la vidéo en anglais (`plan/08-video.md`), écran en français (course suisse, dit une fois au début).
+- Schéma d'architecture traduit : `docs/architecture.svg` en anglais (le README l'affiche), `docs/architecture_fr.svg` conservé, `docs/architecture.png` rendu par Chrome sans tête pour la vidéo.
+- Onglet « Comment ça marche » de la page devenu « How it works », entièrement en anglais, score de traduction compris. Les onglets Course et Notre course restent en français.
+
 ## Prochaines étapes
 2. Vidéo (11 et 12 septembre) avec la V2, soumission Devpost le 13.
 3. Si le temps le permet : feuilles de route rédigées par le modèle, bilan d'après course, moins de bruit dans les alertes A8.
