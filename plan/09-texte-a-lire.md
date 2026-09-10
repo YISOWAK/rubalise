@@ -76,7 +76,9 @@ Enregistre A et B dans deux fichiers, `video/voix/voix2a.m4a` et `voix2b.m4a`.
 
 ## Scène 3 · la course à l'écran · environ 55 s · **tu filmes**
 
-Onglet **Course**, plan déjà calculé. Tu cliques un point de la frise, puis un créneau, puis « Toute la course ».
+Onglet **Course**, plan déjà calculé. Trois ronds verts (Morgins, Conche, Blancsex) et trois oranges (Taney, Grand Pré, Bouveret) : c'est normal, le rond résume le jour de la course.
+
+Ordre des clics : **Blancsex** d'abord, un rond vert. Son planning s'ouvre et la barre du vendredi est rouge, c'est le 4x4 manquant. Le rond est vert parce qu'il résume le samedi, la barre rouge est la veille. Puis un créneau pour montrer l'équipe, puis « Toute la course » pour revenir.
 
 > This is what comes out.
 >
