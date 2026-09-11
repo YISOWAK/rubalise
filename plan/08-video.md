@@ -21,7 +21,7 @@ Ne dis pas que tu as organisé des courses : Devpost vérifie le rôle du gagnan
 
 ## Le message à taper (scène 5)
 
-1. Il est 11h, Emma Morisod et Sandra Rappaz ne viennent pas. On fait quoi ?
+1. Il est 11h. Deux personnes du ravitaillement du Grand Pre, creneau 11:00-16:00, ne viennent pas. Prendre les noms sur l'ecran avant de filmer : le responsable et une autre.
 2. Facultatif, si tu veux montrer le garde-fou à l'écran : « Oui, publie le plan corrigé. » L'agent demande confirmation, tu réponds « oui ».
 
 ## Ce que tu enregistres, ce que je monte

@@ -124,6 +124,14 @@ La conversation à droite, après « Calculer le plan ». Tu fais défiler jusqu
 
 Le chat. Tu tapes le message, tu laisses tourner, l'attente se coupe au montage.
 
+**Avant de filmer, lis les noms sur l'écran.** Le solveur ne rend pas exactement le même plan à chaque calcul, donc ne recopie pas des noms au hasard. Clique sur **Le Grand Pré**, ouvre le créneau **11:00-16:00** du ravitaillement : l'équipe y est à 4, juste au minimum. Prends le **responsable** (marqué comme tel) et **une autre personne du même créneau**, et mets ces deux noms dans ton message.
+
+Sur le plan que j'ai sous la main, ce serait Cédric Pellaud, responsable, et Marion Perrin. Retirer ces deux-là fait tomber le poste de 4 à 2, sous le minimum, et lui enlève son responsable : l'agent a un vrai problème à résoudre, et ça se voit sur la frise.
+
+Le message à taper :
+
+> Il est 11h. Cédric Pellaud et Marion Perrin, au ravitaillement du Grand Pré, viennent d'appeler, ils ne viennent pas. On fait quoi ?
+
 > And then there's race day, which is really the point.
 >
 > It's eleven in the morning and two volunteers aren't coming.
