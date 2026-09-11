@@ -65,7 +65,6 @@ Image : le schéma, que j'anime bloc par bloc au rythme de ta voix.
 > Then there's a second agent, and I call it the contradictor.
 > It gets the finished plan without knowing how it was built,
 > and it looks for problems that no rule describes.
-> Someone working thirteen hours, or a checkpoint where one family does everything.
 > It can't change anything, it just reports.
 >
 > And nothing is sent to the volunteers unless the organizer says yes.
@@ -75,30 +74,34 @@ Enregistre A et B dans deux fichiers, `video/voix/voix2a.m4a` et `voix2b.m4a`.
 
 ---
 
-## Scène 3 · la course à l'écran · environ 55 s · **tu filmes**
+## Scène 3 · la course à l'écran · environ 65 s · **tu filmes**
 
 Onglet **Course**, plan déjà calculé. Trois ronds verts (Morgins, Conche, Blancsex) et trois oranges (Taney, Grand Pré, Bouveret) : c'est normal, le rond résume le jour de la course.
 
-Le contradicteur ne parle pas dans ce panneau, il parle dans la conversation à droite. Ne le nomme pas ici.
+Ordre des clics : **Blancsex**, un rond vert. Son planning s'ouvre et la barre du vendredi est rouge. Tu cliques cette barre rouge, le panneau s'ouvre à droite. Puis « Toute la course » pour revenir.
 
-Ordre des clics : **Blancsex** d'abord, un rond vert. Son planning s'ouvre et la barre du vendredi est rouge, c'est le 4x4 manquant. Le rond est vert parce qu'il résume le samedi, la barre rouge est la veille. Puis un créneau pour montrer l'équipe, puis « Toute la course » pour revenir.
+Le contradicteur ne parle pas dans ce panneau, il parle dans la conversation. C'est la scène suivante.
 
 > This is what comes out.
 >
-> Every checkpoint has a colour. Green if the team is complete,
-> orange if it's a bit short, red if someone is missing.
+> Every checkpoint has a colour. Green means the team is complete,
+> orange means it's a bit short, and red means someone is missing.
 >
 > Underneath is the schedule, shift by shift, over three days.
-> I click on a checkpoint and I only see its shifts.
-> A shift tells me who's working, who's in charge, and what's missing and why.
+> If I click on a checkpoint, I only see its shifts.
 >
-> On this plan, one person is missing in the whole race.
-> It's a four-by-four driver on Friday, and the agent explains why nobody else can do it.
+> This one is green, because the colour is about race day.
+> But the day before, there's a red shift.
+> It's a supply run in a four-by-four, to the two aid stations you can't reach by road.
 >
-> The panel also tells me what the checker found, in plain language,
-> and what I could do about it.
-> Three people are free and have a licence, but no four-by-four.
-> Lend one of them a car and the gap is closed.
+> I click on it, and the agent tells me it's one person short,
+> and that only one volunteer out of a hundred can actually take it.
+>
+> And then it tells me what I can do about that.
+> Three people are free and have a licence, they just don't have the right car.
+> Lend one of them a four-by-four, and the shift is covered.
+>
+> It doesn't only tell me no. It tells me what to change.
 
 ---
 
@@ -106,11 +109,13 @@ Ordre des clics : **Blancsex** d'abord, un rond vert. Son planning s'ouvre et la
 
 La conversation à droite, après « Calculer le plan ». Tu fais défiler jusqu'à sa relecture.
 
-> The checker only knows the rules somebody wrote down.
+> That panel is a checker, and a checker only knows the rules somebody wrote down.
+>
 > So there's a second agent that reads the finished plan and looks for the rest.
 > Here it noticed that one team leader is bringing three friends,
 > and those three are doing most of the work at that checkpoint.
 > If she cancels, the post is empty.
+>
 > Nobody had written a rule about that.
 
 ---
