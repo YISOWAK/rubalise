@@ -117,7 +117,7 @@ def verifier(plan: dict, postes: list, benevoles: list, trajets: dict, battement
         listes = [B[a["benevole_id"]] for a in eq]
         # A1 : que des débutants
         if all(b["editions_precedentes"] == 0 for b in listes):
-            viol("A1", "alerte", f"{p['nom']} : personne n'a déjà fait une édition", p["id"])
+            viol("A1", "alerte", f"{p['nom']} : personne sur ce créneau n'a déjà fait la course, prévoir un briefing ou y placer quelqu'un d'expérimenté", p["id"])
         # A5 : poste isolé sans véhicule dans l'équipe
         if p["site"] in SITES_A_PIED and not any(b["vehicule"] for b in listes):
             viol("A5", "alerte", f"{p['nom']} : personne n'a de véhicule dans l'équipe, navette à prévoir", p["id"])
@@ -126,7 +126,7 @@ def verifier(plan: dict, postes: list, benevoles: list, trajets: dict, battement
             if a.get("accompagnants", 0):
                 viol("A6", "alerte", f"{p['nom']} : {B[a['benevole_id']]['nom']} vient avec {a['accompagnants']} personne(s) non listée(s), prénoms à confirmer", p["id"], a["benevole_id"])
         if len(eq) == 1 and eq[0].get("accompagnants", 0) and p["min"] > 1:
-            viol("A11", "alerte", f"{p['nom']} : une seule personne listée ({B[eq[0]['benevole_id']]['nom']}) et ses accompagnants anonymes", p["id"], eq[0]["benevole_id"])
+            viol("A11", "alerte", f"{p['nom']} : une seule personne listée ({B[eq[0]['benevole_id']]['nom']}) et ses accompagnants anonymes, si elle se décommande le poste tombe", p["id"], eq[0]["benevole_id"])
         # A10 : idéal non atteint
         if p["min"] <= couverture < p["ideal"]:
             viol("A10", "alerte", f"{p['nom']} : {couverture}/{p['ideal']}, il manque {p['ideal'] - couverture} pour l'idéal", p["id"])

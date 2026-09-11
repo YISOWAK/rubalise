@@ -147,6 +147,75 @@ def eligible(b: dict, p: dict) -> tuple[bool, str]:
     return True, ""
 
 
+
+LIBELLE_CRITERE = {
+    "PSC1": "n'a pas le PSC1", "permis_B": "n'a pas le permis", "vehicule": "n'a pas de voiture",
+    "4x4": "n'a pas de 4x4", "montagne": "ne marche pas en montagne", "trail": "ne pratique pas le trail",
+    "majeur": "est mineur", "experience": "n'a jamais fait la course",
+    "controle_materiel": "n'a jamais fait la course", "nuit": "ne fait pas la nuit", "mineur": "est mineur",
+}
+
+
+def ecart_dispo(b: dict, p: dict) -> int:
+    """Minutes qui manquent à la meilleure plage de b pour couvrir entièrement le créneau p."""
+    meilleur = 10 ** 6
+    for d, f in fenetres(b):
+        if f <= p["debut"] or d >= p["fin"]:
+            continue                        # la plage ne touche pas le créneau
+        manque = max(0, int((d - p["debut"]).total_seconds() // 60)) + max(0, int((p["fin"] - f).total_seconds() // 60))
+        meilleur = min(meilleur, manque)
+    return meilleur
+
+
+def refus_complets(b: dict, p: dict) -> list[str]:
+    """Toutes les raisons pour lesquelles b ne peut pas tenir p. Liste vide : b est éligible."""
+    out = []
+    if not any(d <= p["debut"] and f >= p["fin"] for d, f in fenetres(b)):
+        out.append("dispo")
+    if est_de_nuit(p) and not b["accepte_nuit"]:
+        out.append("nuit")
+    if b["age"] < 18 and (p["categorie"] == "signaleur" or p["fin"] > p["debut"].replace(hour=22, minute=0)):
+        out.append("mineur")
+    for jeton in p["competences"]:
+        test = COMPETENCES.get(jeton)
+        if test and not test(b):
+            out.append(jeton)
+    return out
+
+
+def presque_eligibles(p: dict, benevoles: list[dict], combien: int = 3) -> list[dict]:
+    """Les personnes qui ne ratent qu'un seul critère, les plus proches d'abord, avec le geste à faire."""
+    cands = []
+    for b in benevoles:
+        manques = refus_complets(b, p)
+        if len(manques) != 1:
+            continue
+        critere = manques[0]
+        if critere == "dispo":
+            ecart = ecart_dispo(b, p)
+            if ecart > 120:                 # au-delà de deux heures, ce n'est plus « presque »
+                continue
+            fin_dispo = max((f for d, f in fenetres(b) if d <= p["debut"] < f), default=None)
+            if fin_dispo is not None and fin_dispo < p["fin"]:
+                quoi = f"est libre jusqu'à {fin_dispo:%H:%M}, le créneau finit à {p['fin']:%H:%M}"
+                geste = f"lui demander {ecart} minutes de plus"
+            else:
+                quoi = f"est libre un peu trop tard, il manque {ecart} minutes au début"
+                geste = f"la faire arriver {ecart} minutes plus tôt"
+            cands.append({"rang": (0, ecart), "nom": b["nom"], "manque": quoi, "geste": geste})
+        else:
+            libelle = LIBELLE_CRITERE.get(critere, f"ne remplit pas « {critere} »")
+            geste = {"4x4": "lui prêter un 4x4 ou l'accompagner",
+                     "vehicule": "organiser son transport",
+                     "permis_B": "le faire conduire par quelqu'un d'autre",
+                     "PSC1": "mettre un secouriste avec elle",
+                     "montagne": "lui donner le poste accessible en voiture",
+                     "nuit": "la remplacer avant la nuit"}.get(critere, "adapter le poste ou la personne")
+            cands.append({"rang": (1, 0), "nom": b["nom"], "manque": f"est libre mais {libelle}", "geste": geste})
+    cands.sort(key=lambda c: c["rang"])
+    return [{k: v for k, v in c.items() if k != "rang"} for c in cands[:combien]]
+
+
 # ---------------------------------------------------------------------------
 # 3. Paires de créneaux incompatibles pour une même personne (arbitrage 2, dur)
 #    A puis B est possible si : fin A + battement départ A + trajet + battement arrivée B <= début B
@@ -309,7 +378,8 @@ def rapport(s, v, statut, relache, postes, benevoles, sortie: Path, plan_fige: d
             vus.add(a["poste_id"])
 
     trous = [{"poste_id": pid, "manque": val(d), "eligibles": len([1 for (b, p) in v["x"] if p == pid]),
-              "refus": v["refus"].get(pid, {})}
+              "refus": v["refus"].get(pid, {}),
+              "presque": presque_eligibles(P[pid], benevoles)}
              for pid, d in v["deficit_min"].items() if val(d) > 0]
     sans_resp = [pid for pid, mr in v["manque_resp"].items() if val(mr)]
 
@@ -337,6 +407,8 @@ def rapport(s, v, statut, relache, postes, benevoles, sortie: Path, plan_fige: d
         for t in trous:
             raisons = ", ".join(f"{k} {n}" for k, n in sorted(t["refus"].items(), key=lambda kv: -kv[1]))
             lignes.append(f"  {t['poste_id']:<4} {P[t['poste_id']]['nom'][:44]:<44} manque {t['manque']}  éligibles {t['eligibles']:>2}  exclus : {raisons}")
+            for c in t.get("presque", []):
+                lignes.append(f"         proche : {c['nom']} {c['manque']} -> {c['geste']}")
     lignes += ["", "Par créneau :"]
     for p in postes:
         eq = [a for a in affectations if a["poste_id"] == p["id"]]

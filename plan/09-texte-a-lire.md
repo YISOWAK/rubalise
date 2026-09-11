@@ -79,6 +79,8 @@ Enregistre A et B dans deux fichiers, `video/voix/voix2a.m4a` et `voix2b.m4a`.
 
 Onglet **Course**, plan déjà calculé. Trois ronds verts (Morgins, Conche, Blancsex) et trois oranges (Taney, Grand Pré, Bouveret) : c'est normal, le rond résume le jour de la course.
 
+Le contradicteur ne parle pas dans ce panneau, il parle dans la conversation à droite. Ne le nomme pas ici.
+
 Ordre des clics : **Blancsex** d'abord, un rond vert. Son planning s'ouvre et la barre du vendredi est rouge, c'est le 4x4 manquant. Le rond est vert parce qu'il résume le samedi, la barre rouge est la veille. Puis un créneau pour montrer l'équipe, puis « Toute la course » pour revenir.
 
 > This is what comes out.
@@ -93,9 +95,23 @@ Ordre des clics : **Blancsex** d'abord, un rond vert. Son planning s'ouvre et la
 > On this plan, one person is missing in the whole race.
 > It's a four-by-four driver on Friday, and the agent explains why nobody else can do it.
 >
-> The contradictor had things to say too.
-> One team leader brought three friends, and those three are doing most of the work
-> at that checkpoint. Nobody had written a rule about that.
+> The panel also tells me what the checker found, in plain language,
+> and what I could do about it.
+> Three people are free and have a licence, but no four-by-four.
+> Lend one of them a car and the gap is closed.
+
+---
+
+## Scène 3 bis · le contradicteur · environ 25 s · **tu filmes**
+
+La conversation à droite, après « Calculer le plan ». Tu fais défiler jusqu'à sa relecture.
+
+> The checker only knows the rules somebody wrote down.
+> So there's a second agent that reads the finished plan and looks for the rest.
+> Here it noticed that one team leader is bringing three friends,
+> and those three are doing most of the work at that checkpoint.
+> If she cancels, the post is empty.
+> Nobody had written a rule about that.
 
 ---
 

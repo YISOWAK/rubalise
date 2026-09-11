@@ -137,6 +137,10 @@ body .frise .pt.ok .ico{background:var(--ok)} body .frise .pt.partiel .ico{backg
 #detail .lienpost:hover{color:var(--ink)}
 #detail .lienpost .t{font-size:11px;color:var(--muted);flex:none}
 #detail .lienpost .pill{margin-left:auto}
+#detail .viol.proche{border-left-color:var(--accent);background:var(--accent-soft)}
+#detail .viol.proche ul{margin:4px 0 0;padding-left:16px}
+#detail .viol.proche li{margin:2px 0}
+#detail .viol.proche i{color:var(--ink2);font-style:normal}
 #detail .viol .etiq{display:inline-block;font-size:10.5px;font-family:"Roboto Mono",monospace;text-transform:uppercase;letter-spacing:.05em;padding:1px 6px;border-radius:3px;margin-right:8px;background:var(--warn-soft);color:#8A6414;vertical-align:1px}
 #detail .viol.bloquante .etiq{background:var(--bad-soft);color:#9E3630}
 #detail .viol b{font-weight:500}
@@ -633,8 +637,12 @@ textarea{flex:1;resize:none;min-height:38px;max-height:140px;border:1px solid va
       s += '<div class="viol bloquante"><b>Il manque ' + trou.manque + ' personne' + (trou.manque > 1 ? 's' : '') + ', et l\'agent ne peut pas la trouver.</b> ' +
         (trou.eligibles > 1 ? trou.eligibles + ' personnes seulement peuvent' : (trou.eligibles === 1 ? 'Une seule personne peut' : 'Personne ne peut')) +
         ' prendre ce cr\u00e9neau' + (ec ? ' : ' + esc(ec) + '.' : '.') + '</div>';
+      const pr = trou.presque || [];
+      if (pr.length) s += '<div class="viol proche"><b>Les plus proches, si tu veux d\u00e9bloquer :</b><ul>' +
+        pr.map(c => '<li>' + esc(c.nom) + ' ' + esc(c.manque) + '. <i>' + esc(c.geste) + '</i></li>').join('') + '</ul></div>';
     }
-    const viols = (donnees.violations || []).filter(v => v.poste === p.id);
+    const MUET = trou ? ['B2', 'A10'] : ['A10'];
+    const viols = (donnees.violations || []).filter(v => v.poste === p.id && MUET.indexOf(v.regle) < 0);
     if (viols.length) {
       s += '<h4>Ce que la v\u00e9rification signale</h4>';
       viols.slice(0, 6).forEach(v => {
