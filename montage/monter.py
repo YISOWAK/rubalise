@@ -16,6 +16,7 @@ FFMPEG = str(BIN / "ffmpeg.exe")
 W, H, FPS = 1920, 1080, 30
 TOILE = (3840, 2160)          # les images fixes sont posées sur une toile double, pour zoomer sans perdre de netteté
 PAUSE = 0.5                   # respiration entre deux scènes
+DECALAGE = 0.6                # la vidéo du navigateur démarre 0,6 s après l'horloge du tournage (mesuré)
 FOND, ENCRE, ACCENT, GRIS = "#F3F5F4", "#1E2429", "#D9530B", "#5C6670"
 ENC = ["-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS)]
 
@@ -174,15 +175,15 @@ def scene_site(scene, T, seg):
     src = CAPT / "site.webm"
     if scene == "s4":
         a, b = seg["s4a"], seg["s4b"]
-        extrait(src, a[0], a[1] - a[0], RENDU / "s4_a.mp4")
-        extrait(src, b[0], b[1] - b[0], RENDU / "s4_b.mp4")
+        extrait(src, a[0] - DECALAGE, a[1] - a[0], RENDU / "s4_a.mp4")
+        extrait(src, b[0] - DECALAGE, b[1] - b[0], RENDU / "s4_b.mp4")
         liste = RENDU / "s4_liste.txt"
         liste.write_text(f"file '{(RENDU / 's4_a.mp4').as_posix()}'\nfile '{(RENDU / 's4_b.mp4').as_posix()}'\n", encoding="utf-8")
         ff("-f", "concat", "-safe", "0", "-i", str(liste), "-c", "copy", str(RENDU / "s4_brut.mp4"))
         caler(RENDU / "s4_brut.mp4", T, RENDU / "s4.mp4")
     else:
         a = seg[scene]
-        extrait(src, a[0], a[1] - a[0], RENDU / f"{scene}_brut.mp4")
+        extrait(src, a[0] - DECALAGE, a[1] - a[0], RENDU / f"{scene}_brut.mp4")
         caler(RENDU / f"{scene}_brut.mp4", T, RENDU / f"{scene}.mp4")
 
 
