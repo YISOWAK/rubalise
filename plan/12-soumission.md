@@ -1,6 +1,6 @@
 # La soumission : ce qu'il reste à faire, et les textes à coller
 
-Date limite : dimanche 14 septembre 2026, 17h00 heure du Pacifique, soit **lundi 15 septembre 02h00 à Paris**. Vise samedi soir, pas dimanche soir.
+Date limite : lundi 14 septembre 2026, 17h00 heure du Pacifique, soit **mardi 15 septembre 02h00 à Paris**. Nous sommes dimanche 13 : vise lundi en fin d'après-midi, pas lundi minuit.
 
 ## Dans l'ordre
 
