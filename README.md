@@ -4,7 +4,7 @@
 
 Built for the AWS **Agents for Humans** hackathon, track *Good Neighbor Agents*, with [Strands Agents](https://strandsagents.com), a Model Context Protocol server, OR-Tools, and Claude on Amazon Bedrock. Deployed on Amazon Bedrock AgentCore Runtime.
 
-> Demo video: *(link added at submission)* · Live demo: a web page that talks to the hosted agent, link provided in the submission (the page is in French, like the race it was built on).
+> Demo video: *(YouTube link added at submission)* · Live demo: a web cockpit (timeline of checkpoints, schedule, chat with the hosted agent), link provided in the submission. The page is in French, like the race it was built on; the "How it works" tab is in English.
 
 ## The problem
 
@@ -21,7 +21,7 @@ Four phases, one conversation, in French:
 3. **Publication.** Nothing reaches volunteers until the organiser explicitly says so. A hard, code-level gate guards *publish*, *derogate* and *change a rule*. Every decision goes to an append-only journal with its author and reason.
 4. **Race day.** "It's 11:00, Marc and Fabien aren't coming." The agent says who and which shifts are hit, re-solves against the published plan with a cost on every change (higher for people already notified, highest for people already on post), and proposes the smallest repair, person by person. Finished shifts never move. It asks before publishing the repair.
 
-The solver never solves a shortage of volunteers. It makes the shortage precise: *"aid station Blancsex, Saturday afternoon: 2 missing; 44 people unavailable, 12 refuse night shifts, 4 cannot walk to an isolated post"*. That is what the organiser needs to recruit.
+The solver never solves a shortage of volunteers. It makes the shortage precise, and actionable: *"Friday 4x4 supply run to the isolated aid stations: 1 missing. 91 people are not free at that time, 6 have no 4x4, 1 has no licence. Closest: Fabien Bender, Simon Rey-Bellet and Charlotte Pittet are free and licensed, they only lack the car: lend one of them a 4x4."* That is what the organiser needs to make a phone call.
 
 ## Architecture
 
@@ -40,7 +40,7 @@ Two agents, one tool server, one state:
 | Verifier | 9 blocking rules and 11 alerts, deterministic, duplicates by phone number | `outils/verifier.py` |
 | State | Course sheet, shifts, volunteers, rules, plan, published plan, journal, sent messages | JSON files per session |
 | Hosting | One AgentCore Runtime session per organiser; the MCP server runs inside the session | `agents/agentcore_app.py` |
-| Demo page | Sober web chat with preset requests, talks to the hosted agent through a Lambda relay | `web/` |
+| Cockpit page | Timeline of checkpoints coloured by staffing, schedule by site, shift detail with team, gaps and nearest candidates, reports from a post, chat with the agent; talks to the hosted agent through a Lambda relay | `web/` |
 
 Design choices that matter:
 
@@ -52,15 +52,16 @@ Design choices that matter:
 
 ## Measured results
 
-All on the SwissPeaks Marathon 2025 (46 km, 2 483 m D+, Morgins to Le Bouveret): real roadbook, real course, 75 synthetic volunteers, 14 deliberate traps.
+All on the SwissPeaks Marathon 2025 (46 km, 2 483 m D+, Morgins to Le Bouveret): real roadbook, real course, a synthetic sign-up form of 100 lines (99 volunteers after de-duplication by phone number), 14 deliberate traps.
 
 | What | Result |
 |---|---|
-| Form translation (free text to closed fields, Claude Opus 4.6), 75 lines | availability 74/75, skills 74/75, night refusal 74/75, companions, leader status, pairs 75/75; the one "error" is the runner whose Saturday the model correctly removed |
+| Form translation (free text to closed fields, Claude Opus 4.6), 100 lines | availability 99/100, skills 100/100, night refusal 99/100, companions, leader status, pairs 100/100; the one availability "error" is the runner whose Saturday the model correctly removed |
 | Roadbook reading (5 PDF pages as images) | all 6 checkpoints with exact km, altitude, times and cut-offs; bib pick-up and shuttles found; 2 small service icons misread and flagged as doubts |
-| Solver, 50 shifts × 75 volunteers | optimal in 5 s; 16 people missing on 9 shifts, each with the reason others are excluded |
-| Race day, 5 no-shows at 06:30 against the published plan | 2 removals, 4 additions, 0.4 s |
-| Race day, 2 leaders (with 3 companions each) absent at 11:00 | 7 removals, 10 additions, finished shifts untouched |
+| Solver, 50 shifts × 99 volunteers | feasible plan in 10 s (not proven optimal); 1 person missing on 1 shift (the Friday 4x4 supply run), with the reason others are excluded and the 3 nearest candidates named |
+| Solver, same race with 55 volunteers | optimal in 0.3 s; 19 people missing on 11 shifts, each one named with its reason |
+| Race day, 5 no-shows at 06:30 against the published plan | 1 removal, 6 additions, 0.5 s, no shift below its minimum |
+| Race day, 15:00, storm: Taney closed, 3 more people needed at Le Grand Pré | 6 removals, 3 additions, one post left without a leader and flagged as such |
 | Rule checker | on the raw file it catches the Marathon runner assigned on race day and the two rows with the same phone number; after translation these traps never reach the solver (the runner loses his Saturday, minors are hard rules) |
 | Contradictor, unprompted | a post leader whose three unlisted companions carry the whole bib pick-up (if she cancels, the post falls), a helper who is the only named person on the evening standby team, a volunteer on a 13-hour day, a tight 4x4 hand-over between two posts |
 
@@ -84,6 +85,19 @@ Hosted version: `agentcore deploy` (AgentCore CLI, CodeZip build, Python 3.12). 
 
 Live demo page: `web/` holds a single HTML page and a small Lambda relay behind an HTTP API (`python web/deployer.py --runtime-arn ...`). The relay answers in two steps (start, then poll) because a full plan takes longer than the API's 30-second limit.
 
+### Testing the live demo
+
+The link in the submission opens the cockpit on a fresh session (no login).
+
+1. Click **Calculer le plan** and wait 60 to 90 seconds: the agent loads the race, solves, checks, and the contradictor rereads. The checkpoints on the timeline turn green, orange or red.
+2. Click a checkpoint (for instance *Chalet de Blancsex*) to see only its shifts; the Friday supply run is red. Click that bar: the panel says who is missing, why nobody else qualifies, and who is closest.
+3. Click a chip under the chat, such as *Jour J : deux absentes*, or type a race-day event in French: the agent repairs the plan with the fewest moves and asks before publishing.
+4. The **How it works** tab (in English) explains the blocks and the measured results.
+
+A session sleeps after about 15 minutes without a message; reload and compute again if the timeline is grey. Each full plan costs the author roughly 15 cents of Bedrock, so please be kind.
+
+Video: `montage/` builds the demo video from the script (`montage/textes.py`): Amazon Polly for the voice, Playwright driving Chrome on the cockpit, ffmpeg for the assembly.
+
 ## Repository layout
 
 ```
@@ -93,14 +107,16 @@ solveur/      OR-Tools solver, scenario battery
 outils/       roadbook reader, form translator, form-to-solver bridge, shift builder, rule checker
 gabarits/     event templates (trail.json)
 data/         the SwissPeaks dataset: course sheet, shifts, volunteers, form, traps, GPX derivatives
-plan/         design notes, in French: roles, rules, race-day scope, architecture, data model, solver trade-offs
-docs/         architecture diagram
-web/          demo page, Lambda relay, deployment script
+plan/         design notes, in French: roles, rules, race-day scope, architecture, data model, solver trade-offs, video script
+docs/         architecture diagram (English and French), blog posts
+web/          cockpit page, Lambda relay, deployment script
+montage/      the demo video pipeline: script, Polly voice, Playwright capture, ffmpeg assembly
 ```
 
 ## Honesty notes
 
-- The course is real (public roadbook, the author's own GPS track). The volunteers are synthetic: 75 generated profiles with realistic free text, plus 14 traps, because real volunteer data cannot be published.
+- The course is real (public roadbook, the author's own GPS track). The volunteers are synthetic: a generated sign-up form of 100 lines with realistic free text, plus 14 traps, because real volunteer data cannot be published.
+- The demo video's voice is synthetic (Amazon Polly); the text is the author's.
 - Messages to volunteers are written to files, not sent.
 - Travel times between sites are estimates; in the product the organiser provides them.
 - Claude 5 models were not available on the author's AWS account; everything runs on the 4.6 generation.
