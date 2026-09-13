@@ -4,7 +4,7 @@
 
 Built for the AWS **Agents for Humans** hackathon, track *Good Neighbor Agents*, with [Strands Agents](https://strandsagents.com), a Model Context Protocol server, OR-Tools, and Claude on Amazon Bedrock. Deployed on Amazon Bedrock AgentCore Runtime.
 
-> Demo video: *(YouTube link added at submission)* · Live demo: a web cockpit (timeline of checkpoints, schedule, chat with the hosted agent), link provided in the submission. The page is in French, like the race it was built on; the "How it works" tab is in English.
+> Demo video: [youtu.be/r-ERVq44WSE](https://youtu.be/r-ERVq44WSE) (4 min 22) · Live demo: a web cockpit (timeline of checkpoints, schedule, chat with the hosted agent), link provided in the submission. The page is in French, like the race it was built on; the "How it works" tab is in English.
 
 ## The problem
 

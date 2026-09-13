@@ -4,7 +4,7 @@ Date limite : lundi 14 septembre 2026, 17h00 heure du Pacifique, soit **mardi 15
 
 ## Dans l'ordre
 
-1. **YouTube.** Mets `video/rendu/rubalise-demo.mp4` (la 1080p) en ligne, visibilité **Public** (le règlement l'exige, « non répertoriée » ne suffit pas). Titre et description ci-dessous. Donne-moi le lien, je le mets dans le README.
+1. **YouTube : fait le 13 septembre.** https://youtu.be/r-ERVq44WSE, en public, notifications aux abonnés désactivées, remix interdits, mention « contenu synthétique » (la voix). Lien mis dans le README.
 2. **Devpost.** Ouvre ta soumission sur agentsforhumans.devpost.com, colle les textes ci-dessous, mets les trois liens (dépôt, démo, vidéo), choisis la piste *Good Neighbor Agents*, renseigne ton AWS Builder ID.
 3. **Les billets de blog bonus**, 0,2 point chacun, trois au maximum. Trois brouillons sont dans `docs/blog/`. Ils sont écrits à la première personne avec ce qu'on a vraiment fait ; relis-les, change ce qui ne sonne pas comme toi, et publie-les sur builder.aws.com avec ton Builder ID, **avant la date limite**. Le titre doit contenir « Agents for Humans ». Après publication, colle les liens dans la soumission Devpost.
 4. **Laisse la démo en ligne jusqu'au 8 octobre**, fin du jugement. Le jury n'est pas obligé de la tester, mais s'il le fait, il faut qu'elle réponde. Un plan complet coûte environ 15 centimes, l'alerte de budget est en place.
