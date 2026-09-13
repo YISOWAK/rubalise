@@ -1,6 +1,6 @@
 # Agents for Humans: the second agent whose only job is to disagree
 
-*Draft for builder.aws.com. First person, the author's voice. The title must keep "Agents for Humans".*
+*Published on the AWS Builder Center on 13 September 2026: https://builder.aws.com/content/3JHQtec6ye0V5mkgALG8hn03MU3/agents-for-humans-the-second-agent-whose-only-job-is-to-disagree*
 
 Rubalise, my entry for the Agents for Humans hackathon, plans the volunteers of a trail race: it reads the roadbook, translates the sign-up form, and lets a constraint solver build the schedule. This post is about what happens *after* the plan exists, because that is where most of the risk is. A schedule that satisfies every written rule can still be a bad schedule.
 

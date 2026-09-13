@@ -29,6 +29,8 @@ The solver never solves a shortage of volunteers. It makes the shortage precise,
 
 The same diagram in French: `docs/architecture_fr.svg`. A PNG for slides: `docs/architecture.png`.
 
+Three posts on the AWS Builder Center tell the build story: [why the model never computes the plan](https://builder.aws.com/content/3JHPzN3TFsbxLsptp50BT3atmem/agents-for-humans-why-my-volunteer-planning-agent-never-computes-the-plan), [the second agent whose only job is to disagree](https://builder.aws.com/content/3JHQtec6ye0V5mkgALG8hn03MU3/agents-for-humans-the-second-agent-whose-only-job-is-to-disagree), and [from a laptop to AgentCore and a live cockpit](https://builder.aws.com/content/3JHRH1HmBbwSgUDwB07Uppohqp6/agents-for-humans-from-a-strands-agent-on-my-laptop-to-agentcore-and-a-live-cockpit). Sources in `docs/blog/`.
+
 Two agents, one tool server, one state:
 
 | Component | Role | Implementation |

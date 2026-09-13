@@ -1,6 +1,6 @@
 # Agents for Humans: why my volunteer-planning agent never computes the plan
 
-*Draft for builder.aws.com. First person, the author's voice. The title must keep "Agents for Humans".*
+*Published on the AWS Builder Center on 13 September 2026: https://builder.aws.com/content/3JHPzN3TFsbxLsptp50BT3atmem/agents-for-humans-why-my-volunteer-planning-agent-never-computes-the-plan*
 
 Last September I ran the SwissPeaks Marathon, 46 km in the Swiss Alps, in a bit more than eight hours. What I remember as much as the trail are the volunteers: someone at every aid station, on every road crossing, at the finish until the last runner. And someone, before the race, had put each of them at the right place at the right hour.
 

@@ -6,7 +6,12 @@ Date limite : lundi 14 septembre 2026, 17h00 heure du Pacifique, soit **mardi 15
 
 1. **YouTube : fait le 13 septembre.** https://youtu.be/r-ERVq44WSE, en public, notifications aux abonnés désactivées, remix interdits, mention « contenu synthétique » (la voix). Lien mis dans le README.
 2. **Devpost : soumis le 13 septembre (5 étapes sur 5).** Modifiable jusqu'à la date limite pour ajouter les liens des billets. Nom, accroche, texte long, 13 tags, liens dépôt, démo et vidéo, galerie de 4 images avec légendes, piste Good Neighbor Agents, schéma d'architecture, instructions de test. Reste : confirmer l'AWS Builder ID (mis : antoine.krycho@gmail.com), cocher les conditions et cliquer « Submit project ». On peut encore modifier après soumission jusqu'à la date limite, par exemple pour ajouter les liens des billets.
-3. **Les billets de blog bonus**, 0,2 point chacun, trois au maximum. Profil Builder Center créé le 13 septembre (@yisowak) ; le site impose un délai de quelques minutes avant le premier article. Trois brouillons sont dans `docs/blog/`. Ils sont écrits à la première personne avec ce qu'on a vraiment fait ; relis-les, change ce qui ne sonne pas comme toi, et publie-les sur builder.aws.com avec ton Builder ID, **avant la date limite**. Le titre doit contenir « Agents for Humans ». Après publication, colle les liens dans la soumission Devpost.
+3. **Les billets de blog bonus : les trois publiés le 13 septembre** sur builder.aws.com (@yisowak), liens ajoutés dans Devpost et dans le README :
+   - https://builder.aws.com/content/3JHPzN3TFsbxLsptp50BT3atmem/agents-for-humans-why-my-volunteer-planning-agent-never-computes-the-plan
+   - https://builder.aws.com/content/3JHQtec6ye0V5mkgALG8hn03MU3/agents-for-humans-the-second-agent-whose-only-job-is-to-disagree
+   - https://builder.aws.com/content/3JHRH1HmBbwSgUDwB07Uppohqp6/agents-for-humans-from-a-strands-agent-on-my-laptop-to-agentcore-and-a-live-cockpit
+
+   Ancien texte : Profil Builder Center créé le 13 septembre (@yisowak) ; le site impose un délai de quelques minutes avant le premier article. Trois brouillons sont dans `docs/blog/`. Ils sont écrits à la première personne avec ce qu'on a vraiment fait ; relis-les, change ce qui ne sonne pas comme toi, et publie-les sur builder.aws.com avec ton Builder ID, **avant la date limite**. Le titre doit contenir « Agents for Humans ». Après publication, colle les liens dans la soumission Devpost.
 4. **Laisse la démo en ligne jusqu'au 8 octobre**, fin du jugement. Le jury n'est pas obligé de la tester, mais s'il le fait, il faut qu'elle réponde. Un plan complet coûte environ 15 centimes, l'alerte de budget est en place.
 
 ## YouTube

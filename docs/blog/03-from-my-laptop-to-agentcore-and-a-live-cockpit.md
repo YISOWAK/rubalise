@@ -1,6 +1,6 @@
 # Agents for Humans: from a Strands agent on my laptop to AgentCore and a live cockpit
 
-*Draft for builder.aws.com. First person, the author's voice. The title must keep "Agents for Humans".*
+*Published on the AWS Builder Center on 13 September 2026: https://builder.aws.com/content/3JHRH1HmBbwSgUDwB07Uppohqp6/agents-for-humans-from-a-strands-agent-on-my-laptop-to-agentcore-and-a-live-cockpit*
 
 The first two posts about Rubalise, my Agents for Humans entry, were about design: a model that reads and explains but never plans, and a second agent that only disagrees. This one is about the plumbing: how the agent went from a terminal on my laptop to a hosted runtime with a web page in front of it, what broke on the way, and what it costs to run.
 
